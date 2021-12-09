@@ -1,0 +1,159 @@
+% !TeX spellcheck = en_GB 
+
+\documentclass[a4paper,12pt]{book}
+\title{{\Huge Gym bookings manager}}
+\author{Miquel de Domingo i Giralt}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[pagestyles]{titlesec}
+\usepackage{titletoc}
+\usepackage{enumitem}
+\usepackage{lipsum}
+\usepackage[a4paper, margin = 2.5cm]{geometry}
+\usepackage[hidelinks, colorlinks = false]{hyperref}
+\usepackage{bookmark}
+\usepackage{fontspec}
+
+\setmainfont{SF Pro Display}
+\setmonofont[Scale=0.9]{JetBrains Mono}
+
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{5}
+
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
+\titlespacing{\chapter}{0pt}{-32pt}{12pt}
+
+\begin{document}
+\frontmatter
+\maketitle
+\pagestyle{empty}
+\chapter*{}
+\thispagestyle{empty}
+\begin{flushright}
+	\emph{Some dedications to the people I care for.}
+\end{flushright}
+\newpage
+\tableofcontents
+\newpage
+\newpage
+\mainmatter
+\chapter{Introduction, motivation, purpose and project goals}
+\chapter{Viability study}
+\chapter{Methodology}
+\section{Introduction}
+In this chapter, it will be briefly explained what project management will be utilised and the development methodology. Both decisions are crucial and will have effect in how the project is planned and evolves.
+\section{Project management: \emph{PMBOK}}
+The methodology used to develop the overall project has been the \emph{PMBOK} which has been explained in one of the subjects of the degree. Such methodology ha become a standard in the project management world. Since it is considered as the book of books when it comes to project management, it is definitely useful to be used in any project, which, most likely, will require some sort of management.
+\\[8pt]
+The PMBOK methodology is explained in the \emph{Project Management Body of Knowledge} book, in which such standards and guidelines are explained more in depth. The book is produced and updated by the \emph{Project Management Institute} (\emph{PMI}) and it currently has 6 editions, the latest one released in 2017.
+\\[8pt]
+The procedure is based in five process groups, which are:
+\begin{enumerate}[label = \arabic{*}.]
+	\item \textbf{Initiating}: the initiating processes are those which are performed in order to define the project or an upcoming phase of an existing project, and obtain permission to execute the project or phase.
+	\item \textbf{Planning}: the planning processes are those which are required to clearly define the scope, the objectives and the course of action of the project.
+	\item \textbf{Execution}: the planning processes are those which are performed to complete the work that has been defined in the previous processes in order to satisfy the project specifications.
+	\item \textbf{Monitoring and controlling}: the processes involved in this group, are required to track, regulate and review the progress and performance of the project. It identifies areas in which the plan has to change and initiates the corresponding changes.
+	\item \textbf{Closing}: the closing processes are those which are performed in order to finalize all activities across the above process groups so the project or phase can be closed.
+\end{enumerate}
+\chapter{Planning}
+\chapter{Framework and previous concepts}
+\chapter{Requirements specifications}
+\section{Introduction}
+This chapter will cover the system requirements specification (\emph{SRS}) for the software being developed. The goal of this chapter is to establish the basis for what will be developed, taking into account user needs, functional and non-functional requirements.
+\subsection{Purpose}
+The application's objective is to provide a simple, scalable and powerful platform to handle gymnasium appointments. Gymnasium owners will be able to create their gymnasium zones and modify the constraints such as total capacity, available hours, closed days as needed. On the other side, gymnasium clients will be able to book an appointment to the gymnasiums they are subscribed to.  Furthermore, it will provide an interface to manage the clients and their subscriptions
+\\[8pt]
+Therefore, in a single application, gym owners and their workers will be able to control the flow of users; while at the same time being able to apply changes and modifications as wanted.
+\subsection{Motivation}
+Due to the COVID-19, most of the business have been affected by the government regulations, which did not allow more than some percentage of the total capacity of the place. Gymnasiums have been one of them and the owners have had the need to find a software that allows them to handle the amount of users their facilities can have. Moreover, some of them offer guided classes such as spinning, zumba and many more (some gymnasiums are guided classes based).
+\\[8pt]
+As a client myself, I have found the software used in my gym slow, continuously causing errors and not the most intuitive for the client.
+\subsection{Definitions}
+There are some definitions to be explained before moving to the next section:
+\begin{enumerate}[label = -]
+	\item \emph{Virtual gym and gym zone}. A virtual gym will be the representation of a gymnasium in the application, while a gym zone will be the places where clients will book appointments. Each virtual gym can have multiple gym zones, and each gym zone will have their characteristics.
+	\item \emph{User}. The \emph{user} is the main person who uses the software. In this case, it is the owner and their workers.
+	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template} or \emph{template classes}. On the one hand, classes will be assigned to a virtual zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone. 
+\end{enumerate}
+\section{Overall description}
+\subsection{Introduction}
+This section provides a general explanation about the application, how it is intended to work, the different \emph{personas} to whom it is focused and a brief introduction to the software's functionalities.
+\subsection{Product description}
+The product will provide a rich interface for the gym owners and their coworkers to manage their gymnasiums. Managers will create virtual gyms, each of one with different constrains, which will be forwarded to their gym zones. Each gym zone will be of a certain or multiple type, for example, a cardio zone, a free-weight zone or even a powerlifting zone. Such and more characteristics will be determined by the workers. Once determined the capabilities of each zone, the clients will have the possibility to make their reservations.
+\\[8pt]
+This software is going to be interesting since it is mainly focused on the managing of appointments. There exist multiple manager systems, some are gym-focused yet there are few that provide an exclusive focus to managing the appointments. It is interesting to have an application that is that specific because most of the companies already have their client management system and other tools. The COVID has changed many things extremely fast and some gymnasiums have not been able to adapt fast enough. That is because using other management tools would mean to change the entire managing software of the company, in order words, starting from zero again.
+\\[8pt]
+Here is where the application becomes more interesting. It allows the company to merely incorporate the incoming software without the need of modifying the entire management system.
+\subsection{User needs}
+After having briefly defined the application, two \emph{personas} can be identified: the owner or worker of the gym, and the client.
+\\[8pt]
+In the following sections, a brief explanation will be given about the functional requirements, yet such requirements will be explained more in depth in later sections.
+\subsubsection{Owner or worker}
+Such persona needs entire access to the management system, and it is the main user of it. For this persona, the following needs can be defined:
+\begin{enumerate}[label = -]
+	\item \emph{Ability to create virtual gyms and gym zones}. It is the main purpose of the application. It has to provide all the tools that are required to have an above average managing system.
+	\item \emph{Modify virtual gyms and gym zones}. Constraints may change during time. Overall capacity may increase, more cardio machines may be added, and, with these changes, the gym zones will have to adapt to such real life modifications. There has to exist an interface that provides an easy and simple tool to control it.
+	\item \emph{Ability to manage clients}. The income of the gymnasium is based on the amount of clients they have, and such clients have to be subscribed into the system. However, the application is not a client management system. It purely focuses on the fact of bookings. Therefore, the user needs to be able to synchronize their clients with the system.
+	\item \emph{Ability to manage appointments}. The workers have to be able to create, modify or delete the appointments at any time. This process has to be fast and simple since it is more than usual to have cancellations, clients without reservation, and many more.
+	\item \emph{Ability to manage guided classes}. Some gym zones will be marked as a guided class zone. Therefore, a schedule will have to be set up for such zone in order to let the user know hat
+\end{enumerate}
+Furthermore, two user profiles have to be differentiated: the \emph{owner} and the \emph{worker}. The owner needs more control than the worker and some additional needs are:
+\begin{enumerate}[label = -]
+	\item \emph{Ability to manage workers}. The owner has to be able to add, remove or update their workers. There must exist an interface that allows such control.
+	\item \emph{Ability to manage the privileges of the workers}. In large gymnasium franchises, there may exist different types of workers, each with different tasks. For instance, some may only be able to manage guided sessions, others will manage the client subscriptions and so on. Therefore, a privilege system is required to define a hierarchy in the company.
+	\item \emph{Ability to manage gym trainers}. It is important to know what trainers will be responsible for each guided class. For instance, some clients may prefer some trainers than others, when choosing a guided class.
+\end{enumerate}
+\subsubsection{Client}
+The client has little interaction with the system. However, a management application for clients would be useless if clients could not book their sessions. That is why it will exist another platform to provide access to the client. Such client, will have the following needs:
+\begin{enumerate}[label = -]
+	\item \emph{Ability to create, modify and delete appointments}. The clients will make the most use of the reservation system. There has to exist a simple and intuitive interface that allows the clients to interact with the system.
+	\item \emph{Ability to visualise guided classes}. In case the client prefers booking a place for a guided class, it should be able to visualise all the possible classes for a day or week, for a zone.
+\end{enumerate}
+\section{Product functionalities}
+The goal of this section is to explain how would the basic flow of the application be. From the owner preparing the virtual gyms, the classes and assigning the trainers; to the client being able to manage their appointments. By exemplifying the application behavior, it will be easier to determine the functional requirements of the software.
+\subsection{Virtual gym and gym zones}
+The interface has to be intuitive both for the user and the client, while at the same time providing as much utility as possible. Before being able to create appointments, the client needs a place to create such appointments. Therefore, the first mission of the owner is to define each zone. A gym company may have one or more virtual gyms. As stated before, a virtual gym is the representation of the gym in the system. Each virtual gym will have different characteristics and information as: the gym location, the total capacity, the opening and closing hours and much more. This virtual gyms can be modified as they may change time to time. If ever needed, the possibility of deleting the different virtual gyms will also be possible.
+\\[8pt]
+Once the virtual gym has been set up, it should have gym zones. Each gym zone will also have its characteristics, most of them similar to the virtual gym ones. However, there is a characteristic that is important to mention: the \emph{type} of the gym zone. Each zone is required a type since some zones may be suitable for classes and some not. Such types will be predefined, however the user will have the ability to create their own types, reducing the restrictions of the application. Nonetheless, there will still be the need of distinction between class zones and non-class zones.
+\subsection{Classes, trainers and workers}
+After having defined the structure of the gym, the owner can create and schedule classes for the different gym zones. Classes can not be overlapped in the same zone, yet some classes can be scheduled at the same time in different zones. Furthermore, the same class can be done in multiples zones, with different trainers. 
+\\[8pt]
+In order to keep such consistency, the gym owners will create \emph{template classes}, which will have specific characteristics. Each template class will be unique, and it will be used to create \emph{classes}. In short, the client will create an appointment to a class, which will be a scheduled template class. With the explained relation, owners and workers will not have the need to create a class with all the details often, rather simply scheduling already created template classes.
+\\[8pt]
+Additionally, a trainer manager system is required. However, a trainer it is a worker as well, even though it does not interact with the application. Hence, in the same management view, the owner, and if any worker is allowed to, will be able to create trainers and workers. Even though trainers will be tagged differently than the regular workers, they will be treated equally in the database.
+\subsection{Clients}
+Before continuing, the system still lacks of the main income of the gymnasium: the client. The user needs to know what clients are subscribed to what gym zones. As detailed before, the goal of this application is not to provide a client management system, though it could be a functionality to be implemented in the future. Therefore, it needs to create a link between the client and the zone.
+\\[8pt]
+There has to be, definitely, a small client management. However, this management does not need to know about all the information it is kept about the user in the gym. It will only need:
+\begin{enumerate}[label = -]
+	\item Personal information such as the name, last name and so on. It should include an email and a code (which can be generated by the application) to log in to the software.
+	\item The virtual gyms to which has access to.
+\end{enumerate}
+That is it. From there, the client will have access to another view of the application in which they will be able to make the reservations.
+\subsection{Creating appointments}
+\emph{Todo :(}
+\section{Functional requirements}
+\subsection{Introduction}
+In this section, the above described requirements will be explained more in depth. The functional requirements are defined as the core functionalities of the system. All requirements exposed in the section are considered essentials and the system would be considered incomplete if it did not satisfy such requisites.
+\\[8pt]
+The requisites will be exposed with their code name and a number (as \emph{FR-1}), their priority and a brief description. Three levels of priority have been defined:
+\begin{enumerate}[label = \arabic{*}.]
+	\item \textbf{High priority (3)}. Such requisites must be fulfilled by the application in order to provide a proper user experience.
+	\item \textbf{Medium priority (2)}. Such requisites should be fulfilled by the application in order to provide an above average user experience.
+	\item \textbf{Low priority (1)}. Such requisites would provide an excellent user experience, yet they are not mandatory.
+\end{enumerate}
+\subsection{Functional requirement group name 1}
+\subsection{Functional requirement group name 2}
+\subsection{Functional requirement group name 3}
+\subsection{Functional requirement group name 4}
+\section{User characteristics}
+\chapter{Studies and decisions}
+\chapter{Analysis and system design}
+\chapter{Implementation and trials}
+\chapter{Conclusions}
+\chapter{Future work}
+\appendix
+\chapter{Bibliography}
+\chapter{User manual or installation}
+\end{document}

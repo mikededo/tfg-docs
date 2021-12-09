@@ -1,0 +1,12 @@
+# vscode 
+.vscode
+*.code-workspace
+
+# Latex output
+*.aux
+*.log
+*.toc
+*.pdf
+
+# Keep only what is in the root folder
+!.
