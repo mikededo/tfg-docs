@@ -1,6 +1,8 @@
-# vscode 
-.vscode
+# vscode
 *.code-workspace
+
+# ltx dictionary output
+*.txt
 
 # Latex output
 *.aux

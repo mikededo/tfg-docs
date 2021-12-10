@@ -1,6 +1,6 @@
 % !TeX spellcheck = en_GB 
 
-\documentclass[a4paper,12pt]{book}
+\documentclass[a4paper, 12pt, oneside]{book}
 \title{{\Huge Gym bookings manager}}
 \author{Miquel de Domingo i Giralt}
 
@@ -9,17 +9,25 @@
 \usepackage[pagestyles]{titlesec}
 \usepackage{titletoc}
 \usepackage{enumitem}
-\usepackage{lipsum}
+\usepackage{fancyhdr}
 \usepackage[a4paper, margin = 2.5cm]{geometry}
 \usepackage[hidelinks, colorlinks = false]{hyperref}
 \usepackage{bookmark}
 \usepackage{fontspec}
 
-\setmainfont{SF Pro Display}
+\setmainfont{SF Pro Display}[BoldFont = SF Pro Display Bold]
 \setmonofont[Scale=0.9]{JetBrains Mono}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+% \renewcommand{\chaptermark}[1]{\thechapter\markboth{#1}{}}
+\lhead{}
+\rhead{\small\textit{\nouppercase{\rightmark}}}
+\fancyfoot[C]{\fontsize{10pt}{10pt}\selectfont\thepage}
 
 \setlength\parindent{0pt}
 \setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
 
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
 \titlespacing{\chapter}{0pt}{-32pt}{12pt}
@@ -27,16 +35,15 @@
 \begin{document}
 \frontmatter
 \maketitle
-\pagestyle{empty}
-\chapter*{}
+\newpage\null\thispagestyle{empty}\newpage
 \thispagestyle{empty}
 \begin{flushright}
 	\emph{Some dedications to the people I care for.}
 \end{flushright}
 \newpage
+\thispagestyle{empty}
 \tableofcontents
-\newpage
-\newpage
+\newpage\null\thispagestyle{empty}\newpage
 \mainmatter
 \chapter{Introduction, motivation, purpose and project goals}
 \chapter{Viability study}
@@ -74,7 +81,8 @@ There are some definitions to be explained before moving to the next section:
 \begin{enumerate}[label = -]
 	\item \emph{Virtual gym and gym zone}. A virtual gym will be the representation of a gymnasium in the application, while a gym zone will be the places where clients will book appointments. Each virtual gym can have multiple gym zones, and each gym zone will have their characteristics.
 	\item \emph{User}. The \emph{user} is the main person who uses the software. In this case, it is the owner and their workers.
-	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template} or \emph{template classes}. On the one hand, classes will be assigned to a virtual zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone. 
+	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template} or \emph{template classes}. On the one hand, classes will be assigned to a gym zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone.
+	\item \emph{Archiving} vs \emph{Deleting}. The purpose of archiving anything in the database means it will be stored but not visible. In order to edit it again, the archived element has to be \emph{recovered}. On the other hand, a deleted element will permanently be deleted from the database.
 \end{enumerate}
 \section{Overall description}
 \subsection{Introduction}
@@ -117,7 +125,7 @@ The interface has to be intuitive both for the user and the client, while at the
 \\[8pt]
 Once the virtual gym has been set up, it should have gym zones. Each gym zone will also have its characteristics, most of them similar to the virtual gym ones. However, there is a characteristic that is important to mention: the \emph{type} of the gym zone. Each zone is required a type since some zones may be suitable for classes and some not. Such types will be predefined, however the user will have the ability to create their own types, reducing the restrictions of the application. Nonetheless, there will still be the need of distinction between class zones and non-class zones.
 \subsection{Classes, trainers and workers}
-After having defined the structure of the gym, the owner can create and schedule classes for the different gym zones. Classes can not be overlapped in the same zone, yet some classes can be scheduled at the same time in different zones. Furthermore, the same class can be done in multiples zones, with different trainers. 
+After having defined the structure of the gym, the owner can create and schedule classes for the different gym zones. Classes can not be overlapped in the same zone, yet some classes can be scheduled at the same time in different zones. Furthermore, the same class can be done in multiples zones, with different trainers.
 \\[8pt]
 In order to keep such consistency, the gym owners will create \emph{template classes}, which will have specific characteristics. Each template class will be unique, and it will be used to create \emph{classes}. In short, the client will create an appointment to a class, which will be a scheduled template class. With the explained relation, owners and workers will not have the need to create a class with all the details often, rather simply scheduling already created template classes.
 \\[8pt]
@@ -132,7 +140,9 @@ There has to be, definitely, a small client management. However, this management
 \end{enumerate}
 That is it. From there, the client will have access to another view of the application in which they will be able to make the reservations.
 \subsection{Creating appointments}
-\emph{Todo :(}
+When the client has been able to connect to the platform, they will be able to visualise the gym zones to which they have access. The access will be managed by the gym owners, though rarely clients only have access to specific zones. There, the client will be able to visualise the availability of the different gym zones, the classes offered in that zone and other relevant information. From that, they will create their appointment which will be persisted to the system.
+\\[8pt]
+After the appointment has been made, the client will be able to modify it and remove it, without the need of any explanation.
 \section{Functional requirements}
 \subsection{Introduction}
 In this section, the above described requirements will be explained more in depth. The functional requirements are defined as the core functionalities of the system. All requirements exposed in the section are considered essentials and the system would be considered incomplete if it did not satisfy such requisites.
@@ -143,10 +153,115 @@ The requisites will be exposed with their code name and a number (as \emph{FR-1}
 	\item \textbf{Medium priority (2)}. Such requisites should be fulfilled by the application in order to provide an above average user experience.
 	\item \textbf{Low priority (1)}. Such requisites would provide an excellent user experience, yet they are not mandatory.
 \end{enumerate}
-\subsection{Functional requirement group name 1}
-\subsection{Functional requirement group name 2}
-\subsection{Functional requirement group name 3}
-\subsection{Functional requirement group name 4}
+Furthermore, the overall application will be separated in three different front-end applications:
+\begin{enumerate}[label = \textbf{\arabic{*}.}]
+	\item \textbf{Landing app}. Application which contains the landing application of the product.
+	\item \textbf{Core app}. Main application of the product, where the user does most of the work.
+	\item \textbf{Appointments app}. Application used by the gym client in order to book their appointments.
+\end{enumerate}
+\subsection{Landing app - Product information}
+The application must have a landing page in which the potential user can find the different features offered by the application.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-1 (3)}. The user needs to know the different features of the product in a single page.
+	\item \textbf{RF-2 (3)}. The user needs to be able to be redirected to the register and login page, from the landing page. Such page is the core page.
+	\item \textbf{RF-3 (2)}. The user needs to be able to find a contact page in the landing page and ask for the desired information by providing personal information.
+	\item \textbf{RF-4 (3)}. The user needs to find information about the data privacy. No personal data and information is intended to be sold, nor shared.
+\end{enumerate}
+\subsection{Core app - User registration}
+The user has to be able to register. In the beginning, the application will be completely free, so the gym owners will have complete access only by registering. A future implementation would be to provide additional features only to the users with a subscription.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-5 (3)}. The user has to provide personal information in order to register.
+	\item \textbf{RF-6 (3)}. The user has to provide an email and a password to access the application (login).
+	\item \textbf{RF-7 (3)}. The user needs to be able to see how their data is kept (personal data privacy).
+	\item \textbf{RF-8 (3)}. The user needs to find information about the data privacy. No personal data and information is intended to be sold, nor shared.
+\end{enumerate}
+\subsection{Core app - Home page}
+The home page is where most of the tasks will be done. The user will manage their virtual gyms and gym zones. Furthermore, it will be able to create, update and remove the template classes which will be then linked to gym zones schedule.
+\subsubsection{Virtual gyms}
+The user will enter the home page and will see the list of their virtual gyms. If no virtual gym has been created, they will be asked if they want to create a virtual gym (which will be optional). From the same view, they will be able to create, modify and archive the different virtual gyms, aside from accessing the gym zones of that virtual gym.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-9 (3)}. The view has to display a list or a grid with the different virtual gyms of the user.
+	\item \textbf{RF-10 (3)}. Each virtual gym item has to provide an option to visualise and update all the information of that virtual gym. This means changing both the virtual gym \emph{metadata}, and the virtual gym constraints.
+	\item \textbf{RF-11 (3)}. The user has to access the gym zones by clicking on a virtual gym.
+	\item \textbf{RF-12 (2)}. The user has to be able to search the virtual gyms by their name.
+	\item \textbf{RF-13 (1)}. Each virtual gym item has to provide an option to archive that virtual gym (and, consequentially, all the gym zones).
+	\item \textbf{RF-14 (1)}. There virtual gym list has to provide an option to programmatically sort the virtual gyms (e.g. by ascending or descending capacity).
+	\item \textbf{RF-15 (1)}. There virtual gym list has to provide an option to manually sort the virtual gyms.
+\end{enumerate}
+\subsubsection{Gym zones}
+Once a virtual gym has been created and the user has clicked on the card representing it, the user will be redirected to another view in which the zones of the gym will be displayed. Similarly, as in the virtual gyms view, if the user has not created any gym zone, they will be prompted to do so, if wanted.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-16 (3)}. The view has to display a list or a grid with the different gym zones of the selected virtual gym.
+	\item \textbf{RF-17 (3)}. Each gym zone has to provide an option to visualise and update all the information of that gym zone. This means changing both the gym zone \emph{metadata}, and the gym zone constraints.
+	\item \textbf{RF-18 (2)}. The user has to see the gym zone activity by clicking on it. The gym zone activity is understood as how many clients are currently in that zone.
+	\item \textbf{RF-19 (2)}. The user has to be able to schedule different trainers to each non-class gym zone.
+	\item \textbf{RF-20 (1)}. Each gym zone has to provide an option to archive the zone.
+\end{enumerate}
+\subsubsection{Class gym zone schedule}
+When the user has created a class gym zone, that zone will have a schedule (or a calendar). Then, guided classes can be created and clients will be able to make appointments to the different events created.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-21 (3)}. The view has to provide an option to visualise the current schedule of classes.
+	\item \textbf{RF-22 (3)}. There has to be an option in the menu which allows the user to create, update and delete template classes.
+	\item \textbf{RF-23 (3)}. The view has to provide an option to visualise all the created template classes.
+	\item \textbf{RF-24 (3)}. From the calendar, the user has to be able to create a guided session by linking a template class to it.
+	\item \textbf{RF-25 (2)}. From the calendar, the user has to be able to see the upcoming scheduled classes.
+	\item \textbf{RF-26 (1)}. The user has to be able to create guided sessions which are repeated when wanted, from the chosen interval.
+	\item \textbf{RF-27 (1)}. On the view list, the user has to be able to reorder template classes.
+	\item \textbf{RF-28 (1)}. After creating a new class on a gym zone, the application has to \emph{recommend} a trainer for that class.
+\end{enumerate}
+\subsection{Core app - Workers page}
+This view has to allow the user to manage the workers of the gym enterprise and set the different permissions.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-29 (3)}. The user has to be able to create a new worker, providing personal information and credentials for such worker to user the app. Furthermore, it has to allow the user to set the permissions for that worker.
+	\item \textbf{RF-30 (3)}. The same menu has to provide an option to update the user permissions or the personal information of the worker.
+	\item \textbf{RF-31 (3)}. The menu has to provide a separate option to create trainers, which will do not have access to the application.
+	\item \textbf{RF-32 (3)}. The view has to list all the workers.
+	\item \textbf{RF-33 (2)}. Each worker has to provide an option to archive the trainer.
+	\item \textbf{RF-34 (1)}. The user has to be able to set the working hours of each worker.
+	\item \textbf{RF-35 (1)}. The view has to provide an input to search the by name, last name or other characteristics the different workers.
+	\item \textbf{RF-36 (1)}. The menu has to provide an option to sort the workers and trainers.
+\end{enumerate}
+\subsection{Core app - Settings page}
+This view has to provide enough settings to customizer the behavior of the behavior and the gym information.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-37 (3)}. The settings menu has to allow the user to change the gym name and gym characteristics.
+	\item \textbf{RF-38 (3)}. The settings menu has to allow the user to change their email and password.
+	\item \textbf{RF-39 (1)}. The settings menu has to provide an option to change the application theme (light and dark) and persist it.
+	\item \textbf{RF-40 (1)}. The settings menu has to provide an option to customise the main colours of the user interface.
+\end{enumerate}
+\subsection{Core app - Analysis page}
+The goal of this view is to provide some metrics to \emph{what is happening at the gym}. However, as it is not the main purpose of the application, all the requirements from each will be marked with \emph{low priority}.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-41 (1)}. The view has to provide a select option to choose what virtual gym wants to be analised.
+	\item \textbf{RF-42 (1)}. After having selected a virtual gym, the view has to display in which intervals the virtual gym is most crowded at the current date.
+	\item \textbf{RF-43 (1)}. After having selected a virtual gym, the view has to display in which intervals the virtual gym is most crowded during an interval.
+	\item \textbf{RF-44 (1)}. After having selected a virtual gym, the view has to display what classes will have more clients during an interval.
+	\item \textbf{RF-45 (1)}. After having selected a virtual gym, the view has to display what classes will have more clients during at the current date.
+	\item \textbf{RF-46 (1)}. After having selected a virtual gym, the view has to provide a filter to check what gym zones are more crowded during an interval.
+	\item \textbf{RF-47 (1)}. After having selected a virtual gym, the view has to provide a filter to check what gym zones are more crowded at the current date.
+\end{enumerate}
+\subsection{Client app - Home page}
+The home page of the client view has to be very similar to the owner's view. The client has to see all virtual gyms to which they are subscribed, and, on accessing them, the gym zones available.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-48 (3)}. The home page has to display a list or a grid with the different virtual gyms the user has subscriptions to.
+	\item \textbf{RF-49 (3)}. On clicking any virtual gym, the home view has to display the gym zones of the selected virtual gym.
+	\item \textbf{RF-50 (2)}. If the user clicks on a class gym zone, a schedule has to be shown with the different classes scheduled for the selected week.
+	\item \textbf{RF-51 (2)}. The calendar has to provide options to change the week. The user can see scheduled classes before the current date.
+	\item \textbf{RF-52 (3)}. If the user clicks on a non-class gym zone, a form has to be shown to choose the interval in which they want to make the appointment. This includes the date of the appointment, the duration and the starting hour.
+	\item \textbf{RF-53 (3)}. On selecting a date and a duration, the server has to return what available stating hours there are. If there is no capacity for such selections, the user will not be able to create the appointment.
+	\item \textbf{RF-54 (1)}. On selecting a date, a duration and a starting hour, the view has to display how many reservations are at such time.
+\end{enumerate}
+\subsection{Client app - Personal information}
+The personal information, which is nearly the settings page for the client, has to display most of their information. Additionally, it can show some user stats \emph{for the geeks}.
+\begin{enumerate}[label = -]
+	\item \textbf{RF-55 (3)}. The view has to allow the client to change his personal information (name, last name and so on).
+	\item \textbf{RF-56 (3)}. The view has to allow the client to update his email and password.
+	\item \textbf{RF-57 (3)}. The view has to display a list with all the upcoming appointments of the user.
+	\item \textbf{RF-58 (1)}. If wanted, the user has to be able to see a list with all the past appointments.
+	\item \textbf{RF-59 (1)}. The view has to display an analytics table to see which days have they accessed a virtual gym.
+\end{enumerate}
+\section{Non-functional requirements}
+\section{Requirements dependency matrix}
 \section{User characteristics}
 \chapter{Studies and decisions}
 \chapter{Analysis and system design}
