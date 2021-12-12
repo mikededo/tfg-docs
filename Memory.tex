@@ -14,16 +14,19 @@
 \usepackage[hidelinks, colorlinks = false]{hyperref}
 \usepackage{bookmark}
 \usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage[labelfont = bf]{caption}
+\usepackage{etoolbox}
 
 \setmainfont{SF Pro Display}[BoldFont = SF Pro Display Bold]
 \setmonofont[Scale=0.9]{JetBrains Mono}
 
 \pagestyle{fancy}
 \renewcommand{\headrulewidth}{0pt}
-% \renewcommand{\chaptermark}[1]{\thechapter\markboth{#1}{}}
 \lhead{}
-\rhead{\small\textit{\nouppercase{\rightmark}}}
+\rhead{\small\emph{\nouppercase{\rightmark}}}
 \fancyfoot[C]{\fontsize{10pt}{10pt}\selectfont\thepage}
+\setlength{\headheight}{15pt}
 
 \setlength\parindent{0pt}
 \setcounter{secnumdepth}{5}
@@ -31,6 +34,7 @@
 
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
 \titlespacing{\chapter}{0pt}{-32pt}{12pt}
+
 
 \begin{document}
 \frontmatter
@@ -43,6 +47,8 @@
 \newpage
 \thispagestyle{empty}
 \tableofcontents
+\newpage
+\listoffigures
 \newpage\null\thispagestyle{empty}\newpage
 \mainmatter
 \chapter{Introduction, motivation, purpose and project goals}
@@ -121,7 +127,7 @@ The client has little interaction with the system. However, a management applica
 \section{Product functionalities}
 The goal of this section is to explain how would the basic flow of the application be. From the owner preparing the virtual gyms, the classes and assigning the trainers; to the client being able to manage their appointments. By exemplifying the application behavior, it will be easier to determine the functional requirements of the software.
 \subsection{Virtual gym and gym zones}
-The interface has to be intuitive both for the user and the client, while at the same time providing as much utility as possible. Before being able to create appointments, the client needs a place to create such appointments. Therefore, the first mission of the owner is to define each zone. A gym company may have one or more virtual gyms. As stated before, a virtual gym is the representation of the gym in the system. Each virtual gym will have different characteristics and information as: the gym location, the total capacity, the opening and closing hours and much more. This virtual gyms can be modified as they may change time to time. If ever needed, the possibility of deleting the different virtual gyms will also be possible.
+The interface has to be intuitive both for the user and the client, while at the same time providing as much utility as possible. Before being able to create appointments, the client needs a place to create such appointments. Therefore, the first mission of the owner is to define each zone. A gym company may have one or more virtual gyms. As stated before, a virtual gym is the representation of the gym in the system. Each virtual gym will have different characteristics and information as: the gym location, the total capacity, the opening and closing hours and much more. This virtual gyms can be modified as they may change time to time. If ever needed, the fact of deleting the different virtual gyms will also be possible.
 \\[8pt]
 Once the virtual gym has been set up, it should have gym zones. Each gym zone will also have its characteristics, most of them similar to the virtual gym ones. However, there is a characteristic that is important to mention: the \emph{type} of the gym zone. Each zone is required a type since some zones may be suitable for classes and some not. Such types will be predefined, however the user will have the ability to create their own types, reducing the restrictions of the application. Nonetheless, there will still be the need of distinction between class zones and non-class zones.
 \subsection{Classes, trainers and workers}
@@ -153,7 +159,7 @@ The requisites will be exposed with their code name and a number (as \emph{FR-1}
 	\item \textbf{Medium priority (2)}. Such requisites should be fulfilled by the application in order to provide an above average user experience.
 	\item \textbf{Low priority (1)}. Such requisites would provide an excellent user experience, yet they are not mandatory.
 \end{enumerate}
-Furthermore, the overall application will be separated in three different front-end applications:
+Furthermore, the overall application will be separated in three different front end applications:
 \begin{enumerate}[label = \textbf{\arabic{*}.}]
 	\item \textbf{Landing app}. Application which contains the landing application of the product.
 	\item \textbf{Core app}. Main application of the product, where the user does most of the work.
@@ -165,105 +171,201 @@ The application must have a landing page in which the potential user can find th
 	\item \textbf{RF-1 (3)}. The user needs to know the different features of the product in a single page.
 	\item \textbf{RF-2 (3)}. The user needs to be able to be redirected to the register and login page, from the landing page. Such page is the core page.
 	\item \textbf{RF-3 (2)}. The user needs to be able to find a contact page in the landing page and ask for the desired information by providing personal information.
-	\item \textbf{RF-4 (3)}. The user needs to find information about the data privacy. No personal data and information is intended to be sold, nor shared.
+	\item \textbf{RF- (3)}. The user needs to find information about the data privacy. No personal data and information is intended to be sold, nor shared.
 \end{enumerate}
 \subsection{Core app - User registration}
 The user has to be able to register. In the beginning, the application will be completely free, so the gym owners will have complete access only by registering. A future implementation would be to provide additional features only to the users with a subscription.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-5 (3)}. The user has to provide personal information in order to register.
-	\item \textbf{RF-6 (3)}. The user has to provide an email and a password to access the application (login).
-	\item \textbf{RF-7 (3)}. The user needs to be able to see how their data is kept (personal data privacy).
-	\item \textbf{RF-8 (3)}. The user needs to find information about the data privacy. No personal data and information is intended to be sold, nor shared.
+	\item \textbf{RF- (3)}. The user has to provide personal information in order to register.
+	\item \textbf{RF- (3)}. The user has to provide an email and a password to access the application (login).
+	\item \textbf{RF- (3)}. The user needs to be able to see how their data is kept (personal data privacy).
 \end{enumerate}
 \subsection{Core app - Home page}
 The home page is where most of the tasks will be done. The user will manage their virtual gyms and gym zones. Furthermore, it will be able to create, update and remove the template classes which will be then linked to gym zones schedule.
 \subsubsection{Virtual gyms}
 The user will enter the home page and will see the list of their virtual gyms. If no virtual gym has been created, they will be asked if they want to create a virtual gym (which will be optional). From the same view, they will be able to create, modify and archive the different virtual gyms, aside from accessing the gym zones of that virtual gym.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-9 (3)}. The view has to display a list or a grid with the different virtual gyms of the user.
-	\item \textbf{RF-10 (3)}. Each virtual gym item has to provide an option to visualise and update all the information of that virtual gym. This means changing both the virtual gym \emph{metadata}, and the virtual gym constraints.
-	\item \textbf{RF-11 (3)}. The user has to access the gym zones by clicking on a virtual gym.
-	\item \textbf{RF-12 (2)}. The user has to be able to search the virtual gyms by their name.
-	\item \textbf{RF-13 (1)}. Each virtual gym item has to provide an option to archive that virtual gym (and, consequentially, all the gym zones).
-	\item \textbf{RF-14 (1)}. There virtual gym list has to provide an option to programmatically sort the virtual gyms (e.g. by ascending or descending capacity).
-	\item \textbf{RF-15 (1)}. There virtual gym list has to provide an option to manually sort the virtual gyms.
+	\item \textbf{RF- (3)}. The view has to display a list or a grid with the different virtual gyms of the user.
+	\item \textbf{RF- (3)}. Each virtual gym item has to provide an option to visualise and update all the information of that virtual gym. This means changing both the virtual gym \emph{metadata}, and the virtual gym constraints.
+	\item \textbf{RF- (3)}. The user has to access the gym zones by clicking on a virtual gym.
+	\item \textbf{RF- (2)}. The user has to be able to search the virtual gyms by their name.
+	\item \textbf{RF- (1)}. Each virtual gym item has to provide an option to archive that virtual gym (and, consequentially, all the gym zones).
+	\item \textbf{RF- (1)}. There virtual gym list has to provide an option to programmatically sort the virtual gyms (e.g. by ascending or descending capacity).
+	\item \textbf{RF- (1)}. There virtual gym list has to provide an option to manually sort the virtual gyms.
 \end{enumerate}
 \subsubsection{Gym zones}
 Once a virtual gym has been created and the user has clicked on the card representing it, the user will be redirected to another view in which the zones of the gym will be displayed. Similarly, as in the virtual gyms view, if the user has not created any gym zone, they will be prompted to do so, if wanted.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-16 (3)}. The view has to display a list or a grid with the different gym zones of the selected virtual gym.
-	\item \textbf{RF-17 (3)}. Each gym zone has to provide an option to visualise and update all the information of that gym zone. This means changing both the gym zone \emph{metadata}, and the gym zone constraints.
-	\item \textbf{RF-18 (2)}. The user has to see the gym zone activity by clicking on it. The gym zone activity is understood as how many clients are currently in that zone.
-	\item \textbf{RF-19 (2)}. The user has to be able to schedule different trainers to each non-class gym zone.
-	\item \textbf{RF-20 (1)}. Each gym zone has to provide an option to archive the zone.
+	\item \textbf{RF- (3)}. The view has to display a list or a grid with the different gym zones of the selected virtual gym.
+	\item \textbf{RF- (3)}. Each gym zone has to provide an option to visualise and update all the information of that gym zone. This means changing both the gym zone \emph{metadata}, and the gym zone constraints.
+	\item \textbf{RF- (2)}. The user has to see the gym zone activity by clicking on it. The gym zone activity is understood as how many clients are currently in that zone.
+	\item \textbf{RF- (2)}. The user has to be able to schedule different trainers to each non-class gym zone.
+	\item \textbf{RF- (1)}. Each gym zone has to provide an option to archive the zone.
 \end{enumerate}
 \subsubsection{Class gym zone schedule}
 When the user has created a class gym zone, that zone will have a schedule (or a calendar). Then, guided classes can be created and clients will be able to make appointments to the different events created.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-21 (3)}. The view has to provide an option to visualise the current schedule of classes.
-	\item \textbf{RF-22 (3)}. There has to be an option in the menu which allows the user to create, update and delete template classes.
-	\item \textbf{RF-23 (3)}. The view has to provide an option to visualise all the created template classes.
-	\item \textbf{RF-24 (3)}. From the calendar, the user has to be able to create a guided session by linking a template class to it.
-	\item \textbf{RF-25 (2)}. From the calendar, the user has to be able to see the upcoming scheduled classes.
-	\item \textbf{RF-26 (1)}. The user has to be able to create guided sessions which are repeated when wanted, from the chosen interval.
-	\item \textbf{RF-27 (1)}. On the view list, the user has to be able to reorder template classes.
-	\item \textbf{RF-28 (1)}. After creating a new class on a gym zone, the application has to \emph{recommend} a trainer for that class.
+	\item \textbf{RF- (3)}. The view has to provide an option to visualise the current schedule of classes.
+	\item \textbf{RF- (3)}. There has to be an option in the menu which allows the user to create, update and delete template classes.
+	\item \textbf{RF- (3)}. The view has to provide an option to visualise all the created template classes.
+	\item \textbf{RF- (3)}. From the calendar, the user has to be able to create a guided session by linking a template class to it.
+	\item \textbf{RF- (2)}. From the calendar, the user has to be able to see the upcoming scheduled classes.
+	\item \textbf{RF- (1)}. The user has to be able to create guided sessions which are repeated when wanted, from the chosen interval.
+	\item \textbf{RF- (1)}. On the view list, the user has to be able to reorder template classes.
+	\item \textbf{RF- (1)}. After creating a new class on a gym zone, the application has to \emph{recommend} a trainer for that class.
 \end{enumerate}
 \subsection{Core app - Workers page}
 This view has to allow the user to manage the workers of the gym enterprise and set the different permissions.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-29 (3)}. The user has to be able to create a new worker, providing personal information and credentials for such worker to user the app. Furthermore, it has to allow the user to set the permissions for that worker.
-	\item \textbf{RF-30 (3)}. The same menu has to provide an option to update the user permissions or the personal information of the worker.
-	\item \textbf{RF-31 (3)}. The menu has to provide a separate option to create trainers, which will do not have access to the application.
-	\item \textbf{RF-32 (3)}. The view has to list all the workers.
-	\item \textbf{RF-33 (2)}. Each worker has to provide an option to archive the trainer.
-	\item \textbf{RF-34 (1)}. The user has to be able to set the working hours of each worker.
-	\item \textbf{RF-35 (1)}. The view has to provide an input to search the by name, last name or other characteristics the different workers.
-	\item \textbf{RF-36 (1)}. The menu has to provide an option to sort the workers and trainers.
+	\item \textbf{RF- (3)}. The user has to be able to create a new worker, providing personal information and credentials for such worker to user the app. Furthermore, it has to allow the user to set the permissions for that worker.
+	\item \textbf{RF- (3)}. The same menu has to provide an option to update the user permissions or the personal information of the worker.
+	\item \textbf{RF- (3)}. The menu has to provide a separate option to create trainers, which will do not have access to the application.
+	\item \textbf{RF- (3)}. The view has to list all the workers.
+	\item \textbf{RF- (2)}. Each worker has to provide an option to archive the trainer.
+	\item \textbf{RF- (1)}. The user has to be able to set the working hours of each worker.
+	\item \textbf{RF- (1)}. The view has to provide an input to search the by name, last name or other characteristics the different workers.
+	\item \textbf{RF- (1)}. The menu has to provide an option to sort the workers and trainers.
 \end{enumerate}
 \subsection{Core app - Settings page}
 This view has to provide enough settings to customizer the behavior of the behavior and the gym information.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-37 (3)}. The settings menu has to allow the user to change the gym name and gym characteristics.
-	\item \textbf{RF-38 (3)}. The settings menu has to allow the user to change their email and password.
-	\item \textbf{RF-39 (1)}. The settings menu has to provide an option to change the application theme (light and dark) and persist it.
-	\item \textbf{RF-40 (1)}. The settings menu has to provide an option to customise the main colours of the user interface.
+	\item \textbf{RF- (3)}. The settings menu has to allow the user to change the gym name and gym characteristics.
+	\item \textbf{RF- (3)}. The settings menu has to allow the user to change their email and password.
+	\item \textbf{RF- (1)}. The settings menu has to provide an option to change the application theme (light and dark) and persist it.
+	\item \textbf{RF- (1)}. The settings menu has to provide an option to customise the main colours of the user interface.
 \end{enumerate}
 \subsection{Core app - Analysis page}
 The goal of this view is to provide some metrics to \emph{what is happening at the gym}. However, as it is not the main purpose of the application, all the requirements from each will be marked with \emph{low priority}.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-41 (1)}. The view has to provide a select option to choose what virtual gym wants to be analised.
-	\item \textbf{RF-42 (1)}. After having selected a virtual gym, the view has to display in which intervals the virtual gym is most crowded at the current date.
-	\item \textbf{RF-43 (1)}. After having selected a virtual gym, the view has to display in which intervals the virtual gym is most crowded during an interval.
-	\item \textbf{RF-44 (1)}. After having selected a virtual gym, the view has to display what classes will have more clients during an interval.
-	\item \textbf{RF-45 (1)}. After having selected a virtual gym, the view has to display what classes will have more clients during at the current date.
-	\item \textbf{RF-46 (1)}. After having selected a virtual gym, the view has to provide a filter to check what gym zones are more crowded during an interval.
-	\item \textbf{RF-47 (1)}. After having selected a virtual gym, the view has to provide a filter to check what gym zones are more crowded at the current date.
+	\item \textbf{RF- (1)}. The view has to provide a select option to choose what virtual gym wants to be analised.
+	\item \textbf{RF- (1)}. After having selected a virtual gym, the view has to display in which intervals the virtual gym is most crowded at the current date.
+	\item \textbf{RF- (1)}. After having selected a virtual gym, the view has to display in which intervals the virtual gym is most crowded during an interval.
+	\item \textbf{RF- (1)}. After having selected a virtual gym, the view has to display what classes will have more clients during an interval.
+	\item \textbf{RF- (1)}. After having selected a virtual gym, the view has to display what classes will have more clients during at the current date.
+	\item \textbf{RF- (1)}. After having selected a virtual gym, the view has to provide a filter to check what gym zones are more crowded during an interval.
+	\item \textbf{RF- (1)}. After having selected a virtual gym, the view has to provide a filter to check what gym zones are more crowded at the current date.
 \end{enumerate}
 \subsection{Client app - Home page}
 The home page of the client view has to be very similar to the owner's view. The client has to see all virtual gyms to which they are subscribed, and, on accessing them, the gym zones available.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-48 (3)}. The home page has to display a list or a grid with the different virtual gyms the user has subscriptions to.
-	\item \textbf{RF-49 (3)}. On clicking any virtual gym, the home view has to display the gym zones of the selected virtual gym.
-	\item \textbf{RF-50 (2)}. If the user clicks on a class gym zone, a schedule has to be shown with the different classes scheduled for the selected week.
-	\item \textbf{RF-51 (2)}. The calendar has to provide options to change the week. The user can see scheduled classes before the current date.
-	\item \textbf{RF-52 (3)}. If the user clicks on a non-class gym zone, a form has to be shown to choose the interval in which they want to make the appointment. This includes the date of the appointment, the duration and the starting hour.
-	\item \textbf{RF-53 (3)}. On selecting a date and a duration, the server has to return what available stating hours there are. If there is no capacity for such selections, the user will not be able to create the appointment.
-	\item \textbf{RF-54 (1)}. On selecting a date, a duration and a starting hour, the view has to display how many reservations are at such time.
+	\item \textbf{RF- (3)}. The home page has to display a list or a grid with the different virtual gyms the user has subscriptions to.
+	\item \textbf{RF- (3)}. On clicking any virtual gym, the home view has to display the gym zones of the selected virtual gym.
+	\item \textbf{RF- (2)}. If the user clicks on a class gym zone, a schedule has to be shown with the different classes scheduled for the selected week.
+	\item \textbf{RF- (2)}. The calendar has to provide options to change the week. The user can see scheduled classes before the current date.
+	\item \textbf{RF- (3)}. If the user clicks on a non-class gym zone, a form has to be shown to choose the interval in which they want to make the appointment. This includes the date of the appointment, the duration and the starting hour.
+	\item \textbf{RF- (3)}. On selecting a date and a duration, the server has to return what available stating hours there are. If there is no capacity for such selections, the user will not be able to create the appointment.
+	\item \textbf{RF- (1)}. On selecting a date, a duration and a starting hour, the view has to display how many reservations are at such time.
 \end{enumerate}
 \subsection{Client app - Personal information}
 The personal information, which is nearly the settings page for the client, has to display most of their information. Additionally, it can show some user stats \emph{for the geeks}.
 \begin{enumerate}[label = -]
-	\item \textbf{RF-55 (3)}. The view has to allow the client to change his personal information (name, last name and so on).
-	\item \textbf{RF-56 (3)}. The view has to allow the client to update his email and password.
-	\item \textbf{RF-57 (3)}. The view has to display a list with all the upcoming appointments of the user.
-	\item \textbf{RF-58 (1)}. If wanted, the user has to be able to see a list with all the past appointments.
-	\item \textbf{RF-59 (1)}. The view has to display an analytics table to see which days have they accessed a virtual gym.
+	\item \textbf{RF- (3)}. The view has to allow the client to change his personal information (name, last name and so on).
+	\item \textbf{RF- (3)}. The view has to allow the client to update his email and password.
+	\item \textbf{RF- (3)}. The view has to display a list with all the upcoming appointments of the user.
+	\item \textbf{RF- (1)}. If wanted, the user has to be able to see a list with all the past appointments.
+	\item \textbf{RF- (1)}. The view has to display an analytics table to see which days have they accessed a virtual gym.
 \end{enumerate}
 \section{Non-functional requirements}
+A non-functional requirement is a requirement that defines system attributes such as security, reliability, maintainability, scalability and usability. Therefore, such requisites do not describe information to keep nor functionalities to implement, rather characteristics of such functionalities. In the system, the following non-functional requirements can be defined:
+\begin{enumerate}[label = -]
+	\item \textbf{RNF- (3)}. The system has to provide a secure authentication method.
+	\item \textbf{RNF- (2)}. The client application has to provide different authentication methods in order to differentiate the gym owner and the gym worker.
+	\item \textbf{RNF- (2)}. The landing and client web applications must provide a responsive interface, so that the application can be seen both in small and large screens.
+	\item \textbf{RNF- (1)}. The core application has to provide a responsive interface up to a point. In smaller screens such as phones, some functionalities would not be easy to implement nor to use.
+	\item \textbf{RNF- (2)}. The three web applications have to provide an accessible and semantic HTML structure.
+\end{enumerate}
 \section{Requirements dependency matrix}
-\section{User characteristics}
 \chapter{Studies and decisions}
+\section{Introduction}
+This chapter will cover the different aspects that have been taken into account in order to choose the technology stack used to develop the system.
+\section{Project structure}
+Being able to solve problems rapidly, or even minimizing such errors, it is a must in order to provide a secure and stable application. Since \emph{test driven development} (or \emph{behavior driven development}) were designed, more and bigger companies started incorporating such approach when developing new projects. Nowadays, testing the code that is being developed is unquestionable.
+\\[8pt]
+Aside from the development method used, it is indisputable to use a version control system. The VCS that takes the gold medal is \emph{git} which is used alongside \emph{GitHub}. From there, the applications can be structured in two forms:
+\begin{enumerate}[label = -]
+	\item \emph{Multirepo}. The multirepo approach means to have multiple applications in different repositories. The main benefits of such approach are the fact that teams can separately work in the repository while at the same time the repository is kept smaller and cleaner.
+	\item \emph{Monorepo}. The monorepo approach is the opposite of the multirepo: all the applications are kept in the same repository. Such approach allows maintaining build and deployment patterns altogether. However, application versioning may be harder.
+\end{enumerate}
+Since all the applications are build using the same language (\emph{TypeScript}) and the same package manager (\emph{npm}), the monorepo approach has been used.
+\subsection{TDD and CI}
+The test driven development approach has been the method to ensure that what was being written would do as expected. Both client and server applications include unit tests and end-to-end (\emph{e2e}) tests.
+\\[8pt]
+Unit tests allow the developer to test a feature by isolating all its dependencies. For instance, each method of a concrete service from the backend has it own unit tests which completely mock its dependencies and ensure the behaviour is as expected. On the other hand, the e2e contexts are more complex, since they test, for example, one of the different use cases. An example would be to simulate the behaviour of the user in a client app and expect the DOM to properly change.
+\\[8pt]
+With testing, comes continous integration which allows the code to be constantly tested. By constantly checking the newly added code, future errors can be prevented and \emph{post-deployment} breaks or bugs can be reduced. The choosen continous integration platform is \emph{GitHub Actions}\footnote{The \emph{workflow} files of the platform can be found in the \texttt{.github/workflows} folder of the repository.}
+\subsection{Nx}
+There exist many systems or libraries that allow the development team to maintain a healthy and scalable monorepo (examples are \emph{Bazel} or \emph{Pants}). In this system, since the language is the same for both web and server applications, the monorepo build framework used that has been chosen is \emph{Nx}. As stated in their repository: \emph{Nx is a smart and extensible build framework to help you architect, test, and build at any scale}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.175\textwidth]{assets/nx-logo.png}
+	\caption{Nx logo}
+\end{figure}
+Using such tool, managing the applications becomes extemely easy to manage both JavaScript and TypeScript monorepos. Other key features are:
+\begin{enumerate}[label = -]
+	\item The different applications have been \emph{generated} using the plugins also developed and maitained by the team behind Nx.
+	\item The fast creation of shared libraries.
+	\item Testing and building only the affected code. Therefore, in unit testing only the files that have been changed will be tested, reducing the amount of tests to be done on each push.
+	\item All the created libraries and applications include all the dependecies, scripts and tools to fast serve, test, build and deploy. Additionally, it can \emph{lint} and format the projects.
+	\item Provides a rich plugin ecosystem if some utilities are not included in the core package.
+\end{enumerate}
+More specifically, it has great support with \emph{NextJS}, which is the front-end framework used for the web apps. Being able to easily scale, maitain and test the front-end applications is a crucial requisite in this system. Such tool and its excellent documentation have simplified all aspects for setting up the different apps.
+\\[8pt]
+% TODO: Keep updated
+After using Nx, the application folder structure is as follows:
+\begin{verbatim}
+gym-man
+├── apps
+│   ├── api
+│   ├── client
+│   ├── client-e2e
+│   ├── core
+│   ├── core-e2e
+│   ├── landing
+│   └── landing-e2e
+└── libs
+    └── shared
+\end{verbatim}
+There exist other files in the root folder of the repository, yet they are excluded as the main folders are \texttt{apps} and \texttt{libs}. On the one hand, the \texttt{apps} folder contains the source code and additional files to build and compile each one of them. The client apps have two folders: the source code folders (\texttt{core}, \texttt{landing} and \texttt{client}) and their respective e2e test folders (\texttt{core-e2e}, \texttt{landing-e2e} and \texttt{client-e2e}). On the other hand, the folder \texttt{libs} contains all the libraries which do not belong to an application, but rather used in many of them. As the Nx documentation states, the \texttt{libs} folder should contain: \emph{Libs contain services, components, utilities, etc. They have well-defined public API.} The front-end applications have been generated using the \texttt{@nrwl/next} utility, while the back end has been generated with \texttt{@nrwl/express}.
+% TODO: Reference Nx documentation
+% https://nx.dev/l/r/guides/monorepo-nx-enterprise#apps-and-libs - 12/12/2021
+\section{Technology stack}
+This section will cover the different technologies that are specifically used to develop the different applications.
+\subsection{TypeScript}
+These days JavaScript is the most used language around the world for many reasons. Nevertheless, due to the fact of not having types, it makes some applications harder to debug and more error-prone. That is one of the reasons Microsoft developed TypeScript, which is a strict syntactical superset of JavaScript. The code written in TypeScript is transcompiled to JavaScript at build time. 
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.175\textwidth]{assets/js-logo.png}
+	\includegraphics[width=0.175\textwidth]{assets/ts-logo.png}
+	\caption{JavaScript and TypeScript logos}
+\end{figure}
+By using TypeScript we provide a hihgly productive environment when developing the different apps. Not only reduces the amount of painful bugs due to type errors, but also provides all the benefits of the ECMA script.
+\subsection{Front end - Web applications}
+Nowadays, there are many JavaScript front-end frameworks all with their benefits and disadvantages. Angular, React, Vue and Svelte are the most known and used frameworks. Since I am most experienced with React and NextJS is built upon React, it has been the chosen option. Furthermore, on October 21st of 2021 released its 12th version which included a Rust compiler that makes rebuilds and fast refreshs extremely faster. 
+\subsubsection{NextJS}
+As stated before, NextJS has been chosen as the front-end framework to build the applications with. This framework (or even meta-framework) is built on top of Node.js which enables React based web application functionalities such as server-side rendering (SSR) and static websites. In the NextJS home page, they provide the following description: \emph{Next.js gives you the best developer experience with all the features you need for production: hybrid static \& server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed}.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.175\textwidth]{assets/next-logo.png}
+	\caption{NextJS logos}
+\end{figure}
+\subsubsection{Mui}
+Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library.
+\\[8pt]   
+This library is based on the Google Material design system. However, it has an extremely powerful API to define your own design system, whithout the need of starting from 0. The developer has the possibility to inject the cutomized theme to all the components of the API included in the library. Furthermore, it includes an icon pack, which are the same as in the Google Material.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.175\textwidth]{assets/mui-logo.png}
+	\caption{NextJS logos}
+\end{figure}
+\subsection{Back end - Server application}
+
+\subsubsection{Database}
+\subsubsection{ExpressJS}
+\subsubsection{TypeORM}
+\subsection{Tests}
+\subsubsection{Unit testing - Jest}
+\subsubsection{Client e2e testing - Cypress}
+\subsubsection{Server e2e testing - Jest and Supertest}
 \chapter{Analysis and system design}
 \chapter{Implementation and trials}
 \chapter{Conclusions}
