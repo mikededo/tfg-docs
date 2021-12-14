@@ -69,7 +69,6 @@ The procedure is based in five process groups, which are:
 	\item \textbf{Monitoring and controlling}: the processes involved in this group, are required to track, regulate and review the progress and performance of the project. It identifies areas in which the plan has to change and initiates the corresponding changes.
 	\item \textbf{Closing}: the closing processes are those which are performed in order to finalize all activities across the above process groups so the project or phase can be closed.
 \end{enumerate}
-\chapter{Planning}
 \chapter{Framework and previous concepts}
 \chapter{Requirements specifications}
 \section{Introduction}
@@ -87,7 +86,7 @@ There are some definitions to be explained before moving to the next section:
 \begin{enumerate}[label = -]
 	\item \emph{Virtual gym and gym zone}. A virtual gym will be the representation of a gymnasium in the application, while a gym zone will be the places where clients will book appointments. Each virtual gym can have multiple gym zones, and each gym zone will have their characteristics.
 	\item \emph{User}. The \emph{user} is the main person who uses the software. In this case, it is the owner and their workers.
-	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template} or \emph{template classes}. On the one hand, classes will be assigned to a gym zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone.
+	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template}, \emph{template classes} or \emph{template events} (as they are named in the database). On the one hand, classes will be assigned to a gym zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone. 
 	\item \emph{Archiving} vs \emph{Deleting}. The purpose of archiving anything in the database means it will be stored but not visible. In order to edit it again, the archived element has to be \emph{recovered}. On the other hand, a deleted element will permanently be deleted from the database.
 \end{enumerate}
 \section{Overall description}
@@ -203,16 +202,23 @@ Once a virtual gym has been created and the user has clicked on the card represe
 	\item \textbf{RF- (1)}. Each gym zone has to provide an option to archive the zone.
 \end{enumerate}
 \subsubsection{Class gym zone schedule}
-When the user has created a class gym zone, that zone will have a schedule (or a calendar). Then, guided classes can be created and clients will be able to make appointments to the different events created.
+When the user has created a class gym zone, that zone will have a schedule (or a calendar). Inside this view, the user will be able to see the schedule or calendar from the selected gym zone.
 \begin{enumerate}[label = -]
 	\item \textbf{RF- (3)}. The view has to provide an option to visualise the current schedule of classes.
-	\item \textbf{RF- (3)}. There has to be an option in the menu which allows the user to create, update and delete template classes.
 	\item \textbf{RF- (3)}. The view has to provide an option to visualise all the created template classes.
 	\item \textbf{RF- (3)}. From the calendar, the user has to be able to create a guided session by linking a template class to it.
-	\item \textbf{RF- (2)}. From the calendar, the user has to be able to see the upcoming scheduled classes.
+	\item \textbf{RF- (2)}. From the calendar, the user has to be able to see future scheduled classes.
+	\item \textbf{RF- (1)}. From the calendar, the user has to be able to see past scheduled classes.
 	\item \textbf{RF- (1)}. The user has to be able to create guided sessions which are repeated when wanted, from the chosen interval.
-	\item \textbf{RF- (1)}. On the view list, the user has to be able to reorder template classes.
 	\item \textbf{RF- (1)}. After creating a new class on a gym zone, the application has to \emph{recommend} a trainer for that class.
+\end{enumerate}
+\subsection{Core app - Events page}
+Even though this view is simple, it is important to separate the schedule view of a gym zone from the template events. The current view will only provide the necessary tools to create, edit, delete or archive the different event templates.
+\begin{enumerate}[label = -]
+	\item \textbf{RF- (3)}. The user has to be able to see the gym list of template classes.
+	\item \textbf{RF- (3)}. The user has to be able to reorder the gym list of template classes.
+	\item \textbf{RF- (3)}. There has to be an option in the menu which allows the user to create, update and delete template classes.
+	\item \textbf{RF- (2)}. The user has to be able to archive template classes.
 \end{enumerate}
 \subsection{Core app - Workers page}
 This view has to allow the user to manage the workers of the gym enterprise and set the different permissions.
@@ -275,6 +281,7 @@ A non-functional requirement is a requirement that defines system attributes suc
 	\item \textbf{RNF- (2)}. The three web applications have to provide an accessible and semantic HTML structure.
 \end{enumerate}
 \section{Requirements dependency matrix}
+\chapter{Planning}
 \chapter{Studies and decisions}
 \section{Introduction}
 This chapter will cover the different aspects that have been taken into account in order to choose the technology stack used to develop the system.
@@ -297,7 +304,7 @@ With testing, comes continous integration which allows the code to be constantly
 There exist many systems or libraries that allow the development team to maintain a healthy and scalable monorepo (examples are \emph{Bazel} or \emph{Pants}). In this system, since the language is the same for both web and server applications, the monorepo build framework used that has been chosen is \emph{Nx}. As stated in their repository: \emph{Nx is a smart and extensible build framework to help you architect, test, and build at any scale}.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.175\textwidth]{assets/nx-logo.png}
+	\includegraphics[width=0.2\textwidth]{assets/nx-logo.png}
 	\caption{Nx logo}
 \end{figure}
 Using such tool, managing the applications becomes extemely easy to manage both JavaScript and TypeScript monorepos. Other key features are:
@@ -325,7 +332,7 @@ gym-man
 └── libs
     └── shared
 \end{verbatim}
-There exist other files in the root folder of the repository, yet they are excluded as the main folders are \texttt{apps} and \texttt{libs}. On the one hand, the \texttt{apps} folder contains the source code and additional files to build and compile each one of them. The client apps have two folders: the source code folders (\texttt{core}, \texttt{landing} and \texttt{client}) and their respective e2e test folders (\texttt{core-e2e}, \texttt{landing-e2e} and \texttt{client-e2e}). On the other hand, the folder \texttt{libs} contains all the libraries which do not belong to an application, but rather used in many of them. As the Nx documentation states, the \texttt{libs} folder should contain: \emph{Libs contain services, components, utilities, etc. They have well-defined public API.} The front-end applications have been generated using the \texttt{@nrwl/next} utility, while the back end has been generated with \texttt{@nrwl/express}.
+There are other files in the root folder of the repository, yet they have been excluded as the main folders are \texttt{apps} and \texttt{libs}. On the one hand, the \texttt{apps} folder contains the source code and additional files to build and compile each one of them. The client apps have two folders: the source code folders (\texttt{core}, \texttt{landing} and \texttt{client}) and their respective e2e test folders (\texttt{core-e2e}, \texttt{landing-e2e} and \texttt{client-e2e}). On the other hand, the folder \texttt{libs} contains all the libraries which do not belong to an application, but rather used in many of them. As the Nx documentation states, the \texttt{libs} folder should contain: \emph{Libs contain services, components, utilities, etc. They have well-defined public API.} The front-end applications have been generated using the \texttt{@nrwl/next} utility, while the back end has been generated with \texttt{@nrwl/express}.
 % TODO: Reference Nx documentation
 % https://nx.dev/l/r/guides/monorepo-nx-enterprise#apps-and-libs - 12/12/2021
 \section{Technology stack}
@@ -345,27 +352,72 @@ Nowadays, there are many JavaScript front-end frameworks all with their benefits
 As stated before, NextJS has been chosen as the front-end framework to build the applications with. This framework (or even meta-framework) is built on top of Node.js which enables React based web application functionalities such as server-side rendering (SSR) and static websites. In the NextJS home page, they provide the following description: \emph{Next.js gives you the best developer experience with all the features you need for production: hybrid static \& server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed}.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.175\textwidth]{assets/next-logo.png}
-	\caption{NextJS logos}
+	\includegraphics[width=0.2\textwidth]{assets/next-logo.png}
+	\caption{NextJS logo}
 \end{figure}
 \subsubsection{Mui}
-Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library.
+Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library. The library is open-source and maitained by \texttt{mui-org}.
 \\[8pt]   
 This library is based on the Google Material design system. However, it has an extremely powerful API to define your own design system, whithout the need of starting from 0. The developer has the possibility to inject the cutomized theme to all the components of the API included in the library. Furthermore, it includes an icon pack, which are the same as in the Google Material.
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.175\textwidth]{assets/mui-logo.png}
-	\caption{NextJS logos}
+	\includegraphics[width=0.2\textwidth]{assets/mui-logo.png}
+	\caption{Mui library's logo}
 \end{figure}
 \subsection{Back end - Server application}
-
+For the backend application, many languages can be used. However, since NodeJS provides a runtime environment for JavaScript, which allows building applications outside the browser. So, with the help on Nx, the backend is also written in TypeScript.
 \subsubsection{Database}
+The application has many relationships, which would be harder to maintain in a NoSQL database. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been Postgresql.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.2\textwidth]{assets/ts-logo.png}
+	\caption{PostgreSQL's logo}
+\end{figure}
+As explained before the database is run in a docker container. Viewing the data in the terminal is not an issue, yet pgAdmin is a graphic user interface which simplifies such visualisation. It is the equivalent of MySQL Workbench for Postgresql. With such tool, schemas in general can be simply viewed and edited. Additionally, the JetBrains DataGrip application has been also used, which has allowed to generate the ERD once the database was defined.
 \subsubsection{ExpressJS}
+ExpressJS is one of the many back-end frameworks that exist in the JavaScript world, nowadays. It is a minimal and flexible framework which provides a fast methodology to develop APIs. It is considered the most popular back-end framework of JavaScript, up to a point that other back-end meta-frameworks are ExpressJS based (an example is NestJS). As stated in their landing page, ExpressJs is a: \emph{Fast, unopinated, minimalist web framework for Node.js}.
+% TODO: Add bibitem expressjs.com
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.2\textwidth]{assets/ts-logo.png}
+	\caption{ExpressJS's logo}
+\end{figure}
 \subsubsection{TypeORM}
+Finally, the TypeORM library is used to provide a bidirectional connection from the server to the database. TypeORM is a TypeScript ORM (\emph{object relational mapper}) whose goal is to provide an agnostic model-database mapping. By using TypeScript decorators and defining a connection, TypeORM will generate the entities or documents specified, depending on the database to which is connected. Such agnosticity allows to re-use the models with different databases. 
+% TODO: Add typeorm logo
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.2\textwidth]{assets/ts-logo.png}
+	\caption{TypeORM's logo}
+\end{figure}
+In conjunction with Nx, the models that are used to generate the entities and their relations, can be used in the front-end applications. Therefore, such models can be shared and easily maintained. By default, TypeORM does not provide an entity validation, 
 \subsection{Tests}
+Last but not least, the test stack also had to be defined. In this case, the provided frameworks for testing by Nx were kept, since they are some of the most common testing libraries nowadays.
 \subsubsection{Unit testing - Jest}
-\subsubsection{Client e2e testing - Cypress}
+Both \texttt{@nrwl/express} and \texttt{@nrwl/next} generators set up the application with Jest. Jest is an open-source unit and mock testing framework developed and maintained by Facebook. It is one of the most popular libraries nowadays, since it is extremely powerful and simple. It offers a powerful CLI tool to control the tests which has an interactive mode that allows the developer only to run \emph{affected} tests\footnote{Nx also takes care of running onlu affected tests.}. Other benefits of Jest are that require zero configuration and ensures isolation between tests. Isolation is extremely important when running tests, to ensure that each test does not influence other's results. As stated in their home page: \emph{Jest is a delightful JavaScript Testing Framework with a focus in simplicity}
+% TODO: Add bibitem jest.io
+\begin{figure}[h!]
+	\centering
+	% TODO: Add jest logo
+	\includegraphics[width=0.2\textwidth]{assets/ts-logo.png}
+	\caption{Jest's logo}
+\end{figure}
+Therefore, Jest is used in all the applications to unit tests the services, controllers, components and so on from all the applications. Furthermore, since there is a GitHub Action, CI can be easliy acomplished.
+\subsubsection{Client e2e testing - Cypress and testing-library}
+Todo.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.2\textwidth]{assets/ts-logo.png}
+	\caption{Cypress's logo}
+\end{figure}
 \subsubsection{Server e2e testing - Jest and Supertest}
+Todo.
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.2\textwidth]{assets/ts-logo.png}
+	\includegraphics[width=0.2\textwidth]{assets/ts-logo.png}
+	\caption{Jest and Supertest's logos}
+\end{figure}
 \chapter{Analysis and system design}
 \chapter{Implementation and trials}
 \chapter{Conclusions}
