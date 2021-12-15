@@ -1,0 +1,6 @@
+{
+  "Functional requirement": {
+    "prefix": "fcr",
+    "body": "\\textbf{RF-$1 ($2)}. $3."
+  }
+}
