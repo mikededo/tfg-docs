@@ -21,12 +21,23 @@
 \setmainfont{SF Pro Display}[BoldFont = SF Pro Display Bold]
 \setmonofont[Scale=0.9]{JetBrains Mono}
 
+% Variable with the page that keeps the footer style
+\def\footerstyle{- \fontsize{10pt}{10pt}\selectfont\thepage\ -}
 \pagestyle{fancy}
+% Remove the horizontal bar from the header
 \renewcommand{\headrulewidth}{0pt}
-\lhead{}
-\rhead{\small\emph{\nouppercase{\rightmark}}}
-\fancyfoot[C]{\fontsize{10pt}{10pt}\selectfont\thepage}
-\setlength{\headheight}{15pt}
+% Clear everythihg
+\fancyhf{}
+% Set header style
+\rhead{\small\textit{\nouppercase{\rightmark}}}
+% Set the footer page number
+\fancyfoot[C]{\footerstyle}
+% Update the footer in chapter and other plain views
+\fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhf{}%
+    \fancyfoot[C]{\footerstyle}%
+}
 
 \setlength\parindent{0pt}
 \setcounter{secnumdepth}{5}
@@ -34,7 +45,6 @@
 
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
 \titlespacing{\chapter}{0pt}{-32pt}{12pt}
-
 
 \begin{document}
 \frontmatter
