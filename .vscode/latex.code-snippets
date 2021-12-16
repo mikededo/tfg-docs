@@ -2,5 +2,19 @@
   "Functional requirement": {
     "prefix": "fcr",
     "body": "\\textbf{RF-$1 ($2)}. $3."
+  },
+  "Captioned image": {
+    "prefix": "cimage",
+    "body": [
+      "\\begin{figure}[h!]",
+      "\t\\centering",
+      "\t\\includegraphics[width=$1\\textwidth]{assets/$2}",
+      "\t\\caption{$3}",
+      "\\end{figure}"
+    ]
+  },
+  "Database field": {
+    "prefix": "dbf",
+    "body": "\\textbf{${1:<field name>}} (\\texttt{${2:<field type>}}) [\\texttt{${3:<field constraints>}}] \\texttt{->} ${4:<field description>}"
   }
 }

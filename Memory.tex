@@ -10,8 +10,9 @@
 \usepackage{titletoc}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
-\usepackage[a4paper, margin = 2.5cm]{geometry}
+\usepackage[a4paper, margin = 2.5cm, headheight=14pt]{geometry}
 \usepackage[hidelinks, colorlinks = false]{hyperref}
+\usepackage[bottom]{footmisc}
 \usepackage{bookmark}
 \usepackage{fontspec}
 \usepackage{graphicx}
@@ -97,7 +98,7 @@ There are some definitions to be explained before moving to the next section:
 	\item \emph{Gym}. The gym will represent the company overall, not the infrastructure. Such infrastructure is called \emph{virtual gym}.
 	\item \emph{Virtual gym and gym zone}. A virtual gym will be the representation of a gymnasium in the application, while a gym zone will be the places where clients will book appointments. Each virtual gym can have multiple gym zones, and each gym zone will have their characteristics.
 	\item \emph{User}. The \emph{user} is the main person who uses the software. In this case, it is the owner and their workers.
-	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template}, \emph{template classes} or \emph{template events} (as they are named in the database). On the one hand, classes will be assigned to a gym zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone. 
+	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template}, \emph{template classes} or \emph{template events} (as they are named in the database). On the one hand, classes will be assigned to a gym zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone.
 	\item \emph{Archiving} vs \emph{Deleting}. The purpose of archiving anything in the database means it will be stored but not visible. In order to edit it again, the archived element has to be \emph{recovered}. On the other hand, a deleted element will permanently be deleted from the database.
 \end{enumerate}
 \section{Overall description}
@@ -354,7 +355,7 @@ There are other files in the root folder of the repository, yet they have been e
 \section{Technology stack}
 This section will cover the different technologies that are specifically used to develop the different applications.
 \subsection{TypeScript}
-These days JavaScript is the most used language around the world for many reasons. Nevertheless, due to the fact of not having types, it makes some applications harder to debug and more error-prone. That is one of the reasons Microsoft developed TypeScript, which is a strict syntactical superset of JavaScript. The code written in TypeScript is transcompiled to JavaScript at build time. 
+These days JavaScript is the most used language around the world for many reasons. Nevertheless, due to the fact of not having types, it makes some applications harder to debug and more error-prone. That is one of the reasons Microsoft developed TypeScript, which is a strict syntactical superset of JavaScript. The code written in TypeScript is transcompiled to JavaScript at build time.
 \\
 \begin{figure}[h!]
 	\centering
@@ -365,7 +366,7 @@ These days JavaScript is the most used language around the world for many reason
 \\
 By using TypeScript we provide a highly productive environment when developing the different apps. Not only reduces the amount of painful bugs due to type errors, but also provides all the benefits of the ECMA script.
 \subsection{Front end - Web applications}
-Nowadays, there are many JavaScript front-end frameworks all with their benefits and disadvantages. Angular, React, Vue and Svelte are the most known and used frameworks. Since I am most experienced with React and NextJS is built upon React, it has been the chosen option. Furthermore, on October 21st of 2021 released its 12th version which included a Rust compiler that makes rebuilds and fast refreshes extremely faster. 
+Nowadays, there are many JavaScript front-end frameworks all with their benefits and disadvantages. Angular, React, Vue and Svelte are the most known and used frameworks. Since I am most experienced with React and NextJS is built upon React, it has been the chosen option. Furthermore, on October 21st of 2021 released its 12th version which included a Rust compiler that makes rebuilds and fast refreshes extremely faster.
 \subsubsection{NextJS}
 As stated before, NextJS has been chosen as the front-end framework to build the applications with. This framework (or even meta-framework) is built on top of Node.js which enables React based web application functionalities such as server-side rendering (SSR) and static websites. In the NextJS home page, they provide the following description: \emph{Next.js gives you the best developer experience with all the features you need for production: hybrid static \& server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed}.
 \\
@@ -376,7 +377,7 @@ As stated before, NextJS has been chosen as the front-end framework to build the
 \end{figure}
 \subsubsection{Mui}
 Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library. The library is open-source and maintained by \texttt{mui-org}.
-\\[8pt]   
+\\[8pt]
 This library is based on the Google Material design system. However, it has an extremely powerful API to define your own design system, without the need of starting from 0. The developer has the possibility to inject the customized theme to all the components of the API included in the library. Furthermore, it includes an icon pack, which are the same as in the Google Material.
 \\
 \begin{figure}[h!]
@@ -387,7 +388,7 @@ This library is based on the Google Material design system. However, it has an e
 \subsection{Back end - Server application}
 For the backend application, many languages can be used. However, since NodeJS provides a runtime environment for JavaScript, which allows building applications outside the browser. So, with the help on Nx, the backend is also written in TypeScript.
 \subsubsection{Database}
-The application has many relationships, which would be harder to maintain in a NoSQL database. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been PostgreSQL.
+The application has many relationships, which would be harder to maintain in a NoSQL data-base. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been PostgreSQL.
 \\
 \begin{figure}[h!]
 	\centering
@@ -406,7 +407,7 @@ ExpressJS is one of the many back-end frameworks that exist in the JavaScript wo
 	\caption{ExpressJS's logo}
 \end{figure}
 \subsubsection{TypeORM}
-Finally, the TypeORM library is used to provide a bidirectional connection from the server to the database. TypeORM is a TypeScript ORM (\emph{object relational mapper}) whose goal is to provide an agnostic model-database mapping. By using TypeScript decorators and defining a connection, TypeORM will generate the entities or documents specified, depending on the database to which is connected. Such agnosticism allows to re-use the models with different databases. 
+Finally, the TypeORM library is used to provide a bidirectional connection from the server to the database. TypeORM is a TypeScript ORM (\emph{object relational mapper}) whose goal is to provide an agnostic model-database mapping. By using TypeScript decorators and defining a connection, TypeORM will generate the entities or documents specified, depending on the database to which is connected. Such agnosticism allows to re-use the models with different databases.
 \\
 \begin{figure}[h!]
 	\centering
@@ -414,7 +415,7 @@ Finally, the TypeORM library is used to provide a bidirectional connection from 
 	\caption{TypeORM's logo}
 \end{figure}
 \\
-In conjunction with Nx, the models that are used to generate the entities and their relations, can be used in the front-end applications. Therefore, such models can be shared and easily maintained. By default, TypeORM does not provide an entity validation, 
+In conjunction with Nx, the models that are used to generate the entities and their relations, can be used in the front-end applications. Therefore, such models can be shared and easily maintained. By default, TypeORM does not provide an entity validation,
 \subsection{Tests}
 Last but not least, the test stack also had to be defined. In this case, the provided frameworks for testing by Nx were kept, since they are some of the most common testing libraries nowadays.
 \subsubsection{Unit testing - Jest}
@@ -450,6 +451,178 @@ In order to use cypress, the project needs a specific folder structure which can
 \subsubsection{Server e2e testing - Jest and Supertest}
 Finally, the libraries that are installed to develop end-to-end test for express, in \texttt{@nrwl/express} are: Jest and Supertest. The Jest library has already been covered. The Supertest is an HTTP assertions library that allows the developer to create Node.js HTTP tests. It uses the SuperAgent library, which is an HTTP client for Node.js. Using Supertest is one of the most common methods to develop such tests.
 \chapter{Analysis and system design}
+\section{Use case diagram}
+\section{Use case tables}
+\section{Database diagram}
+\subsection{Introduction}
+In a previous section, it has been explained that the DataGrip application has been used to create the database diagram. The process to create such diagram has been:
+\begin{enumerate}[label = \textbf{\arabic{*}.}]
+	\item Create the entities with TypeORM. The synchronization of TypeORM with the empty database, will create all the tables, sequences, indexes and so on that have been defined. Therefore, the use of SQL is minimum and can easily be debugged, if needed.
+	\item Set up a connection to the dockerized database with DataGrip.
+	\item Generate the ERD with the detected tables.
+\end{enumerate}
+Such tool allows faster diagrams visualisation and avoids the pain of having to keep ERD diagrams manually updated on any minor change,
+\subsection{Diagram}
+The resulting diagram is:
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/db-erd.png}
+	\caption{Database diagram}
+\end{figure}
+\subsubsection{Introduction}
+In the following sections each table will be explained and a brief description of their fields will be given. Each field will be represented using the following schema:
+\begin{enumerate}[label = -]
+	\item \textbf{<field name>} (\texttt{<field type>}) [\texttt{<field constraints>}] \texttt{->} <field description>
+\end{enumerate}
+There are some fields that are common to the different entities, independently of their relations. Such fields are:
+\begin{enumerate}[label = -]
+	\item \textbf{created\_at} (\texttt{timestamp}) [\texttt{DEFAULT NOW()}] \texttt{->} Keeps the \emph{timestamp} at which the entity has been created.
+	\item \textbf{updated\_at} (\texttt{timestamp}) [\texttt{DEFAULT NOW()}] \texttt{->} Keeps the \emph{timestamp} at which the entity has been last updated.
+	\item \textbf{deleted\_at} (\texttt{timestamp}) [] \texttt{->} Keeps the \emph{timestamp} at which the entity has been dele-ted.
+\end{enumerate}
+\subsubsection{Person}
+One of the big concepts to define in the database has been how are users stored. After comparing many approaches, a multiple table inheritance has been chosen. The base table of the users inheritance is the \emph{Person}. The person entity will have an id which will be the primary key of the entities that inherit from the table. Such entity contains the mandatory data each user must have:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} This is the \emph{primary key} of the entity.
+	\item \textbf{email} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Stores the email of the user. The email is indexed by a \emph{unique index} (\texttt{person-email-idx}).
+	\item \textbf{password} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Stores the password of the user which is encrypted before insert.
+	\item \textbf{first\_name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Stores the first name of the user. This field is indexed for faster queries by first name (\texttt{person-first-name-idx}).
+	\item \textbf{last\_name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Stores the last name of the user. This field is indexed for faster queries by last name (\texttt{person-last-name-idx}).
+	\item \textbf{theme} (\texttt{app\_theme}) [\texttt{DEFAULT "LIGHT"}] \texttt{->} Stores the theme used by the person in the different applications\footnote{This field is an enum defined in the library \texttt{@gym-man/shared/enums}.}.
+	\item \textbf{gender} (\texttt{char}) [\texttt{NOT NULL}] \texttt{->} Stores the gender of the person.
+	\item \textbf{gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Stores the id of the \texttt{Gym} entity to which the user belongs.
+\end{enumerate}
+\subsubsection{Owner}
+The \emph{Owner} entity is the person who has the most permissions. Therefore, instead of having all the permissions which are defined in the \emph{Worker} entity set to \texttt{true}, the \emph{Owner}'s are kept in a different table. Additionally, an owner will have more permissions than the ones stored in the \emph{Worker} entity. The fields of the table are:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+\end{enumerate}
+\subsubsection{Worker}
+The next person type is the \emph{Worker}. A worker has different permissions set by the owner when created. The \emph{Worker} entity basically contains \texttt{boolean} fields which allow the system to know what permissions have been given to the worker. The permissions of the user are set using the following rule: \texttt{<operation>\_<on>}. For example, the permission of \emph{updating} the gym zones is \texttt{u\_gym\_zone}.
+\\[8pt]
+The fields of the table are
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+	\item \textbf{worker\_code} (\texttt{uuid}) [\texttt{DEFAULT uuid\_generate\_v4()}] \texttt{->} Code generated by the system to identify the workers.
+	\item \textbf{u\_virtual\_gym} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a virtual gym.
+	\item \textbf{c\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a\\gym zone.
+	\item \textbf{u\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a gym zone.
+	\item \textbf{d\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a\\gym zone.
+	\item \textbf{c\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a trainer.
+	\item \textbf{u\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a trainer.
+	\item \textbf{d\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a trainer.
+	\item \textbf{c\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a client.
+	\item \textbf{u\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a client.
+	\item \textbf{d\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a client.
+	\item \textbf{c\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an event.
+	\item \textbf{u\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an event.
+	\item \textbf{d\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete an event.
+	\item \textbf{c\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an event type.
+	\item \textbf{u\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an event type.
+	\item \textbf{d\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete an event type.
+	\item \textbf{manager\_id\_fk} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the manager (owner) of the worker.
+\end{enumerate}
+\subsubsection{Trainer}
+The trainer table is very simple since it has no interaction with the system. It is a subset of the properties of a worker.
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+	\item \textbf{worker\_code} (\texttt{uuid}) [\texttt{DEFAULT uuid\_generate\_v4()}] \texttt{->} Code generated by the system to identify the workers.
+	\item \textbf{manager\_id\_fk} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the manager (owner) of the worker.
+\end{enumerate}
+\subsubsection{Client}
+Client is a WIP entity.
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+	\item \textbf{covid\_passport} (\texttt{boolean}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Allows the gym owners and workers to know if the user has registered the covid passport.
+\end{enumerate}
+\subsubsection{Gym}
+The \emph{Gym} entity is relates to the company, not the infrastructure of a gym. Therefore, it works as a bridge entity that knows the preferences of the gym, such as the interface, gym location and other data. These properties can only be modified by an owner person. The table consists of the following fields:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the gym.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the gym, which will be displayed to the client and workers.
+	\item \textbf{email} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Contact email of the gym.
+	\item \textbf{phone} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Contact phone of the gym.
+	\item \textbf{color} (\texttt{theme\_color}) [\texttt{DEFAULT "\#2196F3" NOT NULL}] \texttt{->} Primary color of the gym which is the same with all the users\footnote{This field is an enum defined in the library \texttt{@gym-man/shared/enums}.}.
+\end{enumerate}
+\subsubsection{VirtualGym}
+Once the \emph{Gym} has been defined, the company may have multiple different infrastructures, for example, if it is a franchise. These virtual gyms are stored in the \emph{VirtualGym} table. The virtual gym will have different constraints which can change if the workers or owners do change them. The fields of the \emph{VirtualGym} table are:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the virtual gym.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the virtual gym.
+	\item \textbf{description} (\texttt{text}) [] \texttt{->} Optional description of the virtual gym.
+	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Maximum capacity of the virtual gym.
+	\item \textbf{open\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the virtual gym opens.
+	\item \textbf{close\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the virtual gym closes.
+	\item \textbf{gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{Gym} to which the virtual gym belongs.
+\end{enumerate}
+\subsubsection{GymZone}
+After having created the \emph{VirtualGym}, now gym zones can be created for the different virtual gyms of a gym. There are two types of zones: class and non-class zones. The class zones will have a schedule with \emph{Event}'s create by the gym personnel, while non-class zones will have a schedule without events. At the same time, it has the constraints set by the owner and workers, similar to the \emph{VirtualGym}.
+\\[8pt]
+The columns of the entity are:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the gym zone.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the gym zone.
+	\item \textbf{description} (\texttt{text}) [] \texttt{->} Optional description of the gym zone.
+	\item \textbf{is\_class\_type} (\texttt{boolean}) [\texttt{DEFAULT FALSE}] \texttt{->} Whether it is a class or non-class zone.
+	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Maximum capacity of the gym zone.
+	\item \textbf{mask\_required} (\texttt{boolean}) [\texttt{DEFAULT TRUE}] \texttt{->} Whether wearing the mask is mandatory to access the gym zone.
+	\item \textbf{covid\_passport} (\texttt{boolean}) [\texttt{DEFAULT TRUE}] \texttt{->} Whether having registered the covid passport is mandatory to access the gym zone.
+	\item \textbf{open\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the gym zone opens.
+	\item \textbf{close\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the gym zone closes.
+	\item \textbf{time\_intervals} (\texttt{time\_interval[]}) [\texttt{DEFAULT {30, 60, 90, 120}}] \texttt{->} This field will only be used if the gym zone is a non-class zone. It defines the time intervals, in minutes, that the clients will be able to make the appointments.
+	\item \textbf{virtual\_gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{VirtualGym} to which the gym zone belongs.
+\end{enumerate}
+\subsubsection{Calendar}
+The \emph{Calendar} entity is linked to a \emph{GymZone} and is used to link the events and to know how many clients have made an \emph{Appointment} during a time interval. The \emph{Calendar} will always be linked with \emph{Event}'s, and the \emph{Event} entity will be used to determine if the \emph{Appointment} is for a class or a non-class zone.
+\\[8pt]
+The fields of the table are:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{Calendar}.
+	\item \textbf{gym\_zone\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{GymZone} to which the \emph{Calendar} belongs.
+\end{enumerate}
+\subsubsection{CalendarDate}
+A \emph{CalendarDate} is a simple entity that will contain the year, month and day of a date. It will be created \emph{on demand}, meaning that each entry is unique, yet it will not exist until there is another entity that requires of it. With this approach, the system avoids the need to fill the table with hundres of entries for each date. The fields are:
+\begin{enumerate}[label = -]
+	\item \textbf{year} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Year of the \emph{CalendarDate}.
+	\item \textbf{month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Month of the \emph{CalendarDate}.
+	\item \textbf{day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Day of the \emph{CalendarDate}.
+\end{enumerate}
+In order to ensure each entry is unique, a \emph{composite unique index} has been set which contains the three fields of the table.
+\subsubsection{EventType}
+The system allows the user to create events are of a specific type. For instance, the types can be: spinning, zumba, yoga and so on. There will be predefined \emph{EventType}'s when the owner first creates the gym. However, in order to allow more flexibility while using the application, the system also allows the user to create custom \emph{EventTypes}.
+\\[8pt]
+The \emph{EventType} entity is composed by the following columns:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{EventType}.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{EventType}.
+	\item \textbf{description} (\texttt{text}) \texttt{->} Optional description for the \emph{EventType}.
+	\item \textbf{label\_color} (\texttt{app\_palette}) [\texttt{DEFAULT "\#2196F3" NOT NULL}] \texttt{->} Color of the \emph{EventType} when displayed.
+	\item \textbf{gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the id to which the \emph{EventType} belongs.
+\end{enumerate}
+\subsubsection{EventTemplate}
+In order to reduce the repetitive process of creating \emph{Event}'s for a gym zone, the system provides the utility of creating \emph{EventTemplate}'s, which allow the owners or workers to create \emph{Event}'s faster. With the \emph{EventTemplate} utility, in order to create an \emph{Event} becomes faster and less repetitive.
+\\[8pt]
+The fields of this entity are:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{EventTemplate}.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{EventTemplate}.
+	\item \textbf{description} (\texttt{text}) \texttt{->} Optional description for the \emph{EventTemplate}.
+	\item \textbf{event\_type\_fk} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{EventType} of the \emph{EventTemplate}.
+\end{enumerate}
+\subsubsection{Event}
+Finally, the \emph{Event} can be defined. An \emph{Event} is a bridge table that contains: the \emph{Trainer}, the \emph{CalendarDate}, the \emph{Calendar} to which is scheduled and the \emph{EventTemplate}. All these identify the \emph{Event}, that is what the entity to which the user will be able to create an appointment.
+\\[8pt]
+The table is defined as:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY FIELD NOT NULL}] \texttt{->} Unique identifier of the \emph{Event}.
+	\item \textbf{trainer\_person} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Trainer} of the \emph{Event}.
+	\item \textbf{calendar\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Calendar} of the \emph{Event}.
+	\item \textbf{template\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{EventTemplate} of the \emph{Event}.
+	\item \textbf{date\_year} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the year of a\emph{CalendarDate} of the \emph{Event}.
+	\item \textbf{date\_month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the month of a\emph{CalendarDate} of the \emph{Event}.
+	\item \textbf{date\_day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the day of a\emph{CalendarDate} of the \emph{Event}.
+\end{enumerate} 
+\subsubsection{Appointment}
 \chapter{Implementation and trials}
 \chapter{Conclusions}
 \chapter{Future work}
