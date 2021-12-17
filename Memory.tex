@@ -378,7 +378,7 @@ As stated before, NextJS has been chosen as the front-end framework to build the
 \subsubsection{Mui}
 Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library. The library is open-source and maintained by \texttt{mui-org}.
 \\[8pt]
-This library is based on the Google Material design system. However, it has an extremely powerful API to define your own design system, without the need of starting from 0. The developer has the possibility to inject the customized theme to all the components of the API included in the library. Furthermore, it includes an icon pack, which are the same as in the Google Material.
+This library is based on the Google Material design system. However, it has an extremely powerful API to define your own design system, without the need of starting from 0. The developer has the possibility to inject the customised theme to all the components of the API included in the library. Furthermore, it includes an icon pack, which are the same as in the Google Material.
 \\
 \begin{figure}[h!]
 	\centering
@@ -388,7 +388,7 @@ This library is based on the Google Material design system. However, it has an e
 \subsection{Back end - Server application}
 For the backend application, many languages can be used. However, since NodeJS provides a runtime environment for JavaScript, which allows building applications outside the browser. So, with the help on Nx, the backend is also written in TypeScript.
 \subsubsection{Database}
-The application has many relationships, which would be harder to maintain in a NoSQL data-base. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been PostgreSQL.
+The application has many relationships, which would be harder to maintain in a NoSQL database. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been PostgreSQL.
 \\
 \begin{figure}[h!]
 	\centering
@@ -396,7 +396,7 @@ The application has many relationships, which would be harder to maintain in a N
 	\caption{PostgreSQL's logo}
 \end{figure}
 \\
-As explained before the database is run in a docker container. Viewing the data in the terminal is not an issue, yet pgAdmin is a graphic user interface which simplifies such visualization. It is the equivalent of MySQL Workbench for PostgreSQL. With such tool, schemas in general can be simply viewed and edited. Additionally, the JetBrains DataGrip application has been also used, which has allowed to generate the ERD once the database was defined.
+As explained before the database is run in a docker container. Viewing the data in the terminal is not an issue, yet pgAdmin is a graphic user interface which simplifies such visualisation. It is the equivalent of MySQL Workbench for PostgreSQL. With such tool, schemas in general can be simply viewed and edited. Additionally, the JetBrains DataGrip application has been also used, which has allowed to generate the ERD once the database was defined.
 \subsubsection{ExpressJS}
 ExpressJS is one of the many back-end frameworks that exist in the JavaScript world, nowadays. It is a minimal and flexible framework which provides a fast methodology to develop APIs. It is considered the most popular back-end framework of JavaScript, up to a point that other back-end meta-frameworks are ExpressJS based (an example is NestJS). As stated in their landing page, ExpressJs is a: \emph{Fast, unopinionated, minimalist web framework for Node.js}.
 % TODO: Add bibitem expressjs.com - 13/12/2021
@@ -470,6 +470,7 @@ The resulting diagram is:
 	\caption{Database diagram}
 \end{figure}
 \subsubsection{Introduction}
+%! INFO: LAST UPDATED -> 17/12/2021
 In the following sections each table will be explained and a brief description of their fields will be given. Each field will be represented using the following schema:
 \begin{enumerate}[label = -]
 	\item \textbf{<field name>} (\texttt{<field type>}) [\texttt{<field constraints>}] \texttt{->} <field description>
@@ -481,7 +482,7 @@ There are some fields that are common to the different entities, independently o
 	\item \textbf{deleted\_at} (\texttt{timestamp}) [] \texttt{->} Keeps the \emph{timestamp} at which the entity has been dele-ted.
 \end{enumerate}
 \subsubsection{Person}
-One of the big concepts to define in the database has been how are users stored. After comparing many approaches, a multiple table inheritance has been chosen. The base table of the users inheritance is the \emph{Person}. The person entity will have an id which will be the primary key of the entities that inherit from the table. Such entity contains the mandatory data each user must have:
+One of the big concepts to define in the database has been how are users stored. After comparing many approaches, a multiple table inheritance has been chosen. The base table of the user's inheritance is the \emph{Person}. The person entity will have an id which will be the primary key of the entities that inherit from the table. Such entity contains the mandatory data each user must have:
 \begin{enumerate}[label = -]
 	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} This is the \emph{primary key} of the entity.
 	\item \textbf{email} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Stores the email of the user. The email is indexed by a \emph{unique index} (\texttt{person-email-idx}).
@@ -581,7 +582,7 @@ The fields of the table are:
 	\item \textbf{gym\_zone\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{GymZone} to which the \emph{Calendar} belongs.
 \end{enumerate}
 \subsubsection{CalendarDate}
-A \emph{CalendarDate} is a simple entity that will contain the year, month and day of a date. It will be created \emph{on demand}, meaning that each entry is unique, yet it will not exist until there is another entity that requires of it. With this approach, the system avoids the need to fill the table with hundres of entries for each date. The fields are:
+A \emph{CalendarDate} is a simple entity that will contain the year, month and day of a date. It will be created \emph{on demand}, meaning that each entry is unique, yet it will not exist until there is another entity that requires of it. With this approach, the system avoids the need to fill the table with hundreds of entries for each date. The fields are:
 \begin{enumerate}[label = -]
 	\item \textbf{year} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Year of the \emph{CalendarDate}.
 	\item \textbf{month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Month of the \emph{CalendarDate}.
@@ -589,7 +590,7 @@ A \emph{CalendarDate} is a simple entity that will contain the year, month and d
 \end{enumerate}
 In order to ensure each entry is unique, a \emph{composite unique index} has been set which contains the three fields of the table.
 \subsubsection{EventType}
-The system allows the user to create events are of a specific type. For instance, the types can be: spinning, zumba, yoga and so on. There will be predefined \emph{EventType}'s when the owner first creates the gym. However, in order to allow more flexibility while using the application, the system also allows the user to create custom \emph{EventTypes}.
+The system allows the user to create events are of a specific type. For instance, the types can be: spinning, zumba, yoga and so on. There will be predefined \emph{EventType}'s when the owner first creates the gym. However, in order to allow more flexibility while using the application, the system also allows the user to create custom \emph{EventType}'s.
 \\[8pt]
 The \emph{EventType} entity is composed by the following columns:
 \begin{enumerate}[label = -]
@@ -618,12 +619,34 @@ The table is defined as:
 	\item \textbf{trainer\_person} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Trainer} of the \emph{Event}.
 	\item \textbf{calendar\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Calendar} of the \emph{Event}.
 	\item \textbf{template\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{EventTemplate} of the \emph{Event}.
-	\item \textbf{date\_year} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the year of a\emph{CalendarDate} of the \emph{Event}.
-	\item \textbf{date\_month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the month of a\emph{CalendarDate} of the \emph{Event}.
-	\item \textbf{date\_day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the day of a\emph{CalendarDate} of the \emph{Event}.
-\end{enumerate} 
+	\item \textbf{date\_year} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the year of a \emph{CalendarDate} of the \emph{Event}.
+	\item \textbf{date\_month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the month of a \emph{CalendarDate} of the \emph{Event}.
+	\item \textbf{date\_day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the day of a \emph{CalendarDate} of the \emph{Event}.
+\end{enumerate}
 \subsubsection{EventAppointment and CalendarAppointment}
-Finally, the only requirement left is the appointments from the \emph{Client}'s. The \emph{Client} has to be able to book a session for a guided class, which means to an \emph{Event}, or for a non-guided class. So, the two entites represent each case respectively. They both share some attributes, such as the \texttt{startTime} and the \texttt{openTime}. However, the \emph{EventAppointment} is related with an \emph{Event}, as it will be an \emph{Appointment} made to an \emph{Event}. On the other hand, a \emph{CalendarAppointment} would be an \emph{Appointment} made in a time interval, chosen by the user, for a specific \emph{GymZone}. 
+Finally, the only requirement left is the appointments from the \emph{Client}'s. The \emph{Client} has to be able to book a session for a guided class, which means to an \emph{Event}, or for a non-guided class, that is for a \emph{Calendar}. So, the two entities represent each case respectively. They both share some attributes, such as the \texttt{startTime} and the \texttt{openTime}. However, the \emph{EventAppointment} is related with an \emph{Event}, as it will be an \emph{Appointment} made to an \emph{Event}. On the other hand, a \emph{CalendarAppointment} would be an \emph{Appointment} made in a time interval, chosen by the user, for a specific \emph{GymZone}.
+\\[8pt]
+The fields of the \emph{EventAppointment} entity are:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY NOT NULL}] \texttt{->} Unique identifier of the \emph{EventAppointment}
+	\item \textbf{client\_person} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Client} that has made the \emph{EventAppointment}.
+	\item \textbf{event\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Event} to which the \emph{EventAppointment} has been made.
+	\item \textbf{start\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{EventAppointment} starts, which will be the same as the \emph{Event}.
+	\item \textbf{end\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{EventAppointment} ends, which will be the same as the \emph{Event}.
+	\item \textbf{cancelled} (\texttt{boolean}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Used to know if the \emph{EventAppointment} has been cancelled.
+\end{enumerate}
+The fields of the \emph{EventAppointment} entity are:
+\begin{enumerate}[label = -]
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY NOT NULL}] \texttt{->} Unique identifier of the \emph{CalendarAppointment}
+	\item \textbf{client\_person} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Client} that has made the \emph{CalendarAppointment}.
+	\item \textbf{calendar\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Calendar} to which the \emph{CalendarAppointment} has been made.
+	\item \textbf{start\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{CalendarAppointment} starts.
+	\item \textbf{end\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{CalendarAppointment} ends.
+	\item \textbf{cancelled} (\texttt{boolean}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Used to know if the \emph{CalendarAppointment} has been cancelled.
+	\item \textbf{date\_year} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the year of a \emph{CalendarDate} of the \emph{CalendarAppointment}.
+	\item \textbf{date\_month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the month of a \emph{CalendarDate} of the \emph{CalendarAppointment}.
+	\item \textbf{date\_day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the day of a \emph{CalendarDate} of the \emph{CalendarAppointment}.
+\end{enumerate}
 \chapter{Implementation and trials}
 \chapter{Conclusions}
 \chapter{Future work}
