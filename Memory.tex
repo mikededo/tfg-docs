@@ -622,7 +622,8 @@ The table is defined as:
 	\item \textbf{date\_month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the month of a\emph{CalendarDate} of the \emph{Event}.
 	\item \textbf{date\_day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the day of a\emph{CalendarDate} of the \emph{Event}.
 \end{enumerate} 
-\subsubsection{Appointment}
+\subsubsection{EventAppointment and CalendarAppointment}
+Finally, the only requirement left is the appointments from the \emph{Client}'s. The \emph{Client} has to be able to book a session for a guided class, which means to an \emph{Event}, or for a non-guided class. So, the two entites represent each case respectively. They both share some attributes, such as the \texttt{startTime} and the \texttt{openTime}. However, the \emph{EventAppointment} is related with an \emph{Event}, as it will be an \emph{Appointment} made to an \emph{Event}. On the other hand, a \emph{CalendarAppointment} would be an \emph{Appointment} made in a time interval, chosen by the user, for a specific \emph{GymZone}. 
 \chapter{Implementation and trials}
 \chapter{Conclusions}
 \chapter{Future work}
