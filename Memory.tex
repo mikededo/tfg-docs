@@ -1,8 +1,6 @@
 % !TeX spellcheck = en_GB 
 
 \documentclass[a4paper, 12pt, oneside]{book}
-\title{{\Huge Gym bookings manager}}
-\author{Miquel de Domingo i Giralt}
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
@@ -18,6 +16,13 @@
 \usepackage{graphicx}
 \usepackage[labelfont = bf]{caption}
 \usepackage{etoolbox}
+
+\title{
+	\includegraphics[width=0.75\textwidth]{assets/logo.png}
+	\\
+	{\huge Hubble, a gym bookings manager}
+}
+\author{Miquel de Domingo i Giralt}
 
 \setmainfont{SF Pro Display}[BoldFont = SF Pro Display Bold]
 \setmonofont[Scale=0.9]{JetBrains Mono}
@@ -85,9 +90,9 @@ The procedure is based in five process groups, which are:
 \section{Introduction}
 This chapter will cover the system requirements specification (\emph{SRS}) for the software being developed. The goal of this chapter is to establish the basis for what will be developed, taking into account user needs, functional and non-functional requirements.
 \subsection{Purpose}
-The application's objective is to provide a simple, scalable and powerful platform to handle gymnasium appointments. Gymnasium owners will be able to create their gymnasium zones and modify the constraints such as total capacity, available hours, closed days as needed. On the other side, gymnasium clients will be able to book an appointment to the gymnasiums they are subscribed to.  Furthermore, it will provide an interface to manage the clients and their subscriptions
+The application's objective is to provide a simple, scalable and powerful platform to handle gymnasium appointments. Gymnasium owners will be able to create their gymnasium zones and modify the constraints such as total capacity, available hours, closed days as needed. On the other side, gymnasium clients will be able to book an appointment to the gymnasiums they are subscribed to.
 \\[8pt]
-Therefore, in a single application, gym owners and their workers will be able to control the flow of users; while at the same time being able to apply changes and modifications as wanted.
+Therefore, in a single application, gym owners and their workers will be able to control the flow of clients; while at the same time being able to apply changes and modifications as wanted.
 \subsection{Motivation}
 Due to the COVID-19, most of the business have been affected by the government regulations, which did not allow more than some percentage of the total capacity of the place. Gymnasiums have been one of them and the owners have had the need to find a software that allows them to handle the amount of users their facilities can have. Moreover, some of them offer guided classes such as spinning, zumba and many more (some gymnasiums are guided classes based).
 \\[8pt]
@@ -96,20 +101,21 @@ As a client myself, I have found the software used in my gym slow, continuously 
 There are some definitions to be explained before moving to the next section:
 \begin{enumerate}[label = -]
 	\item \emph{Gym}. The gym will represent the company overall, not the infrastructure. Such infrastructure is called \emph{virtual gym}.
-	\item \emph{Virtual gym and gym zone}. A virtual gym will be the representation of a gymnasium in the application, while a gym zone will be the places where clients will book appointments. Each virtual gym can have multiple gym zones, and each gym zone will have their characteristics.
+	\item \emph{Virtual gym}. A virtual gym will be the representation of a gymnasium in the application. A \emph{virtual gym} can have multiple \emph{gym zones}.
+	\item \emph{Gym zone}. A gym zone will be the places where clients will book appointments.
 	\item \emph{User}. The \emph{user} is the main person who uses the software. In this case, it is the owner and their workers.
-	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a class and \emph{class template}, \emph{template classes} or \emph{template events} (as they are named in the database). On the one hand, classes will be assigned to a gym zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone.
+	\item \emph{Template classes}. Even though the class concept is explained in further sections, it is important to make a distinction between a \emph{class} and \emph{class template}, \emph{template classes} or \emph{template events} (as they are named in the database). On the one hand, classes will be assigned to a gym zone and scheduled. On the other hand, \emph{template classes} will be used to schedule and link to a zone.
 	\item \emph{Archiving} vs \emph{Deleting}. The purpose of archiving anything in the database means it will be stored but not visible. In order to edit it again, the archived element has to be \emph{recovered}. On the other hand, a deleted element will permanently be deleted from the database.
 \end{enumerate}
 \section{Overall description}
 \subsection{Introduction}
 This section provides a general explanation about the application, how it is intended to work, the different \emph{personas} to whom it is focused and a brief introduction to the software's functionalities.
 \subsection{Product description}
-The product will provide a rich interface for the gym owners and their coworkers to manage their gymnasiums. Managers will create virtual gyms, each of one with different constrains, which will be forwarded to their gym zones. Each gym zone will be of a certain or multiple type, for example, a cardio zone, a free-weight zone or even a powerlifting zone. Such and more characteristics will be determined by the workers. Once determined the capabilities of each zone, the clients will have the possibility to make their reservations.
+The product will provide a rich interface for the gym owners and their coworkers in order to manage their gymnasiums. Managers will create virtual gyms, each of one with different constrains, which will be forwarded to their gym zones. Each gym zone will be of a certain type, for example, a cardio zone, a free-weight zone or even a powerlifting zone. Such and more characteristics will be determined by the workers. Once determined the capabilities of each zone, the clients will have the possibility to make their reservations.
 \\[8pt]
 This software is going to be interesting since it is mainly focused on the managing of appointments. There exist multiple manager systems, some are gym-focused yet there are few that provide an exclusive focus to managing the appointments. It is interesting to have an application that is that specific because most of the companies already have their client management system and other tools. The COVID has changed many things extremely fast and some gymnasiums have not been able to adapt fast enough. That is because using other management tools would mean to change the entire managing software of the company, in order words, starting from zero again.
 \\[8pt]
-Here is where the application becomes more interesting. It allows the company to merely incorporate the incoming software without the need of modifying the entire management system.
+Here is where the application becomes more interesting. It allows the company to merely incorporate the incoming software without the need of modifying the entire client management system.
 \subsection{User needs}
 After having briefly defined the application, two \emph{personas} can be identified: the owner or worker of the gym, and the client.
 \\[8pt]
@@ -120,8 +126,8 @@ Such persona needs entire access to the management system, and it is the main us
 	\item \emph{Ability to create virtual gyms and gym zones}. It is the main purpose of the application. It has to provide all the tools that are required to have an above average managing system.
 	\item \emph{Modify virtual gyms and gym zones}. Constraints may change during time. Overall capacity may increase, more cardio machines may be added, and, with these changes, the gym zones will have to adapt to such real life modifications. There has to exist an interface that provides an easy and simple tool to control it.
 	\item \emph{Ability to manage clients}. The income of the gymnasium is based on the amount of clients they have, and such clients have to be subscribed into the system. However, the application is not a client management system. It purely focuses on the fact of bookings. Therefore, the user needs to be able to synchronize their clients with the system.
-	\item \emph{Ability to manage appointments}. The workers have to be able to create, modify or delete the appointments at any time. This process has to be fast and simple since it is more than usual to have cancellations, clients without reservation, and many more.
-	\item \emph{Ability to manage guided classes}. Some gym zones will be marked as a guided class zone. Therefore, a schedule will have to be set up for such zone in order to let the user know hat
+	\item \emph{Ability to manage appointments}. The workers have to be able to create, modify or delete the appointments at any time. This process has to be fast and simple, since it is more than usual to have cancellations, clients without reservation, and many more.
+	\item \emph{Ability to manage guided classes}. Some gym zones will be marked as a guided class zone. Therefore, a schedule will have to be set up for such zone in order to let the user know that.
 \end{enumerate}
 Furthermore, two user profiles have to be differentiated: the \emph{owner} and the \emph{worker}. The owner needs more control than the worker and some additional needs are:
 \begin{enumerate}[label = -]
@@ -130,13 +136,13 @@ Furthermore, two user profiles have to be differentiated: the \emph{owner} and t
 	\item \emph{Ability to manage gym trainers}. It is important to know what trainers will be responsible for each guided class. For instance, some clients may prefer some trainers than others, when choosing a guided class.
 \end{enumerate}
 \subsubsection{Client}
-The client has little interaction with the system. However, a management application for clients would be useless if clients could not book their sessions. That is why it will exist another platform to provide access to the client. Such client, will have the following needs:
+The client has little interaction with the system. However, a management application for clients would be pointless if clients could not book their sessions. That is why it will exist another platform to provide access to the client. Such client, will have the following needs:
 \begin{enumerate}[label = -]
 	\item \emph{Ability to create, modify and delete appointments}. The clients will make the most use of the reservation system. There has to exist a simple and intuitive interface that allows the clients to interact with the system.
 	\item \emph{Ability to visualise guided classes}. In case the client prefers booking a place for a guided class, it should be able to visualise all the possible classes for a day or week, for a zone.
 \end{enumerate}
 \section{Product functionalities}
-The goal of this section is to explain how would the basic flow of the application be. From the owner preparing the virtual gyms, the classes and assigning the trainers; to the client being able to manage their appointments. By exemplifying the application behavior, it will be easier to determine the functional requirements of the software.
+The goal of this section is to explain how would the basic flow of the application be. From the owner arranging virtual gyms, the classes and assigning the trainers; to the client being able to manage their appointments. By exemplifying the application behavior, it will be easier to determine the functional requirements of the software.
 \subsection{Gym}
 When registering, the owner will be required to enter the gym information and will be able to customise other information such as the gym contact data. Such settings will be common to all clients and workers, as they will be part of such gym.
 \subsection{Virtual gym and gym zones}
@@ -146,20 +152,19 @@ Once the virtual gym has been set up, it can have gym zones. Each gym zone will 
 \subsection{Classes, trainers and workers}
 After having defined the structure of the gym, the owner or the workers of the gym can create and schedule classes for the different gym zones. Classes can not be overlapped in the same zone, yet some classes can be scheduled at the same time in different zones. Furthermore, the same class can be done in multiples zones, with different trainers.
 \\[8pt]
-In order to keep such consistency, the gym owners will create \emph{template classes}, which will have specific characteristics. Each template class will be unique, and it will be used to create \emph{classes}. In short, the client will create an appointment to a class, which will be a scheduled template class. Nonetheless, appointments will also be required for non-class gym zones, as it is needed to know how many users will access such zone in a certain time. With the explained relation, owners and workers will not have the need to create a class with all the details every single time, rather simply scheduling already created template classes
+In order to keep such consistency, the gym owners will create \emph{template classes}, which will have specific characteristics. Each template class will be unique, and it will be used to create \emph{classes}. In short, the client will create an appointment to a class, which will be a scheduled template class. Nonetheless, appointments will also be required for non-class gym zones, as it is needed to know how many users will access such zone in a certain time. With the explained relation, owners and workers will not have the need to create a class with all the details every single time, rather simply scheduling already created template classes.
 \\[8pt]
-Additionally, a trainer manager system is required. However, a trainer it is a worker as well, even though it does not interact with the application. Hence, in the same management view, the owner, and if any worker is allowed to, will be able to create trainers and workers. Even though trainers will be tagged differently than the regular workers, they will be treated equally in the database.
+Additionally, a trainer manager system is required. However, a trainer it is a worker as well, even though it does not interact with the application. Hence, in the same management view, the owner, and if any worker is allowed to, will be able to create trainers and workers.
 \subsection{Clients}
-Before continuing, the system still lacks of the main income of the gymnasium: the client. The user needs to know what clients are subscribed to what gym zones. As detailed before, the goal of this application is not to provide a client management system, though it could be a functionality to be implemented in the future. Therefore, the client will also be related to the gym entity.
+Before continuing, the system still lacks of the main income of the gymnasium: the client. As detailed before, the goal of this application is not to provide a client management system, though it could be a functionality to be implemented in the future. Therefore, the client will also be related to the gym entity.
 \\[8pt]
 There has to be, definitely, a small client management. However, this management does not need to know about all the information it is kept about the user in the gym. It will only need:
 \begin{enumerate}[label = -]
 	\item Personal information such as the name, last name and so on. It should include an email and a code (which can be generated by the application) to log in to the software.
-	\item The virtual gyms to which has access to.
 \end{enumerate}
 That is it. From there, the client will have access to another view of the application in which they will be able to make the reservations.
 \subsection{Creating appointments}
-When the client has been able to connect to the platform, they will be able to visualise the virtual gyms to which they have access. The access will be managed by the gym owners, though rarely clients only have access to specific virtual gyms. There, the client will be able to visualise the availability of the different gym zones, the classes offered in that zone and other relevant information. From that, they will create their appointment which will be persisted to the system.
+When the client has been able to connect to the platform, they will be able to visualise the virtual gyms of the gym they belong to. There, the client will be able to visualise the availability of the different gym zones, the classes offered in that zone and other relevant information. From that, they will create their appointment which will be persisted to the system.
 \\[8pt]
 After the appointment has been made, the client will be able to modify it and remove it, without the need of any explanation.
 \section{Functional requirements}
@@ -191,7 +196,7 @@ The user has to be able to register. In the beginning, the application will be c
 \begin{enumerate}[label = -]
 	\item \textbf{FR- (3)}. The user has to provide personal information in order to register.
 	\item \textbf{FR- (3)}. The user has to provide information about the gym in order to register.
-	\item \textbf{FR- (3)}. The user has to provide an email and a password to access the application (login).
+	\item \textbf{FR- (3)}. The user has to provide an email and a password to access the application (log in).
 	\item \textbf{FR- (3)}. The user needs to be able to see how their data is kept (personal data privacy).
 \end{enumerate}
 \subsection{Core app - Home page}
@@ -290,7 +295,7 @@ The personal information, which is nearly the settings page for the client, has 
 A non-functional requirement is a requirement that defines system attributes such as security, reliability, maintainability, scalability and usability. Therefore, such requisites do not describe information to keep nor functionalities to implement, rather characteristics of such functionalities. In the system, the following non-functional requirements can be defined:
 \begin{enumerate}[label = -]
 	\item \textbf{RNF- (3)}. The system has to provide a secure authentication method.
-	\item \textbf{RNF- (2)}. The client application has to provide different authentication methods in order to differentiate the gym owner and the gym worker.
+	\item \textbf{RNF- (2)}. The application has to provide different authentication methods in order to differentiate the gym owner, the gym worker and the gym client.
 	\item \textbf{RNF- (2)}. The landing and client web applications must provide a responsive interface, so that the application can be seen both in small and large screens.
 	\item \textbf{RNF- (1)}. The core application has to provide a responsive interface up to a point. In smaller screens such as phones, some functionalities would not be easy to implement nor to use.
 	\item \textbf{RNF- (2)}. The three web applications have to provide an accessible and semantic HTML structure.
@@ -301,7 +306,7 @@ A non-functional requirement is a requirement that defines system attributes suc
 \section{Introduction}
 This chapter will cover the different aspects that have been taken into account in order to choose the technology stack used to develop the system.
 \section{Project structure}
-Being able to solve problems rapidly, or even minimizing such errors, it is a must in order to provide a secure and stable application. Since \emph{test driven development} (or \emph{behavior driven development}) were designed, more and bigger companies started incorporating such approach when developing new projects. Nowadays, testing the code that is being developed is unquestionable.
+Being able to solve problems rapidly, or even minimizing such errors, it is a must in order to provide a secure and stable application. Since \emph{test driven development} (or \emph{behavior driven development}) was designed, more and bigger companies started incorporating such approach when developing new projects. Nowadays, testing the code that is being developed is unquestionable.
 \\[8pt]
 Aside from the development method used, it is indisputable to use a version control system. The VCS that takes the gold medal is \emph{git} which is used alongside \emph{GitHub}. From there, the applications can be structured in two forms:
 \begin{enumerate}[label = -]
@@ -310,7 +315,7 @@ Aside from the development method used, it is indisputable to use a version cont
 \end{enumerate}
 Since all the applications are build using the same language (\emph{TypeScript}) and the same package manager (\emph{npm}), the monorepo approach has been used.
 \subsection{TDD and CI}
-The test driven development approach has been the method to ensure that what was being written would do as expected, when new features are added. Both client and server applications include unit tests and end-to-end (\emph{e2e}) tests.
+The test driven development approach has been the method to ensure that what was being written would do as expected, even when new features are added. Both client and server applications include unit and end-to-end (\emph{e2e}) tests.
 \\[8pt]
 Unit tests allow the developer to test a feature by isolating all its dependencies. For instance, each method of a concrete service from the backend has it own unit tests which completely mock its dependencies and ensure the behaviour is as expected. On the other hand, the e2e contexts are more complex, since they test, for example, one of the different use cases. An example would be to simulate the behaviour of the user in a client app and expect the DOM to properly change.
 \\[8pt]
@@ -328,7 +333,7 @@ Using such tool, managing the applications becomes extremely easy to manage both
 \begin{enumerate}[label = -]
 	\item The different applications have been \emph{generated} using the plugins also developed and maintained by the team behind Nx.
 	\item The fast creation of shared libraries.
-	\item Testing and building only the affected code. Therefore, in unit testing only the files that have been changed will be tested, reducing the amount of tests to be done on each push.
+	\item Testing and building only the affected code. Therefore, in unit testing only the files that have been changed, reduces the amount of tests to be done on each push.
 	\item All the created libraries and applications include all the dependencies, scripts and tools to fast serve, test, build and deploy. Additionally, it can \emph{lint} and format the projects.
 	\item Provides a rich plugin ecosystem if some utilities are not included in the core package.
 \end{enumerate}
@@ -355,7 +360,7 @@ There are other files in the root folder of the repository, yet they have been e
 \section{Technology stack}
 This section will cover the different technologies that are specifically used to develop the different applications.
 \subsection{TypeScript}
-These days JavaScript is the most used language around the world for many reasons. Nevertheless, due to the fact of not having types, it makes some applications harder to debug and more error-prone. That is one of the reasons Microsoft developed TypeScript, which is a strict syntactical superset of JavaScript. The code written in TypeScript is transcompiled to JavaScript at build time.
+These days JavaScript is the most used language around the world for many reasons. Nevertheless, due to the fact of not having types, it makes some applications harder to debug and more error-prone. That is one of the reasons why Microsoft developed TypeScript, which is a strict syntactical superset of JavaScript. The code written in TypeScript is transcompiled to JavaScript at build time.
 \\
 \begin{figure}[h!]
 	\centering
@@ -436,7 +441,7 @@ Aside from unit testing API functions and so on, it is important to also test th
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/testing-library-logo.png}
-	\caption{Cypress's logo}
+	\caption{Testing library's logo}
 \end{figure}
 \subsubsection{Client e2e testing - Cypress}
 Cypress is more than a tool for testing. It provides a graphical user interface to see what is being tested, where it fails and other features. It is an extremely powerful tool for UI testing, which has always been a difficult subject. As stated in their website, cypress enables you to: \emph{write faster, easier and more reliable tests}.
