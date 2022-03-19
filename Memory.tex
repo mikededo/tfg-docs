@@ -16,6 +16,10 @@
 \usepackage{graphicx}
 \usepackage[labelfont = bf]{caption}
 \usepackage{etoolbox}
+\usepackage{tabularx}
+\usepackage{colortbl}
+
+\usepackage[table]{xcolor}
 
 \title{
 	\includegraphics[width=0.75\textwidth]{assets/logo.png}
@@ -26,6 +30,8 @@
 
 \setmainfont{SF Pro Display}[BoldFont = SF Pro Display Bold]
 \setmonofont[Scale=0.9]{JetBrains Mono}
+
+\newfontfamily\semibf{SF Pro Display Semibold}
 
 % Variable with the page that keeps the footer style
 \def\footerstyle{- \fontsize{10pt}{10pt}\selectfont\thepage\ -}
@@ -49,6 +55,10 @@
 \setcounter{secnumdepth}{5}
 \setcounter{tocdepth}{5}
 
+% Tables format
+\definecolor{tableBlue}{RGB}{242, 242, 242}
+\renewcommand{\arraystretch}{1.5}
+
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
 \titlespacing{\chapter}{0pt}{-32pt}{12pt}
 
@@ -65,6 +75,8 @@
 \tableofcontents
 \newpage
 \listoffigures
+\newpage
+\listoftables
 \newpage\null\thispagestyle{empty}\newpage
 \mainmatter
 \chapter{Introduction, motivation, purpose and project goals}
@@ -364,6 +376,21 @@ Each dependency will use the following format: \textbf{[FR-1, FR-2, FR-3] \textt
 \\[8pt]
 \textbf{[FR-66, FR-67, FR-68, FR-69, FR-70, FR-71, FR-72] \texttt{->} [FR-65]}. In order to interact with the application, the client must be registered previously.
 \chapter{Planning}
+This chapter will cover the planning of the project. After having defined the requirements and the matrix of dependencies of such requirements, working packages will be defined, which will ensure an organized development using tasks.
+\section{Working packages}
+\begin{tabularx}{\textwidth}{| l | X |}
+	\hline
+	\rowcolor{tableBlue}
+	\semibf{Package name}   & Some cool name               \\
+	\hline
+	\semibf{Estimated time} & Xh                           \\
+	\hline
+	\semibf{Tasks}          & Some cool name \newline asda \\
+	\hline
+	\semibf{Results}        & Some cool name               \\
+	\hline
+\end{tabularx}
+\captionof{table}{Package one table}
 \chapter{Studies and decisions}
 \section{Introduction}
 This chapter will cover the different aspects that have been taken into account in order to choose the technology stack used to develop the system.
@@ -722,6 +749,258 @@ The fields of the \emph{EventAppointment} entity are:
 	\item \textbf{date\_month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the month of a \emph{CalendarDate} of the \emph{CalendarAppointment}.
 	\item \textbf{date\_day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the day of a \emph{CalendarDate} of the \emph{CalendarAppointment}.
 \end{enumerate}
+\section{User interfaces}
+The design of the user interfaces has been a priority before diving into the front end development. Such interfices, provide a preliminar view of what show the application look and feel. The following figures, are the designs of the user interfaces that have been designed using the Figma software\footnote{The figma application is a free software which can be found in: \href{www.figma.com}{www.figma.com}}.
+\\
+Designing every possible state of the application is far from achievable with such little time. However, since the core and client application will share much of their user interface, only the core views have been designed. When developing the client application, most of the components have been reused, modifying they behaviour as needed, since the client interactions are limited (for instance, the client sees the same dashboard page, yet the button to add a virtual gym is hidden). Needless to say, some views do not correspond exactly as they are in the application, mainly because some features have been modified or added as required.
+\\
+Finally, the following aspects have been considered when designing the views:
+\begin{enumerate}[label = -]
+	\item The views should also be displayed as an owner used. This is due to the fact that the only differences between the views of an owner, a worker or a client, will be minimal. Some things will be hidden or not allowed, which has little effects to the final design.
+	\item Each element that can be created (virtual gyms, gym zones, trainers and so on) must have their corresponding dialog or view in which such items are created, edited or deleated.
+	      \begin{enumerate}[label = -]
+		      \item In case a dialog is used, it has to contain how it looks when: it is being created, it is being edited, and it is being loaded, for each of the previous states.
+	      \end{enumerate}
+\end{enumerate}
+With these requirements, there are views modals that contain 4 images, each one for the described states.
+\\
+% #region Images
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/SignUpStepOne.png}
+	\caption{First step of the sign up page}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/SignUpStepOne.png}
+	\caption{Second step of the sign up page}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/LogIn.png}
+	\caption{View of the login page}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/Dashboard.png}
+	\caption{Dashboard page, displaying a summary of the gym's information}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/VirtualGyms.png}
+	\caption{Virtual gym's page, which is accessed using the left navigation bar}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/CreateVirtualGym.png}
+	\caption{Virtual gym dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingVirtualGym.png}
+	\caption{Virtual gym dialog (create-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EditVirtualGym.png}
+	\caption{Virtual gym dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EditLoadingVirtualGym.png}
+	\caption{Virtual gym dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/VirtualGym.png}
+	\caption{Single virtual gym view, accessed by clicking on a virtual gym}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/CreateGymZone.png}
+	\caption{Gym zone dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingGymZone.png}
+	\caption{Gym zone dialog (create-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EditGymZone.png}
+	\caption{Gym zone dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EditLoadingGymZone.png}
+	\caption{Gym zone dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/CreateEvent.png}
+	\caption{Event dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingEvent.png}
+	\caption{Event dialog (create-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EditEvent.png}
+	\caption{Event dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EditLoadingEvent.png}
+	\caption{Event dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/ClassGymZone.png}
+	\caption{Class gym zone page, accessed by clicking on any class-type gym zone}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/Events.png}
+	\caption{Event's page, which is accessed using the left navigation bar}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTypeCreate.png}
+	\caption{Event type dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTypeCreateLoading.png}
+	\caption{Event type dialog (create-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTypeEdit.png}
+	\caption{Event type dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTypeEditLoading.png}
+	\caption{Event type dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTemplateCreate.png}
+	\caption{Event template dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTemplateCreateLoading.png}
+	\caption{Event template dialog (create-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTemplateEdit.png}
+	\caption{Event template dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/EventTemplateEditLoading.png}
+	\caption{Event template dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/Trainers.png}
+	\caption{Trainer's page, which is accessed using the left navigation bar}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/TrainerCreate.png}
+	\caption{Trainer dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/TrainerCreateLoading.png}
+	\caption{Trainer dialog (create-edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/TrainerEdit.png}
+	\caption{Trainer dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/TrainerEditLoading.png}
+	\caption{Trainer dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/WorkersSelected.png}
+	\caption{Worker's page, which is accessed using the left navigation bar}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/WorkersUnselected.png}
+	\caption{Same as previous, with a selected worker}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/WorkersCreate.png}
+	\caption{Worker dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/WorkersCreateLoading.png}
+	\caption{Worker dialog (create-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/WorkersEdit.png}
+	\caption{Worker dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/WorkersEditLoading.png}
+	\caption{Worker dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/Clients.png}
+	\caption{Client's page, which is accessed using the left navigation bar}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/ClientsCreate.png}
+	\caption{Client dialog (create state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/ClientsCreateLoading.png}
+	\caption{Client dialog (create-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/ClientsEdit.png}
+	\caption{Client dialog (edit state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/ClientsEditLoading.png}
+	\caption{Client dialog (edit-loading state)}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/Owner.png}
+	\caption{Settings page, from the owner's view}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/Worker.png}
+	\caption{Settings page, from the worker's view}
+\end{figure}
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=\textwidth]{assets/ui/Client.png}
+	\caption{Settings page, from the client's view}
+\end{figure}
+% #endregion Images
 \chapter{Implementation and trials}
 \chapter{Conclusions}
 \chapter{Future work}

@@ -1,0 +1,101 @@
+% !TeX spellcheck = en_GB 
+
+\documentclass[a4paper, 12pt, oneside]{book}
+
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[pagestyles]{titlesec}
+\usepackage{titletoc}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage[a4paper, margin = 2.5cm, headheight=14pt]{geometry}
+\usepackage[hidelinks, colorlinks = false]{hyperref}
+\usepackage[bottom]{footmisc}
+\usepackage{bookmark}
+\usepackage{fontspec}
+\usepackage{graphicx}
+\usepackage[labelfont = bf]{caption}
+\usepackage{etoolbox}
+\usepackage{tabularx}
+\usepackage{colortbl}
+
+\usepackage[table]{xcolor}
+
+\title{
+	\includegraphics[width=0.75\textwidth]{assets/logo.png}
+	\\
+	{\huge Hubbl, a gym bookings manager}
+}
+\author{Miquel de Domingo i Giralt}
+
+\setmainfont{SF Pro Display}[BoldFont = SF Pro Display Bold]
+\setmonofont[Scale=0.9]{JetBrains Mono}
+
+\newfontfamily\semibf{SF Pro Display Semibold}
+
+% Variable with the page that keeps the footer style
+\def\footerstyle{- \fontsize{10pt}{10pt}\selectfont\thepage\ -}
+\pagestyle{fancy}
+% Remove the horizontal bar from the header
+\renewcommand{\headrulewidth}{0pt}
+% Clear everythihg
+\fancyhf{}
+% Set header style
+\rhead{\small\textit{\nouppercase{\rightmark}}}
+% Set the footer page number
+\fancyfoot[C]{\footerstyle}
+% Update the footer in chapter and other plain views
+\fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}%
+    \fancyhf{}%
+    \fancyfoot[C]{\footerstyle}%
+}
+
+\setlength\parindent{0pt}
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+% Tables format
+\definecolor{rowColor}{RGB}{242, 242, 250}
+\definecolor{hubblMain}{RGB}{167, 139, 250}
+\renewcommand{\arraystretch}{1.5}
+
+\titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
+\titlespacing{\chapter}{0pt}{-32pt}{12pt}
+
+\begin{document}
+\chapter{Planning}
+This chapter will cover the planning of the project. After having defined the requirements and the matrix of dependencies of such requirements, working packages will be defined, which will ensure an organized development using tasks.
+\section{Working packages}
+\begin{tabularx}{\textwidth}{| l | X |}
+	\hline
+	\rowcolor{hubblMain!10}
+	\semibf{Package name}   & {\semibf WP1}: Project management                                                       \\
+	\hline
+	\semibf{Estimated time} & Xh                                                                                      \\
+	\hline
+	\rowcolor{hubblMain!10}
+	\semibf{Tasks}          & {\semibf T1}: Project document writing \newline {\semibf T2}: Project document revision \\
+	\hline
+	\semibf{Results}        & Project document to be submitted to the jury                                            \\
+	\hline
+\end{tabularx}
+\captionof{table}{Package one table}
+\begin{tabularx}{\textwidth}{| l | X |}
+	\hline
+	\rowcolor{hubblMain!10}
+	\semibf{Package name}   & {\semibf WP1}: Project management            \\
+	\hline
+	\semibf{Estimated time} & Xh                                           \\
+	\hline
+	\rowcolor{hubblMain!10}
+	\semibf{Tasks}          & {\semibf T1}: Project document writing
+	\newline {\semibf T2}: Project document revision                       
+	\newline {\semibf T2}: Project document revision                       
+	\newline {\semibf T2}: Project document revision                       \\
+	\hline
+	\semibf{Results}        & Project document to be submitted to the jury \\
+	\hline
+\end{tabularx}
+\captionof{table}{Package one table}
+\end{document}
