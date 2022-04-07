@@ -9,7 +9,6 @@
 *.log
 *.lof
 *.toc
-*.pdf
 
 # Keep only what is in the root folder
 !.
