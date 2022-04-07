@@ -57,7 +57,7 @@
 \setcounter{tocdepth}{5}
 
 % Tables format
-\definecolor{tableBlue}{RGB}{242, 242, 242}
+\definecolor{rowColor}{RGB}{242, 242, 242}
 \renewcommand{\arraystretch}{1.5}
 
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
@@ -124,7 +124,6 @@ To structure and organise the project, working packages\footnote{See \nameref{wo
 \\[8pt]
 % TODO: Add Jira biblyography
 In order to simplify the process of \emph{epic}, \emph{story} and \emph{task} creation, the Jira software from Atlassian has been used. It has been extremely useful as it can be integrated with many tools, one being GitHub, where the code is hosted. The GitHub integration provides a lot of utilities, yet one of the most important is the fact that it tracks your branches, commits and pull requests. Using the three elements, I have been able to automate the process of starting and completing tasks, alongside of the Jira automation. The following diagram, describes the workflow of the tasks inside Jira:
-\\
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/working-packages/JiraWorkflow.png}
@@ -2304,6 +2303,13 @@ Each dependency will use the following format: \textbf{[FR-1] \texttt{->} [WP-1,
 	\item \textbf{[NFR-4] \texttt{->} [WP-53, WP-55, WP-58, WP-61, WP-65, WP-69, WP-72, WP-75, WP-78]}
 	\item \textbf{[NFR-5] \texttt{->} [WP-53, WP-55, WP-58, WP-61, WP-65, WP-69, WP-72, WP-75, WP-78, WP-82, WP-84, WP-86, WP-88, WP-91, WP-93]}
 \end{enumerate}
+\section{Roadmap}
+\newpage
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{assets/roadmap.png}
+	\caption{Gym zone dialog (edit-loading state)}
+\end{figure}
 \chapter{Studies and decisions}
 \section{Introduction}
 This chapter will cover the different aspects that have been taken into account in order to choose the technology stack used to develop the system.
@@ -2324,13 +2330,11 @@ Unit tests allow the developer to test a feature by isolating all its dependenci
 With testing, comes continuous integration which allows the code to be constantly tested. By constantly checking the newly added code, future errors can be prevented and \emph{post-deployment} breaks or bugs can be reduced. The chosen continuous integration platform is \emph{GitHub Actions}\footnote{The \emph{workflow} files of the platform can be found in the \texttt{.github/workflows} folder of the repository.}
 \subsection{Nx}
 There exist many systems or libraries that allow the development team to maintain a healthy and scalable monorepo (examples are \emph{Bazel} or \emph{Pants}). In this system, since the language is the same for both web and server applications, the monorepo build framework used that has been chosen is \emph{Nx}. As stated in their repository: \emph{Nx is a smart and extensible build framework to help you architect, test, and build at any scale}.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/nx-logo.png}
 	\caption{Nx logo}
 \end{figure}
-\\
 Using such tool, managing the applications becomes extremely easy to manage both JavaScript and TypeScript monorepos. Other key features are:
 \begin{enumerate}[label = -]
 	\item The different applications have been \emph{generated} using the plugins also developed and maintained by the team behind Nx.
@@ -2371,21 +2375,18 @@ There are other files in the root folder of the repository, yet they have been e
 This section will cover the different technologies that are specifically used to develop the different applications.
 \subsection{TypeScript}
 These days JavaScript is the most used language around the world for many reasons. Nevertheless, due to the fact of not having types, it makes some applications harder to debug and more error-prone. That is one of the reasons why Microsoft developed TypeScript, which is a strict syntactical superset of JavaScript. The code written in TypeScript is transcompiled to JavaScript at build time.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.175\textwidth]{assets/js-logo.png}
 	\includegraphics[width=0.175\textwidth]{assets/ts-logo.png}
 	\caption{JavaScript and TypeScript logos}
 \end{figure}
-\\
 By using TypeScript we provide a highly productive environment when developing the different apps. Not only reduces the amount of painful bugs due to type errors, but also provides all the benefits of the ECMA script.
 \subsection{Front end - Web applications}
 Nowadays, there are many JavaScript front-end frameworks all with their benefits and disadvantages. Angular, React, Vue and Svelte are the most known and used frameworks. Since I am most experienced with React and NextJS is built upon React, it has been the chosen option. Furthermore, on October 21st of 2021 released its 12th version which included a Rust compiler that makes rebuilds and fast refreshes extremely faster.
 \subsubsection{NextJS}
 As stated before, NextJS has been chosen as the front-end framework to build the applications with. This framework (or even meta-framework) is built on top of Node.js which enables React based web application functionalities such as server-side rendering (SSR) and static websites. In the NextJS home page, they provide the following description: \emph{Next.js gives you the best developer experience with all the features you need for production: hybrid static \& server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed}.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/next-logo.png}
 	\caption{NextJS logo}
@@ -2394,8 +2395,7 @@ As stated before, NextJS has been chosen as the front-end framework to build the
 Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library. The library is open-source and maintained by \texttt{mui-org}.
 \\[8pt]
 This library is based on the Google Material design system. However, it has an extremely powerful API to define your own design system, without the need of starting from 0. The developer has the possibility to inject the customised theme to all the components of the API included in the library. Furthermore, it includes an icon pack, which are the same as in the Google Material.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/mui-logo.png}
 	\caption{Mui library's logo}
@@ -2404,64 +2404,54 @@ This library is based on the Google Material design system. However, it has an e
 For the backend application, many languages can be used. However, since NodeJS provides a runtime environment for JavaScript, which allows building applications outside the browser. So, with the help on Nx, the backend is also written in TypeScript.
 \subsubsection{Database}
 The application has many relationships, which would be harder to maintain in a NoSQL database. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been PostgreSQL.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/postgres-logo.png}
 	\caption{PostgreSQL's logo}
 \end{figure}
-\\
 As explained before the database is run in a docker container. Viewing the data in the terminal is not an issue, yet pgAdmin is a graphic user interface which simplifies such visualisation. It is the equivalent of MySQL Workbench for PostgreSQL. With such tool, schemas in general can be simply viewed and edited. Additionally, the JetBrains DataGrip application has been also used, which has allowed to generate the ERD once the database was defined.
 \subsubsection{ExpressJS}
 ExpressJS is one of the many back-end frameworks that exist in the JavaScript world, nowadays. It is a minimal and flexible framework which provides a fast methodology to develop APIs. It is considered the most popular back-end framework of JavaScript, up to a point that other back-end meta-frameworks are ExpressJS based (an example is NestJS). As stated in their landing page, ExpressJs is a: \emph{Fast, unopinionated, minimalist web framework for Node.js}.
 % TODO: Add bibitem expressjs.com - 13/12/2021
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/express-logo.png}
 	\caption{ExpressJS's logo}
 \end{figure}
 \subsubsection{TypeORM}
 Finally, the TypeORM library is used to provide a bidirectional connection from the server to the database. TypeORM is a TypeScript ORM (\emph{object relational mapper}) whose goal is to provide an agnostic model-database mapping. By using TypeScript decorators and defining a connection, TypeORM will generate the entities or documents specified, depending on the database to which is connected. Such agnosticism allows to re-use the models with different databases.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{assets/typeorm-logo.png}
 	\caption{TypeORM's logo}
 \end{figure}
-\\
 In conjunction with Nx, the models that are used to generate the entities and their relations, can be used in the front-end applications. Therefore, such models can be shared and easily maintained. By default, TypeORM does not provide an entity validation,
 \subsection{Tests}
 Last but not least, the test stack also had to be defined. In this case, the provided frameworks for testing by Nx were kept, since they are some of the most common testing libraries nowadays.
 \subsubsection{Unit testing - Jest}
 Both \texttt{@nrwl/express} and \texttt{@nrwl/next} generators set up the application with Jest. Jest is an open-source unit and mock testing framework developed and maintained by Facebook. It is one of the most popular libraries nowadays, since it is extremely powerful and simple. It offers a powerful CLI tool to control the tests which has an interactive mode that allows the developer only to run \emph{affected} tests\footnote{Nx also takes care of running only affected tests.}. Other benefits of Jest are that require zero configuration and ensures isolation between tests. Isolation is extremely important when running tests, to ensure that each test does not influence other's results. As stated in their home page: \emph{Jest is a delightful JavaScript Testing Framework with a focus in simplicity}
 % TODO: Add bibitem jest.io - 13/12/2021
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	% TODO: Add jest logo
 	\includegraphics[width=0.3\textwidth]{assets/jest-logo.png}
 	\caption{Jest's logo}
 \end{figure}
-\\
 Therefore, Jest is used in all the applications to unit tests the services, controllers, components and so on from all the applications. Furthermore, since there is a GitHub Action, CI can be easliy acomplished.
 \subsubsection{Unit testing - \texttt{@testing-library}}
 Aside from unit testing API functions and so on, it is important to also test the different React components, ensuring they behave as expected. Again, there are multiple choices to develop component unit tests, yet the solution chosen is the one which is installed with \texttt{@nrlw/next}: \texttt{@testing-library}. This package provides an API to easily test React components. It is a very light library which uses functions on top of \texttt{react-dom} and \texttt{react-dom/test-utils}.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/testing-library-logo.png}
 	\caption{Testing library's logo}
 \end{figure}
 \subsubsection{Client e2e testing - Cypress}
 Cypress is more than a tool for testing. It provides a graphical user interface to see what is being tested, where it fails and other features. It is an extremely powerful tool for UI testing, which has always been a difficult subject. As stated in their website, cypress enables you to: \emph{write faster, easier and more reliable tests}.
-\\
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{assets/cypress-logo.png}
 	\caption{Cypress's logo}
 \end{figure}
-\\
 In order to use cypress, the project needs a specific folder structure which can be a bit confusing to set up. However, the \texttt{@nrlw/next} plugin already sets up this environment, which is kept in the \texttt{*-e2e} folders\footnote{In the system case, the different cypress environments are in: \texttt{client-e2e}, \texttt{core-e2e} and \texttt{landing-e2e}.}.
 \subsubsection{Server e2e testing - Jest and Supertest}
 Finally, the libraries that are installed to develop end-to-end test for express, in \texttt{@nrwl/express} are: Jest and Supertest. The Jest library has already been covered. The Supertest is an HTTP assertions library that allows the developer to create Node.js HTTP tests. It uses the SuperAgent library, which is an HTTP client for Node.js. Using Supertest is one of the most common methods to develop such tests.
@@ -2479,7 +2469,7 @@ In a previous section, it has been explained that the DataGrip application has b
 Such tool allows faster diagrams visualisation and avoids the pain of having to keep ERD diagrams manually updated on any minor change,
 \subsection{Diagram}
 The resulting diagram is:
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/db-erd.png}
 	\caption{Database diagram}
@@ -2678,237 +2668,237 @@ Finally, the following aspects have been considered when designing the views:
 With these requirements, there are views modals that contain 4 images, each one for the described states.
 \\
 % #region Images
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/SignUpStepOne.png}
 	\caption{First step of the sign up page}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/SignUpStepOne.png}
 	\caption{Second step of the sign up page}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/LogIn.png}
 	\caption{View of the login page}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/Dashboard.png}
 	\caption{Dashboard page, displaying a summary of the gym's information}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/VirtualGyms.png}
 	\caption{Virtual gym's page, which is accessed using the left navigation bar}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/CreateVirtualGym.png}
 	\caption{Virtual gym dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingVirtualGym.png}
 	\caption{Virtual gym dialog (create-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EditVirtualGym.png}
 	\caption{Virtual gym dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EditLoadingVirtualGym.png}
 	\caption{Virtual gym dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/VirtualGym.png}
 	\caption{Single virtual gym view, accessed by clicking on a virtual gym}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/CreateGymZone.png}
 	\caption{Gym zone dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingGymZone.png}
 	\caption{Gym zone dialog (create-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EditGymZone.png}
 	\caption{Gym zone dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EditLoadingGymZone.png}
 	\caption{Gym zone dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/CreateEvent.png}
 	\caption{Event dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingEvent.png}
 	\caption{Event dialog (create-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EditEvent.png}
 	\caption{Event dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EditLoadingEvent.png}
 	\caption{Event dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/ClassGymZone.png}
 	\caption{Class gym zone page, accessed by clicking on any class-type gym zone}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/Events.png}
 	\caption{Event's page, which is accessed using the left navigation bar}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTypeCreate.png}
 	\caption{Event type dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTypeCreateLoading.png}
 	\caption{Event type dialog (create-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTypeEdit.png}
 	\caption{Event type dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTypeEditLoading.png}
 	\caption{Event type dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTemplateCreate.png}
 	\caption{Event template dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTemplateCreateLoading.png}
 	\caption{Event template dialog (create-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTemplateEdit.png}
 	\caption{Event template dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/EventTemplateEditLoading.png}
 	\caption{Event template dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/Trainers.png}
 	\caption{Trainer's page, which is accessed using the left navigation bar}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/TrainerCreate.png}
 	\caption{Trainer dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/TrainerCreateLoading.png}
 	\caption{Trainer dialog (create-edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/TrainerEdit.png}
 	\caption{Trainer dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/TrainerEditLoading.png}
 	\caption{Trainer dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/WorkersSelected.png}
 	\caption{Worker's page, which is accessed using the left navigation bar}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/WorkersUnselected.png}
 	\caption{Same as previous, with a selected worker}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/WorkersCreate.png}
 	\caption{Worker dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/WorkersCreateLoading.png}
 	\caption{Worker dialog (create-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/WorkersEdit.png}
 	\caption{Worker dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/WorkersEditLoading.png}
 	\caption{Worker dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/Clients.png}
 	\caption{Client's page, which is accessed using the left navigation bar}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/ClientsCreate.png}
 	\caption{Client dialog (create state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/ClientsCreateLoading.png}
 	\caption{Client dialog (create-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/ClientsEdit.png}
 	\caption{Client dialog (edit state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/ClientsEditLoading.png}
 	\caption{Client dialog (edit-loading state)}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/Owner.png}
 	\caption{Settings page, from the owner's view}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/Worker.png}
 	\caption{Settings page, from the worker's view}
 \end{figure}
-\begin{figure}[h!]
+\begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/ui/Client.png}
 	\caption{Settings page, from the client's view}

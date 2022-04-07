@@ -400,6 +400,7 @@ Each dependency will use the following format: \textbf{[FR-1, FR-2, FR-3] \textt
 \chapter{Planning}
 This chapter will cover the planning of the project. After having defined the requirements and the matrix of dependencies of such requirements, working packages will be defined, which will ensure an organized development using tasks.
 \section{Working packages}
+\label{working-packages}
 Each's table corresponds to one of the working packages. Since the \emph{Development} branch of the working packages tree the most extensive, its tables are explained after the \emph{Testing} branch, and so are the package numbers.
 \begin{figure}[H]
 	\centering
@@ -2554,4 +2555,18 @@ With these requirements, there are views modals that contain 4 images, each one 
 	\caption{Settings page, from the client's view}
 \end{figure}
 % endregion Images
+\section{Roadmap}
+Once that the tasks required to develop the project have been determined and specified, the time management can be easily structured, using a Gantt's diagram. Such diagram provides an estimated visualisation of the projecte development: visualising the start and finish of each part of the project.
+\\[8pt]
+Nonetheless, it is still an aproximation. Many things may happen during the development of the project, for instance, a web service that was not expected when plannig the project, yet now is necessary. The tasks that have not been planned, since were difficult to predict, may affect negatively the project schedule, distorting the roadmap. On the contrary, it could happen that some task was overestimated, or may not even be necessary. Such tasks will also affect the roadmap.
+\subsection{Gantt's diagram}
+Since the number of packages is very large, the diagram has been structure in their parent packages. Therefore, the roadmap only contains the workig packages groups that have been explained in the \emph{\nameref{working-packages}} section. Furthermore, a brief explanation is required, as the diagram does not talk by itself.
+\\[8pt]
+First, the \emph{Project management} package has a square in the roadmap everytime a part of the project is started. That is because the documentation has to be continually updated, with the new changes in order to keep consistency between the documentation and the project. Secondly, the \emph{Analysis \& Design} group has been divided in two parts. The first part involves the design of the database. This design is a bare initial implementation, as it may change while the project is being developed. The second part is the design of the user interfaces. An important amount of views will be designed, and it would speed up the process if the API application is already implemented, since knowing what data the server will provide, the UI is easier to design. That is why the second part happens after the development of the API application. Third, at the same time the database design is started, the \emph{Development env} group of tasks will take place. The reason behind this decision is due to the fact that the development environment and the database design are related. Fourth, the client side applications will be developed one after the other. The main group, the \emph{Core application} will take most of the amount of time, since it is the most complex. Furthermore, one of the goals of the project is the creation of libraries which allow the reuse of code within the applications. Such abstraction will accelerate and simplify the development of the client and landing applications. Last but not least, there's one group that does not appear in the diagram. Such grup is the \emph{Testing} group. The reason why the group has not been added to the roadmap is beacause the testing of the application it is something that has to be done while the application is being developed. As explained previously, the application has been developed using a TDD methodology, therefore, testing is mandatory.
+\newpage
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.45\textwidth]{assets/roadmap.png}
+	\caption{Gym zone dialog (edit-loading state)}
+\end{figure}
 \end{document}
