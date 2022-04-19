@@ -102,6 +102,30 @@ As a future implementation yet not being a priority, the system will also have:
 	\item An analytics page which would provide information about the statistics of the gym.
 	\item A subscription system for the clients.
 \end{enumerate}
+\chapter{Viability}
+The study of the viability of the project will take into account from the technical resources to the echonomical cost of the project.
+\section{Techical resources}
+Since the application is a web-based application, it only requires a computer. Such computer should have installed all the required software, which is covered in further sections, so that the development of the project can be done without running into any issue.
+\section{Echonomical costs}
+The echonomical costs of the projects will only take into account the amount of hours the developer and designer have needed to develop the application, since the hardware requirements are already owned by the developer. However, an application can never be considered as finished, since there will always be bugs, new features and client requests that will keep improving the software. Therefore, in order to evaluate the total cost of the project, the estimated hours required both to design and develop the application will be multiplied by a fixed €/hr quantity\footnote{A more specific description of the tasks with their time can be found in the \nameref{working-packages} section}.
+\\[8pt]
+In Spain, where the project is being developed, JavaScript developers earn around 13.97€/hour ($\approx$ 14.00€/hour). For the ui designers, the average is around 15.38€/hour ($\approx$ 15.50€/hour). Therefore, the total costs of the project can be described in the following table
+\\[8pt]
+\begin{tabularx}{\textwidth}{| l | X | X | X|}
+	\hline
+	{\semibf Process} & {\semibf Hours} & {\semibf Price} & {\semibf Total} \\
+	\hline
+	Design            & 96h             & 15.50€/hour     & 1488€           \\
+	\hline
+	Development       & 629h            & 13.97€/hour     & 8806€           \\
+	\hline
+	\rowcolor{rowColor}
+	Total             & 725h            & -               & 10294€          \\
+	\hline
+\end{tabularx}
+% TODO: Add to bibliography: https://es.talent.com/salary?job=dise%C3%B1ador+ui [19/04/2022]
+% TODO: Add to bibliography: https://es.talent.com/salary?job=programador+javascript [19/04/2022]
+\captionof{table}{Total costs table}
 \chapter{Methodology}
 \section{Introduction}
 In this chapter, it will be briefly explained what project management will be utilised and the development methodology. Both decisions are crucial and will have effect in how the project is planned and evolves.
@@ -221,6 +245,7 @@ After the appointment has been made, the client will be able to modify it and re
 In this section, the above described requirements will be explained more in depth. The functional requirements are defined as the core functionalities of the system. All requirements exposed in the section are considered essentials and the system would be considered incomplete if it did not satisfy such requisites.
 \\[8pt]
 The requisites will be exposed with their code name and a number (as \emph{FR-1}), their priority and a brief description. Three levels of priority have been defined:
+% region FUNCTIONAL_REQUIREMENTS
 \begin{enumerate}[label = \arabic{*}.]
 	\item \textbf{High priority (3)}. Such requisites must be fulfilled by the application in order to provide a proper user experience.
 	\item \textbf{Medium priority (2)}. Such requisites should be fulfilled by the application in order to provide an above average user experience.
@@ -373,6 +398,7 @@ A non-functional requirement is a requirement that defines system attributes suc
 	\item \textbf{NFR-4 (1)}. The core application has to provide a responsive interface up to a point. In smaller screens such as phones, some functionalities would not be easy to implement nor to use.
 	\item \textbf{NFR-5 (2)}. The three web applications have to provide an accessible and semantic HTML structure.
 \end{enumerate}
+% endregion FUNCTIONAL_REQUIREMENTS
 \section{Requirements dependency matrix}
 Due to the large quantity of requirements that have been determined for the development of the project, and due to the low relationship between them, the dependencies will be shown individually, in order to avoid displaying a nearly empty table. Using the following notation, the result is more consise and can be understood better.
 \\[8pt]
@@ -631,7 +657,7 @@ The \emph{testing} branch contains the working package that is related with the 
 	{\semibf Description}    & End-to-end testing implementation for the applications.                  \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 4h                                                                       \\
+	{\semibf Estimated time} & 96h                                                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: \emph{API} aplication e2e testing.
 	\newline {\semibf T2}: \emph{Core} application e2e testing.
@@ -666,7 +692,7 @@ The \emph{development environment} group is composed of the following working pa
 	{\semibf Description}    & Prepare the Nx monorepo.                                          \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                \\
+	{\semibf Estimated time} & 4h                                                                \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Generate an \texttt{nx-workspace} ready to develop. \\
 	\hline
@@ -684,7 +710,7 @@ The \emph{development environment} group is composed of the following working pa
 	{\semibf Description}    & Dockerize the database, the test database and the API application. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                 \\
+	{\semibf Estimated time} & 4h                                                                 \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Dockerize the main database and the test database.
 	\newline {\semibf T2}: Dockerize the API application using a NodeJS image.                    \\
@@ -1375,7 +1401,7 @@ The \emph{api} group is composed of the following working packages:
 	ensures that a gym zone does not have more appointments than its capacity.                                 \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 16h                                                                              \\
+	{\semibf Estimated time} & 16h                                                                             \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -1466,7 +1492,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Develop the sign up page                   \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 16h                                         \\
+	{\semibf Estimated time} & 16h                                        \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Set up the page structure.
 	\newline {\semibf T2}: Sign up as an owner.                           \\
@@ -1485,7 +1511,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Develop the log in page.                 \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 16h                                       \\
+	{\semibf Estimated time} & 16h                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Set up the page structure.
 	\newline {\semibf T2}: Log in as an owner.
@@ -1523,7 +1549,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Add the interactivity to the dashboard page.               \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 12h                                                      \\
+	{\semibf Estimated time} & 12h                                                        \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Add virtual gyms' interactivity.
 	\newline {\semibf T2}: Add gym zones' interactivity.
@@ -2086,7 +2112,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the virtual gyms page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                       \\
+	{\semibf Estimated time} & 4h                                                                       \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the virtual gyms page.                 \\
 	\hline
@@ -2104,7 +2130,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Display the list of virtual gyms.                   \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                  \\
+	{\semibf Estimated time} & 4h                                                  \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: List the virtual gyms of the gym.
 	\newline {\semibf T2}: List the gym zones inside each virtual gym.             \\
@@ -2123,7 +2149,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the virtual gym page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                      \\
+	{\semibf Estimated time} & 4h                                                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the virtual gym page.                 \\
 	\hline
@@ -2141,7 +2167,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & List the gym zones of a virtual gym.            \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                              \\
+	{\semibf Estimated time} & 4h                                              \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: List all class gym zones.
 	\newline {\semibf T2}: List all non-class gym zones.                       \\
@@ -2160,7 +2186,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the class gym zone page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                         \\
+	{\semibf Estimated time} & 4h                                                                         \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the class gym zone page.                 \\
 	\hline
@@ -2181,7 +2207,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Estimated time} & 4h                                                  \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Design the calendar of events.
-	{\semibf T2}: Add interactivity to the calendar.                               \\
+	\newline{\semibf T2}: Add interactivity to the calendar.                       \\
 	\hline
 	\rowcolor{rowColor}
 	{\semibf Results}        & The calendar of events for the gym zone.            \\
@@ -2215,7 +2241,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the settings page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                   \\
+	{\semibf Estimated time} & 4h                                                                   \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the settings page.                 \\
 	\hline
@@ -2246,6 +2272,7 @@ The \emph{client} group is composed of the following working packages:
 \captionof{table}{Package ninety-two's table - Configure user settings (Settings)}
 \subsubsection{Landing application}
 The landing application is a simple application that displays information about the system and acces to the main application.
+\\
 \begin{tabularx}{\textwidth}{| l | X |}
 	\hline
 	\rowcolor{rowColor}
@@ -2254,7 +2281,7 @@ The landing application is a simple application that displays information about 
 	{\semibf Description}    & Set up the form to update client settings.                \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 16h                                                        \\
+	{\semibf Estimated time} & 16h                                                       \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Display basic information about the system.
 	\newline {\semibf T2}: Display information about the data privacy.

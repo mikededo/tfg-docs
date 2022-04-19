@@ -102,7 +102,30 @@ As a future implementation yet not being a priority, the system will also have:
 	\item An analytics page which would provide information about the statistics of the gym.
 	\item A subscription system for the clients.
 \end{enumerate}
-\chapter{Viability study}
+\chapter{Viability}
+The study of the viability of the project will take into account from the technical resources to the echonomical cost of the project.
+\section{Techical resources}
+Since the application is a web-based application, it only requires a computer. Such computer should have installed all the required software, which is covered in further sections, so that the development of the project can be done without running into any issue.
+\section{Echonomical costs}
+The echonomical costs of the projects will only take into account the amount of hours the developer and designer have needed to develop the application, since the hardware requirements are already owned by the developer. However, an application can never be considered as finished, since there will always be bugs, new features and client requests that will keep improving the software. Therefore, in order to evaluate the total cost of the project, the estimated hours required both to design and develop the application will be multiplied by a fixed €/hr quantity\footnote{A more specific description of the tasks with their time can be found in the \nameref{working-packages} section}.
+\\[8pt]
+In Spain, where the project is being developed, JavaScript developers earn around 13.97€/hour ($\approx$ 14.00€/hour). For the ui designers, the average is around 15.38€/hour ($\approx$ 15.50€/hour). Therefore, the total costs of the project can be described in the following table
+\\[8pt]
+\begin{tabularx}{\textwidth}{| l | X | X | X|}
+	\hline
+	{\semibf Process} & {\semibf Hours} & {\semibf Price} & {\semibf Total} \\
+	\hline
+	Design            & 96h             & 15.50€/hour     & 1488€           \\
+	\hline
+	Development       & 629h            & 13.97€/hour     & 8806€           \\
+	\hline
+	\rowcolor{rowColor}
+	Total             & 725h            & -               & 10294€          \\
+	\hline
+\end{tabularx}
+% TODO: Add to bibliography: https://es.talent.com/salary?job=dise%C3%B1ador+ui [19/04/2022]
+% TODO: Add to bibliography: https://es.talent.com/salary?job=programador+javascript [19/04/2022]
+\captionof{table}{Total costs table}
 \chapter{Methodology}
 \section{Introduction}
 In this chapter, it will be briefly explained what project management will be utilised and the development methodology. Both decisions are crucial and will have effect in how the project is planned and evolves.
@@ -631,7 +654,7 @@ The \emph{testing} branch contains the working package that is related with the 
 	{\semibf Description}    & End-to-end testing implementation for the applications.                  \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 4h                                                                       \\
+	{\semibf Estimated time} & 96h                                                                       \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: \emph{API} aplication e2e testing.
 	\newline {\semibf T2}: \emph{Core} application e2e testing.
