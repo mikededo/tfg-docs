@@ -424,6 +424,7 @@ Each dependency will use the following format: \textbf{[FR-1, FR-2, FR-3] \textt
 \chapter{Planning}
 This chapter will cover the planning of the project. After having defined the requirements and the matrix of dependencies of such requirements, working packages will be defined, which will ensure an organized development using tasks.
 \section{Working packages}
+\label{working-packages}
 Each's table corresponds to one of the working packages. Since the \emph{Development} branch of the working packages tree the most extensive, its tables are explained after the \emph{Testing} branch, and so are the package numbers.
 \begin{figure}[H]
 	\centering
@@ -450,7 +451,7 @@ The \emph{project management} branch contains all the working packages that are 
 	{\semibf Description}    & Working package description.                  \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                            \\
+	{\semibf Estimated time} & 8h                                            \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Project document writing.
 	\newline {\semibf T2}: Project document review.                          \\
@@ -469,7 +470,7 @@ The \emph{project management} branch contains all the working packages that are 
 	{\semibf Description}    & Wording of some chapters of the memory.            \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 4d                                                 \\
+	{\semibf Estimated time} & 8h                                                 \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Wording of the project introduction.
 	\newline {\semibf T2}: Wording of the requirements.
@@ -527,7 +528,7 @@ The \emph{project management} branch contains all the working packages that are 
 	{\semibf Description}    & Analysis of the functionalities of the application. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                  \\
+	{\semibf Estimated time} & 8h                                                  \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Users identification.
 	\newline {\semibf T2}: Define user needs (owner/worker and client).
@@ -544,21 +545,21 @@ The \emph{requirements} branch contains all the tasks that are related with the 
 \begin{tabularx}{\textwidth}{| l | X |}
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Package name}   & {\semibf WP6}: Functional requirements                                                 \\
+	{\semibf Package name}   & {\semibf WP6}: Functional requirements                                     \\
 	\hline
-	{\semibf Description}    & Analysis and definition of the functional requirements of the application.             \\
+	{\semibf Description}    & Analysis and definition of the functional requirements of the application. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d 4h\footnote{\emph{1d} is considered 1 day of work, which means a total of 8 hours.} \\
+	{\semibf Estimated time} & 12h                                                                        \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Use case diagram.
 	\newline {\semibf T2}: Functional requirements' specification for the \textit{core} application.
 	\newline {\semibf T3}: Functional requirements' specification for the \textit{client} application.
 	\newline {\semibf T4}: Functional requirements' specification for the \textit{landing} application.
-	\newline {\semibf T5}: Functional requirements review and make changes if needed.                                 \\
+	\newline {\semibf T5}: Functional requirements review and make changes if needed.                     \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Results}        & Section 5.4 of the memory document.                                                    \\
+	{\semibf Results}        & Section 5.4 of the memory document.                                        \\
 	\hline
 \end{tabularx}
 \captionof{table}{Package six's table - Functional requirements}
@@ -611,7 +612,7 @@ The \emph{analysis and design} branch contains all the working packages that are
 	{\semibf Description}    & Definition of the requirements' dependency matrix.                    \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 12d                                                                   \\
+	{\semibf Estimated time} & 96h                                                                   \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Design system specification.
 	\newline {\semibf T2}: Prototype most of the user interfaces.
@@ -654,7 +655,7 @@ The \emph{testing} branch contains the working package that is related with the 
 	{\semibf Description}    & End-to-end testing implementation for the applications.                  \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 96h                                                                       \\
+	{\semibf Estimated time} & 96h                                                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: \emph{API} aplication e2e testing.
 	\newline {\semibf T2}: \emph{Core} application e2e testing.
@@ -689,7 +690,7 @@ The \emph{development environment} group is composed of the following working pa
 	{\semibf Description}    & Prepare the Nx monorepo.                                          \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                \\
+	{\semibf Estimated time} & 4h                                                                \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Generate an \texttt{nx-workspace} ready to develop. \\
 	\hline
@@ -707,7 +708,7 @@ The \emph{development environment} group is composed of the following working pa
 	{\semibf Description}    & Dockerize the database, the test database and the API application. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                 \\
+	{\semibf Estimated time} & 4h                                                                 \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Dockerize the main database and the test database.
 	\newline {\semibf T2}: Dockerize the API application using a NodeJS image.                    \\
@@ -726,7 +727,7 @@ The \emph{development environment} group is composed of the following working pa
 	{\semibf Description}    & Set up Github Actions for CI.                           \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                      \\
+	{\semibf Estimated time} & 8h                                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Set up CI for the \emph{API} application.
 	\newline {\semibf T2}: Set up CI for the \emph{core} application.
@@ -775,7 +776,7 @@ The \emph{api} group is composed of the following working packages:
 	{\semibf Description}    & Allow the users to register.                \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                          \\
+	{\semibf Estimated time} & 8h                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -816,7 +817,7 @@ The \emph{api} group is composed of the following working packages:
 	{\semibf Description}    & Allow the users to log in to the application.      \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                 \\
+	{\semibf Estimated time} & 8h                                                 \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -917,7 +918,7 @@ The \emph{api} group is composed of the following working packages:
 	{\semibf Description}    & Allow the creation of trainers.             \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                          \\
+	{\semibf Estimated time} & 8h                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -997,7 +998,7 @@ The \emph{api} group is composed of the following working packages:
 	{\semibf Description}    & Allow the creation of virtual gyms.         \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                          \\
+	{\semibf Estimated time} & 8h                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -1077,7 +1078,7 @@ The \emph{api} group is composed of the following working packages:
 	{\semibf Description}    & Allow the creation of gym zones.            \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                          \\
+	{\semibf Estimated time} & 8h                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -1157,7 +1158,7 @@ The \emph{api} group is composed of the following working packages:
 	{\semibf Description}    & Allow the creation of event types.          \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                          \\
+	{\semibf Estimated time} & 8h                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -1317,7 +1318,7 @@ The \emph{api} group is composed of the following working packages:
 	{\semibf Description}    & Allow the creation of events.               \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                          \\
+	{\semibf Estimated time} & 8h                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -1398,7 +1399,7 @@ The \emph{api} group is composed of the following working packages:
 	ensures that a gym zone does not have more appointments than its capacity.                                 \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2d                                                                              \\
+	{\semibf Estimated time} & 16h                                                                             \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Create the services required.
 	\newline {\semibf T2}: Create the controllers required.
@@ -1489,7 +1490,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Develop the sign up page                   \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2d                                         \\
+	{\semibf Estimated time} & 16h                                        \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Set up the page structure.
 	\newline {\semibf T2}: Sign up as an owner.                           \\
@@ -1508,7 +1509,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Develop the log in page.                 \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2d                                       \\
+	{\semibf Estimated time} & 16h                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Set up the page structure.
 	\newline {\semibf T2}: Log in as an owner.
@@ -1546,7 +1547,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Add the interactivity to the dashboard page.               \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d 4h                                                      \\
+	{\semibf Estimated time} & 12h                                                        \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Add virtual gyms' interactivity.
 	\newline {\semibf T2}: Add gym zones' interactivity.
@@ -1605,7 +1606,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Create the modal to create, edit and delete virtual gyms.           \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                                  \\
+	{\semibf Estimated time} & 8h                                                                  \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete virtual gyms.        \\
 	\hline
@@ -1641,7 +1642,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & List the gym zones of a virtual gym.            \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                              \\
+	{\semibf Estimated time} & 8h                                              \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: List all class gym zones.
 	\newline {\semibf T2}: List all non-class gym zones.                       \\
@@ -1660,7 +1661,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Create the modal to create, edit and delete gym zones.          \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                              \\
+	{\semibf Estimated time} & 8h                                                              \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete gym zones.       \\
 	\hline
@@ -1696,10 +1697,10 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Display the calendar of events of the gym zone.     \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                  \\
+	{\semibf Estimated time} & 8h                                                  \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Design the calendar of events.
-	{\semibf T2}: Add interactivity to the calendar.                               \\
+	\newline {\semibf T2}: Add interactivity to the calendar.                      \\
 	\hline
 	\rowcolor{rowColor}
 	{\semibf Results}        & The calendar of events for the gym zone.            \\
@@ -1715,7 +1716,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete events.                        \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                              \\
+	{\semibf Estimated time} & 8h                                                              \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete events.          \\
 	\hline
@@ -1733,7 +1734,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete appointments.                        \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                                    \\
+	{\semibf Estimated time} & 8h                                                                    \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete appointments.          \\
 	\hline
@@ -1788,7 +1789,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete events.                \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                      \\
+	{\semibf Estimated time} & 8h                                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete events.  \\
 	\hline
@@ -1806,7 +1807,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete events templates.                \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                                \\
+	{\semibf Estimated time} & 8h                                                                \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete events templates.  \\
 	\hline
@@ -1860,7 +1861,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete trainers.                  \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                          \\
+	{\semibf Estimated time} & 8h                                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete trainers.    \\
 	\hline
@@ -1914,7 +1915,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete workers.                 \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                        \\
+	{\semibf Estimated time} & 8h                                                        \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete workers.   \\
 	\hline
@@ -1968,7 +1969,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete trainers.                  \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                          \\
+	{\semibf Estimated time} & 8h                                                          \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete trainers.    \\
 	\hline
@@ -2004,7 +2005,7 @@ The \emph{core} group is composed of the following working packages:
 	{\semibf Description}    & Set up the form to update user settings.           \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                 \\
+	{\semibf Estimated time} & 8h                                                 \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Log out the user.
 	\newline {\semibf T2}: Configure the basic fields of the user.
@@ -2034,7 +2035,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Develop the sign up page                     \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                           \\
+	{\semibf Estimated time} & 8h                                           \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Set up the page structure.
 	\newline {\semibf T2}: Sign up as a client.                             \\
@@ -2053,7 +2054,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Develop the log in page.                 \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                       \\
+	{\semibf Estimated time} & 8h                                       \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Set up the page structure.
 	\newline {\semibf T2}: Log in as a client.                          \\
@@ -2109,7 +2110,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the virtual gyms page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                       \\
+	{\semibf Estimated time} & 4h                                                                       \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the virtual gyms page.                 \\
 	\hline
@@ -2127,7 +2128,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Display the list of virtual gyms.                   \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                  \\
+	{\semibf Estimated time} & 4h                                                  \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: List the virtual gyms of the gym.
 	\newline {\semibf T2}: List the gym zones inside each virtual gym.             \\
@@ -2146,7 +2147,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the virtual gym page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                      \\
+	{\semibf Estimated time} & 4h                                                                      \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the virtual gym page.                 \\
 	\hline
@@ -2164,7 +2165,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & List the gym zones of a virtual gym.            \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                              \\
+	{\semibf Estimated time} & 4h                                              \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: List all class gym zones.
 	\newline {\semibf T2}: List all non-class gym zones.                       \\
@@ -2183,7 +2184,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the class gym zone page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                         \\
+	{\semibf Estimated time} & 4h                                                                         \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the class gym zone page.                 \\
 	\hline
@@ -2204,7 +2205,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Estimated time} & 4h                                                  \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Design the calendar of events.
-	{\semibf T2}: Add interactivity to the calendar.                               \\
+	\newline{\semibf T2}: Add interactivity to the calendar.                       \\
 	\hline
 	\rowcolor{rowColor}
 	{\semibf Results}        & The calendar of events for the gym zone.            \\
@@ -2220,7 +2221,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Modal to create, edit and delete appointments.                        \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 1d                                                                    \\
+	{\semibf Estimated time} & 8h                                                                    \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Modal to create, edit and delete appointments.          \\
 	\hline
@@ -2238,7 +2239,7 @@ The \emph{client} group is composed of the following working packages:
 	{\semibf Description}    & Apply the design of the settings page. Should reuse the core's page. \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2h                                                                   \\
+	{\semibf Estimated time} & 4h                                                                   \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Apply the design of the settings page.                 \\
 	\hline
@@ -2269,6 +2270,7 @@ The \emph{client} group is composed of the following working packages:
 \captionof{table}{Package ninety-two's table - Configure user settings (Settings)}
 \subsubsection{Landing application}
 The landing application is a simple application that displays information about the system and acces to the main application.
+\\
 \begin{tabularx}{\textwidth}{| l | X |}
 	\hline
 	\rowcolor{rowColor}
@@ -2277,7 +2279,7 @@ The landing application is a simple application that displays information about 
 	{\semibf Description}    & Set up the form to update client settings.                \\
 	\hline
 	\rowcolor{rowColor}
-	{\semibf Estimated time} & 2d                                                        \\
+	{\semibf Estimated time} & 16h                                                       \\
 	\hline
 	{\semibf Tasks}          & {\semibf T1}: Display basic information about the system.
 	\newline {\semibf T2}: Display information about the data privacy.
@@ -2327,6 +2329,7 @@ Each dependency will use the following format: \textbf{[FR-1] \texttt{->} [WP-1,
 	\item \textbf{[NFR-5] \texttt{->} [WP-53, WP-55, WP-58, WP-61, WP-65, WP-69, WP-72, WP-75, WP-78, WP-82, WP-84, WP-86, WP-88, WP-91, WP-93]}
 \end{enumerate}
 \section{Roadmap}
+The roadmap contains an estimation of how the development of the application should. Nonetheless, it is just an estimation and many things may occur that could change such schedule. The projec that is expected to take up most of the amount of tiume is the \emph{core} app, as it is the onw that contains the most amount of logic, followed by the server. Even though the projects are structured sequentially, bugs or errors may occur while developing, for instance, a web service does not return what it should\footnote{The applications will be tested, yet tests do not ensure a 100\% correctness of the application. If the test does not contemplate all corner-cases, there may be a bug.}, which would imply to have it fixed while another app is being developed.
 \newpage
 \begin{figure}[H]
 	\centering
@@ -2524,82 +2527,96 @@ One of the big concepts to define in the database has been how are users stored.
 \subsubsection{Owner}
 The \emph{Owner} entity is the person who has the most permissions. Therefore, instead of having all the permissions which are defined in the \emph{Worker} entity set to \texttt{true}, the \emph{Owner}'s are kept in a different table. Additionally, an owner will have more permissions than the ones stored in the \emph{Worker} entity. The fields of the table are:
 \begin{enumerate}[label = -]
-	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+	\item \textbf{person\_id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+	\item \textbf{onwer\_id} (\texttt{integer}) [] \texttt{->} References the id of the \emph{Gym} the owner owns.
 \end{enumerate}
 \subsubsection{Worker}
 The next person type is the \emph{Worker}. A worker has different permissions set by the owner when created. The \emph{Worker} entity basically contains \texttt{boolean} fields which allow the system to know what permissions have been given to the worker. The permissions of the user are set using the following rule: \texttt{<operation>\_<on>}. For example, the permission of \emph{updating} the gym zones is \texttt{update\_gym\_zone}.
 \\[8pt]
 The fields of the table are
 \begin{enumerate}[label = -]
-	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
-	\item \textbf{worker\_code} (\texttt{uuid}) [\texttt{DEFAULT uuid\_generate\_v4()}] \texttt{->} Code generated by the system to identify the workers.
-	\item \textbf{update\_virtual\_gym} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a virtual gym.
-	\item \textbf{create\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a gym zone.
-	\item \textbf{update\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a gym zone.
-	\item \textbf{delete\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete a gym zone.
-	\item \textbf{create\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a trainer.
-	\item \textbf{update\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a trainer.
-	\item \textbf{delete\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a trainer.
-	\item \textbf{create\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a\\client.
-	\item \textbf{update\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a client.
-	\item \textbf{delete\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a\\client.
-	\item \textbf{create\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an event.
-	\item \textbf{update\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an event.
-	\item \textbf{delete\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete an event.
-	\item \textbf{create\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an event type.
-	\item \textbf{update\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an event type.
-	\item \textbf{delete\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete an event type.
-	\item \textbf{manager\_id\_fk} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the manager (owner) of the worker.
+	\item \textbf{person\_id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+	\item \textbf{update\_virtual\_gym} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a \emph{VirtualGym}.
+	\item \textbf{create\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a \emph{GymZone}.
+	\item \textbf{update\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a \emph{GymZone}.
+	\item \textbf{delete\_gym\_zones} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete a \emph{GymZone}.
+	\item \textbf{create\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a \emph{Trainer}.
+	\item \textbf{update\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a \emph{Trainer}.
+	\item \textbf{delete\_trainers} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a \emph{Trainer}.
+	\item \textbf{create\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a\\\emph{Client}.
+	\item \textbf{update\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a \emph{Client}.
+	\item \textbf{delete\_clients} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a\\\emph{Client}.
+	\item \textbf{create\_tags} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a\\\emph{TrainerTag}.
+	\item \textbf{update\_tags} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a \emph{TrainerTag}.
+	\item \textbf{delete\_tags} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a\\\emph{TrainerTag}.
+	\item \textbf{create\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an \emph{Event}.
+	\item \textbf{update\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an \emph{Event}.
+	\item \textbf{delete\_events} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete an \emph{Event}.
+	\item \textbf{create\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an \emph{EventType}.
+	\item \textbf{update\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an \emph{EventType}.
+	\item \textbf{delete\_event\_types} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete an \emph{EventType}.
+	\item \textbf{create\_event\_templates} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an \emph{EventTemplate}.
+	\item \textbf{update\_event\_templates} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an \emph{EventTemplate}.
+	\item \textbf{delete\_event\_templates} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete an \emph{EventTemplate}.
+	\item \textbf{create\_event\_appointments} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create an \emph{EventAppointment}.
+	\item \textbf{update\_event\_appointments} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update an \emph{EventAppointment}.
+	\item \textbf{delete\_event\_appointments} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to\\delete an \emph{EventAppointment}.
+	\item \textbf{create\_calendar\_appointments} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to create a \emph{CalendarAppointment}.
+	\item \textbf{update\_calendar\_appointments} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to update a \emph{CalendarAppointment}.
+	\item \textbf{delete\_calendar\_appointments} (\texttt{boolean}) [\texttt{DEFAULT FALSE NOT NULL}] \texttt{->} Permission to delete a \emph{CalendarAppointment}.
+	\item \textbf{manager\_id\_fk} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the manager (\emph{Owner}) of the \emph{Worker}.
 \end{enumerate}
 \subsubsection{Trainer}
 The trainer table is very simple since it has no interaction with the system. It is a subset of the properties of a worker.
 \begin{enumerate}[label = -]
-	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
-	\item \textbf{worker\_code} (\texttt{uuid}) [\texttt{DEFAULT uuid\_generate\_v4()}] \texttt{->} Code generated by the system to identify the workers.
-	\item \textbf{manager\_id\_fk} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the manager (owner) of the worker.
+	\item \textbf{person\_id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
 \end{enumerate}
 \subsubsection{Client}
 Client is a WIP entity.
 \begin{enumerate}[label = -]
-	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
+	\item \textbf{person\_id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} References an id of the \emph{Person} entity.
 	\item \textbf{covid\_passport} (\texttt{boolean}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Allows the gym owners and workers to know if the user has registered the covid passport.
 \end{enumerate}
 \subsubsection{Gym}
 The \emph{Gym} entity is relates to the company, not the infrastructure of a gym. Therefore, it works as a bridge entity that knows the preferences of the gym, such as the interface, gym location and other data. These properties can only be modified by an owner person. The table consists of the following fields:
 \begin{enumerate}[label = -]
-	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the gym.
-	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the gym, which will be displayed to the client and workers.
-	\item \textbf{email} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Contact email of the gym.
-	\item \textbf{phone} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Contact phone of the gym.
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{Gym}.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{Gym}, which will be displayed to the client and workers.
+	\item \textbf{email} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Contact email of the \emph{Gym}.
+	\item \textbf{phone} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Contact phone of the \emph{Gym}.
+	\item \textbf{code} (\texttt{varchar(8)}) [\texttt{NOT NULL}] \texttt{->} Unique \emph{Gym} code used to identify the gym so the \emph{Client} can use it when registering to the application.
 	\item \textbf{color} (\texttt{theme\_color}) [\texttt{DEFAULT "\#2196F3" NOT NULL}] \texttt{->} Primary color of the gym which is the same with all the users\footnote{This field is an enum defined in the library \texttt{@hubbl/shared/enums}.}.
 \end{enumerate}
 \subsubsection{VirtualGym}
 Once the \emph{Gym} has been defined, the company may have multiple different infrastructures, for example, if it is a franchise. These virtual gyms are stored in the \emph{VirtualGym} table. The virtual gym will have different constraints which can change if the workers or owners do change them. The fields of the \emph{VirtualGym} table are:
 \begin{enumerate}[label = -]
-	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the virtual gym.
-	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the virtual gym.
-	\item \textbf{description} (\texttt{text}) [] \texttt{->} Optional description of the virtual gym.
-	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Maximum capacity of the virtual gym.
-	\item \textbf{open\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the virtual gym opens.
-	\item \textbf{close\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the virtual gym closes.
-	\item \textbf{gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{Gym} to which the virtual gym belongs.
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{VirtualGym}.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{VirtualGym}.
+	\item \textbf{description} (\texttt{text}) [\texttt{NOT NULL}] \texttt{->} Description of the \emph{VirtualGym}.
+	\item \textbf{location} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Location of the \emph{VirtualGym}.
+	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Maximum capacity of the \emph{VirtualGym}.
+	\item \textbf{phone} (\texttt{integer}) [] \texttt{->} Optional phone of the \emph{VirtualGym}.
+	\item \textbf{open\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{VirtualGym} opens.
+	\item \textbf{close\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{VirtualGym} closes.
+	\item \textbf{gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{Gym} to which the \emph{VirtualGym} belongs.
 \end{enumerate}
 \subsubsection{GymZone}
 After having created the \emph{VirtualGym}, now gym zones can be created for the different virtual gyms of a gym. There are two types of zones: class and non-class zones. The class zones will have a schedule with \emph{Event}'s create by the gym personnel, while non-class zones will have a schedule without events. At the same time, it has the constraints set by the owner and workers, similar to the \emph{VirtualGym}.
 \\[8pt]
 The columns of the entity are:
 \begin{enumerate}[label = -]
-	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the gym zone.
-	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the gym zone.
-	\item \textbf{description} (\texttt{text}) [] \texttt{->} Optional description of the gym zone.
+	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{GymZone}.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{GymZone}.
+	\item \textbf{description} (\texttt{text}) [\texttt{NOT NULL}] \texttt{->} Description of the \emph{GymZone}.
 	\item \textbf{is\_class\_type} (\texttt{boolean}) [\texttt{DEFAULT FALSE}] \texttt{->} Whether it is a class or non-class zone.
-	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Maximum capacity of the gym zone.
-	\item \textbf{mask\_required} (\texttt{boolean}) [\texttt{DEFAULT TRUE}] \texttt{->} Whether wearing the mask is mandatory to access the gym zone.
-	\item \textbf{covid\_passport} (\texttt{boolean}) [\texttt{DEFAULT TRUE}] \texttt{->} Whether having registered the covid passport is mandatory to access the gym zone.
-	\item \textbf{open\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the gym zone opens.
-	\item \textbf{close\_time} (\texttt{timestamp}) [\texttt{NOT NULL}] \texttt{->} Time at which the gym zone closes.
-	\item \textbf{time\_intervals} (\texttt{time\_interval[]}) [\texttt{DEFAULT {30, 60, 90, 120}}] \texttt{->} This field will only be used if the gym zone is a non-class zone. It defines the time intervals, in minutes, that the clients will be able to make the appointments.
-	\item \textbf{virtual\_gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{VirtualGym} to which the gym zone belongs.
+	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Maximum capacity of the \emph{GymZone}.
+	\item \textbf{mask\_required} (\texttt{boolean}) [\texttt{NOT NULL DEFAULT TRUE}] \texttt{->} Whether wearing the mask is mandatory to access the \emph{GymZone}.
+	\item \textbf{covid\_passport} (\texttt{boolean}) [\texttt{NOT NULL DEFAULT TRUE}] \texttt{->} Whether having registered the covid passport is mandatory to access the \emph{GymZone}.
+	\item \textbf{open\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{GymZone} opens.
+	\item \textbf{close\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{GymZone} closes.
+	\item \textbf{time\_intervals} (\texttt{time\_interval[]}) [\texttt{DEFAULT {30, 60, 90, 120}}] \texttt{->} This field will only be used if the \emph{GymZone} is a non-class zone. It defines the time intervals, in minutes, that the clients will be able to make the appointments.
+	\item \textbf{calendar\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{Calendar} identifier of the \emph{GymZone}.
+	\item \textbf{virtual\_gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{VirtualGym} to which the \emph{GymZone} belongs.
 \end{enumerate}
 \subsubsection{Calendar}
 The \emph{Calendar} entity is linked to a \emph{GymZone} and is used to link the events and to know how many clients have made an \emph{Appointment} during a time interval. The \emph{Calendar} will always be linked with \emph{Event}'s, and the \emph{Event} entity will be used to determine if the \emph{Appointment} is for a class or a non-class zone.
@@ -2607,7 +2624,6 @@ The \emph{Calendar} entity is linked to a \emph{GymZone} and is used to link the
 The fields of the table are:
 \begin{enumerate}[label = -]
 	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{Calendar}.
-	\item \textbf{gym\_zone\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} \emph{GymZone} to which the \emph{Calendar} belongs.
 \end{enumerate}
 \subsubsection{CalendarDate}
 A \emph{CalendarDate} is a simple entity that will contain the year, month and day of a date. It will be created \emph{on demand}, meaning that each entry is unique, yet it will not exist until there is another entity that requires of it. With this approach, the system avoids the need to fill the table with hundreds of entries for each date. The fields are:
@@ -2624,7 +2640,7 @@ The \emph{EventType} entity is composed by the following columns:
 \begin{enumerate}[label = -]
 	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{EventType}.
 	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{EventType}.
-	\item \textbf{description} (\texttt{text}) \texttt{->} Optional description for the \emph{EventType}.
+	\item \textbf{description} (\texttt{text}) [\texttt{NOT NULL}] \texttt{->} Description for the \emph{EventType}.
 	\item \textbf{label\_color} (\texttt{app\_palette}) [\texttt{DEFAULT "\#2196F3" NOT NULL}] \texttt{->} Color of the \emph{EventType} when displayed.
 	\item \textbf{gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the id to which the \emph{EventType} belongs.
 \end{enumerate}
@@ -2635,8 +2651,12 @@ The fields of this entity are:
 \begin{enumerate}[label = -]
 	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY AUTOINCREMENT}] \texttt{->} Unique id of the \emph{EventTemplate}.
 	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{EventTemplate}.
-	\item \textbf{description} (\texttt{text}) \texttt{->} Optional description for the \emph{EventTemplate}.
-	\item \textbf{event\_type\_fk} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{EventType} of the \emph{EventTemplate}.
+	\item \textbf{description} (\texttt{text}) [\texttt{NOT NULL}] \texttt{->} Description for the \emph{EventTemplate}.
+	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Optional description for the \emph{EventTemplate}.
+	\item \textbf{covid\_passport} (\texttt{integer}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Whether the event will require the client to have the covid passport or not.
+	\item \textbf{mask\_required} (\texttt{integer}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Whether the event will require the client to wear a mask.
+	\item \textbf{event\_type\_fk} (\texttt{integer}) [] \texttt{->} References the \emph{EventType} of the \emph{EventTemplate}.
+	\item \textbf{gym\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{EventType} of the \emph{EventTemplate}.
 \end{enumerate}
 \subsubsection{Event}
 Finally, the \emph{Event} can be defined. An \emph{Event} is a bridge table that contains: the \emph{Trainer}, the \emph{CalendarDate}, the \emph{Calendar} to which is scheduled and the \emph{EventTemplate}. All these identify the \emph{Event}, that is what the entity to which the user will be able to create an appointment.
@@ -2644,9 +2664,17 @@ Finally, the \emph{Event} can be defined. An \emph{Event} is a bridge table that
 The table is defined as:
 \begin{enumerate}[label = -]
 	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY FIELD NOT NULL}] \texttt{->} Unique identifier of the \emph{Event}.
-	\item \textbf{trainer\_person} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Trainer} of the \emph{Event}.
+	\item \textbf{name} (\texttt{varchar(255)}) [\texttt{NOT NULL}] \texttt{->} Name of the \emph{Event}.
+	\item \textbf{description} (\texttt{text}) [\texttt{NOT NULL}] \texttt{->} Description for the \emph{Event}.
+	\item \textbf{capacity} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} Optional description for the \emph{Event}.
+	\item \textbf{covid\_passport} (\texttt{integer}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Whether the event will require the \emph{Client} to have the covid passport or not.
+	\item \textbf{mask\_required} (\texttt{integer}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Whether the event will require the \emph{Client} to wear a mask.
+	\item \textbf{start\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{Event} starts.
+	\item \textbf{end\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{Event} ends.
+	\item \textbf{trainer\_person\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Trainer} of the \emph{Event}.
 	\item \textbf{calendar\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Calendar} of the \emph{Event}.
-	\item \textbf{template\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{EventTemplate} of the \emph{Event}.
+	\item \textbf{template\_id} (\texttt{integer}) [] \texttt{->} References the \emph{EventTemplate} of the \emph{Event}, if any.
+	\item \textbf{event\_type\_id} (\texttt{integer}) [] \texttt{->} References the \emph{EventType} of the \emph{Event}.
 	\item \textbf{date\_year} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the year of a \emph{CalendarDate} of the \emph{Event}.
 	\item \textbf{date\_month} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the month of a \emph{CalendarDate} of the \emph{Event}.
 	\item \textbf{date\_day} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the day of a \emph{CalendarDate} of the \emph{Event}.
@@ -2657,13 +2685,13 @@ Finally, the only requirement left is the appointments from the \emph{Client}'s.
 The fields of the \emph{EventAppointment} entity are:
 \begin{enumerate}[label = -]
 	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY NOT NULL}] \texttt{->} Unique identifier of the \emph{EventAppointment}
-	\item \textbf{client\_person} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Client} that has made the \emph{EventAppointment}.
+	\item \textbf{client\_person\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Client} that has made the \emph{EventAppointment}.
 	\item \textbf{event\_id} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Event} to which the \emph{EventAppointment} has been made.
 	\item \textbf{start\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{EventAppointment} starts, which will be the same as the \emph{Event}.
 	\item \textbf{end\_time} (\texttt{time}) [\texttt{NOT NULL}] \texttt{->} Time at which the \emph{EventAppointment} ends, which will be the same as the \emph{Event}.
 	\item \textbf{cancelled} (\texttt{boolean}) [\texttt{NOT NULL DEFAULT FALSE}] \texttt{->} Used to know if the \emph{EventAppointment} has been cancelled.
 \end{enumerate}
-The fields of the \emph{EventAppointment} entity are:
+The fields of the \emph{CalendarAppointment} entity are:
 \begin{enumerate}[label = -]
 	\item \textbf{id} (\texttt{integer}) [\texttt{PRIMARY KEY NOT NULL}] \texttt{->} Unique identifier of the \emph{CalendarAppointment}
 	\item \textbf{client\_person} (\texttt{integer}) [\texttt{NOT NULL}] \texttt{->} References the \emph{Client} that has made the \emph{CalendarAppointment}.
