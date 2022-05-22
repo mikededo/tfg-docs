@@ -14,7 +14,7 @@
 \usepackage{bookmark}
 \usepackage{fontspec}
 \usepackage{graphicx}
-\usepackage[labelfont = bf]{caption}
+\usepackage[labelfont = bf, hypcap = false]{caption}
 \usepackage{etoolbox}
 \usepackage{tabularx}
 \usepackage{colortbl}
@@ -29,10 +29,10 @@
 }
 \author{Miquel de Domingo i Giralt}
 
-\setmainfont{SF Pro Display}[BoldFont = SF Pro Display Bold]
+\setmainfont{Inter}[BoldFont = Inter Bold]
 \setmonofont[Scale=0.9]{JetBrains Mono}
 
-\newfontfamily\semibf{SF Pro Display Semibold}
+\newfontfamily\semibf{Inter Semi Bold}
 
 % Variable with the page that keeps the footer style
 \def\footerstyle{- \fontsize{10pt}{10pt}\selectfont\thepage\ -}
@@ -115,16 +115,14 @@ In Spain, where the project is being developed, JavaScript developers earn aroun
 	\hline
 	{\semibf Process} & {\semibf Hours} & {\semibf Price} & {\semibf Total} \\
 	\hline
-	Design            & 96h             & 15.50€/hour     & 1488€           \\
+	Design            & 96h             & 15.50€/hour \cite{salary-one}     & 1488€           \\
 	\hline
-	Development       & 629h            & 13.97€/hour     & 8806€           \\
+	Development       & 629h            & 13.97€/hour \cite{salary-two}     & 8806€           \\
 	\hline
 	\rowcolor{rowColor}
 	Total             & 725h            & -               & 10294€          \\
 	\hline
 \end{tabularx}
-% TODO: Add to bibliography: https://es.talent.com/salary?job=dise%C3%B1ador+ui [19/04/2022]
-% TODO: Add to bibliography: https://es.talent.com/salary?job=programador+javascript [19/04/2022]
 \captionof{table}{Total costs table}
 \chapter{Methodology}
 \section{Introduction}
@@ -145,8 +143,7 @@ The procedure is based in five process groups, which are:
 \section{Development methodology}
 To structure and organise the project, working packages\footnote{See \nameref{working-packages} for more information.} have been used in order to ensure a temporised and structured development. Following such structure has been extremely useful to simplify how are tasks managed and temporized. In order to organise the tasks, an \emph{AGILE} approach has been used, even though the project has been done all by myself. Each subgroup of the \emph{development} branch has been considered as an \emph{epic} and each working package as a \emph{story}, which has as many tasks as required. This approach has been used for each project and has made the development of the project easier to manage.
 \\[8pt]
-% TODO: Add Jira biblyography
-In order to simplify the process of \emph{epic}, \emph{story} and \emph{task} creation, the Jira software from Atlassian has been used. It has been extremely useful as it can be integrated with many tools, one being GitHub, where the code is hosted. The GitHub integration provides a lot of utilities, yet one of the most important is the fact that it tracks your branches, commits and pull requests. Using the three elements, I have been able to automate the process of starting and completing tasks, alongside of the Jira automation. The following diagram, describes the workflow of the tasks inside Jira:
+In order to simplify the process of \emph{epic}, \emph{story} and \emph{task} creation, the Jira software from Atlassian has been used. Jira is a project management software developed by Atlassian which helps from teams to single users to easily manage their projects. Even though it is oriented to AGILE methodologies, it can be used by any type of project \cite{jira}. It has been extremely useful as it can be integrated with many tools, one being GitHub, where the code is hosted. The GitHub integration provides a lot of utilities, yet one of the most important is the fact that it tracks your branches, commits and pull requests. Using the three elements, I have been able to automate the process of starting and completing tasks, alongside of the Jira automation. The following diagram, describes the workflow of the tasks inside Jira:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/working-packages/JiraWorkflow.png}
@@ -157,19 +154,32 @@ All the tasks would have to go from step 1 to step 5 in order to be considered a
 	\item All the tasks that have been selected for the sprint start at the first step, at the \emph{to-do} column.
 	\item For each task, a new git branch has to be created with the name of the Jira task tag, for instance \texttt{HBL-185}\footnote{The \texttt{HBL} prefix is assigned when a new Jira project is created.}.
 	      \\
-	      When the branch is created and pushed to GitHub, Jira will move the task automatically to the \emph{in progress} column.
-	      % TODO: Add Jira smart commits bibliography [21/03/2022]
+	      When the branch is created and pushed to GitHub, Jira will move the task automatically to the \emph{in progress} column. \cite{jira-smart-commits}
 	\item While in progress, each commit made is tracked in Jira. Additionally, Jira also supports \emph{smart commits} which are words prefixed with a hash (\#). With the smart commits, task properties can be changed. In this case, only the \texttt{\#time} has been used which increments the amount of time spent in each task. Tracking time has been useful to know more precisely how much time has been spent overall.
 	\item Once the task is finished, a new pull request is made which triggers the continuous integration workflows set up at the GitHub repository. These workflows can also be watched by Jira and automate operations in function of the workflow result. If the task does not pass one of the workflows, the task is moved back to the \emph{in progress} tab. Alternatively, if the checks pass, it is moved to the \emph{approved} column.
 	\item Finally, in order to be considered \emph{done}, the pull request of the task in question has to be merged. The merge will trigger another automated process which moves the task from \emph{approved} to \emph{done}.
 \end{enumerate}
 In order to stick to the process as much as possible, tasks moved to \emph{done}, should not be moved back. Instead, a new \emph{bug} type task was created which would start the process again.
 \chapter{Framework and previous concepts}
+\section{Introduction}
+This chapter will cover the knowledge that is required in order to properly develop a booking application. In short terms, it is required to know how\footnote{It is obvious that the may be different implementations, for different gyms. However, the implementation that has been chosen is the one that I thought was most accurate, based on my experience in different gyms.} gyms work, regarding class and room (or non-class) appointments. Furthermore, it is important to have some knowledge on software artchitecture and development, in order to provide value with the application.
+\section{Gym overview}
+There are few issues to address regarding the appointment system of a gym. In general, there are two types of appointments to be made. The first is the most simple and basic, which is an appointment made to a class or event organized by the gym. Such appointment will have a maximum capacity, for example, the gym may have a fixed number of spinning machines, and it would be nonsense to allow more appointments that spinning bikes are in a spinning class. The second appointment would be an appointment that is made to access the gym for an interval of time. Most gyms have zones in which their clients can access anytime, and exercise themselves using the mahcines or equipment they feel like using. Therefore, the gym has to provide their clients the possibility of accessing their infrastructures within the interval the client wants to work out.
+\section{Development overview}
+The application will be a web-based application, meaning that it is expected to be used within a browser, accessing a specific URL. Using a web environment completely avoids the native app implementation. One of the most common issues developers face is the fact that, in order to develop an app for different OS, they can rarely use a common code base. Each OS may require a different language or a different implementation, difficulting the addition of new elements or even maintaining the app itself.
+\\[8pt]
+Therefore, developing an application for the browser removes such issues. That itself does not solve all the problems, as once again there are multiple browsers, all with their different implementation. It appears a new difficulty for developers, who have to know if the application will be cross-browser functional. Nonetheless, most modern browsers have support for JavaScript, which simplifies the development process as the application can be built with the same language, independently of the browser.
+\\[8pt]
+JavaScript is far from being a perfect language, plus developing a complex application with vanilla JavaScript can be a tough task and very time demanding. Luckily, there exist multiple frameworks which are production-ready and extremely simplify the process of developing applications. One of the most wellknown frameworks is React. React itself does not solve all issues, since, for example, it does not provide a browser routing solution, yet it is simple to understand. Once again, companies or even developers who saw what was React lacking, as the routing solution, started developing what is known as a meta-framework, which is a framework built upon another framework. This is the case of NextJS, a Javascript meta-framework (as it is a React framework), which tries to solve most of React flaws. There exist many more JavaScript frameworks or even other solutions such as WebAssembly, which allows running non-JavaScript applications in browsers. To sum up, a developer whose goal is to create an application for the browser should be comfortable with such concepts.
+\\[8pt]
+On the other side of the application, there is the persistence layer. The persistence layer is none other that the part of the application that allows the system to \emph{persist} the data of the users. The user will interact with the system, and such interaction will, most likely, output a result. Such result should be stored in the form that the application requires it, as it will add value to the product (it is rarely difficult to find an application that does not have the need of storing any data). It appears a new field of knowledge which is how the data is stored and how such data is exchanged with the client application,
+\\[8pt]
+Nowadays, there are hundreds of solutions for such problems. Again, it is a matter of convenience when it comes to choosing the languages and databases which will allow the communication and persistence of the data. For the database, it relies on the application type. For example, if the application relies on fast queries, a ram-based database would be a good solution. On the other hand, an application that contains many tables, each with different relationships, such as the one developed in this project, an SQL database would be a better solution. From here, a comparison with the different SQL tools should be made, as each tool has different benefits and drawbacks. Next, the developer would need knowledge in server-client communication. Using a REST API is sometings the go-to solution, however, once again, the server architecture should be chosen taking into account the application requirements and needs. To sum up, the developer should be comfortable knowing different solutions and architectures, in order to find the solution that fits most the application.
 \chapter{Requirements specifications}
 \section{Introduction}
 This chapter will cover the system requirements specification (\emph{SRS}) for the software being developed. The goal of this chapter is to establish the basis for what will be developed, taking into account user needs, functional and non-functional requirements.
 \subsection{Purpose}
-The application's objective is to provide a simple, scalable and powerful platform to handle gymnasium appointments. Gym owners will be able to create their gym zones and modify the constraints such as total capacity, available hours, closed days as needed. On the other side, gym clients will be able to book an appointment to the gyms they have access to.
+The application's objective is to provide a simple, scalable and powerful platform to handle gymnasium appointments. Gym owners will be able to create their gym zones and modify the constraints such as total capacity, available hours, and so on. On the other side, gym clients will be able to book an appointment to the gyms they have access to.
 \\[8pt]
 Therefore, in a single application, gym owners and their workers will be able to control everything that happens inside the gym; while at the same time being able to apply changes and modifications as wanted.
 \subsection{Definitions}
@@ -177,7 +187,7 @@ There are some definitions to be explained before moving to the next section:
 \begin{enumerate}[label = -]
 	\item \emph{Gym}. The gym will represent the company overall, not the infrastructure. Such infrastructure is called \emph{virtual gym}.
 	\item \emph{Virtual gym}. A virtual gym will be the representation of a gymnasium in the application. A \emph{virtual gym} can have multiple \emph{gym zones}.
-	\item \emph{Gym zone}. A gym zone will be the places where clients will book appointments.
+	\item \emph{Gym zone}. A gym zone will be the places where clients will book appointments. A more specific definition for gym zones can be found in further sections.
 	\item \emph{User}. The \emph{user} is the main person who uses the software. In this case, it is the owner and their workers.
 	\item \emph{Template events}. Even though the class concept is explained in further sections, it is important to make a distinction between a \emph{class} and \emph{class template}, \emph{template events} or \emph{template events} (as they are named in the database). On the one hand, events will be assigned to a gym zone and scheduled. On the other hand, \emph{template events} will be used to schedule and link to a zone.
 	\item \emph{Archiving} vs \emph{Deleting}. The purpose of archiving anything in the database means it will be stored but not visible. In order to edit it again, the archived element has to be \emph{recovered}. On the other hand, a deleted element will permanently be deleted from the database.
@@ -300,8 +310,8 @@ Once a virtual gym has been created and the user has clicked on the card represe
 \subsubsection{Class gym zone schedule}
 When the user has created a class gym zone, that zone will have a schedule (or a calendar). Inside this view, the user will be able to see the schedule or calendar from the selected gym zone.
 \begin{enumerate}[label = -]
-	\item \textbf{FR-24 (3)}. The view has to provide an option to visualise the current schedule of events.
-	\item \textbf{FR-25 (3)}. From the calendar, the user has to be able to create a guided session by linking a template class to it. Such \emph{scheduled event} must include: a start and end time, the trainer which will be the guide, a maxiumum capacity and other information.
+	\item \textbf{FR-24 (3)}. The view has to provide an option to visualise the scheduled events.
+	\item \textbf{FR-25 (3)}. From the calendar, the user has to be able to create a guided session (an event template can be used in order to make the process faster). Such \emph{scheduled event} must include: a start and end time, the trainer which will be the guide, a maxiumum capacity and other information.
 	\item \textbf{FR-26 (3)}. From the calendar, the user has to be able to create an event.
 	\item \textbf{FR-27 (2)}. From the calendar, the user has to be able to see future scheduled events.
 	\item \textbf{FR-28 (1)}. From the calendar, the user has to be able to see past scheduled events.
@@ -420,7 +430,7 @@ Each dependency will use the following format: \textbf{[FR-1, FR-2, FR-3] \textt
 \\[8pt]
 \textbf{[FR-48, FR-49, FR-50, FR-51] \texttt{->} [FR-47]}. In order to visualise, edit or delete a client, such client has had to be created or registered previously.
 \\[8pt]
-\textbf{[FR-66, FR-67, FR-68, FR-69, FR-70, FR-71, FR-72] \texttt{->} [FR-65]}. In order to interact with the application, the client must be registered previously.
+\textbf{[FR-66, FR-67, FR-68, FR-69, FR-70, FR-71, FR-72] \texttt{->} [FR-65]}. In order to interact with the application, the client must have had registered previously.
 \chapter{Planning}
 This chapter will cover the planning of the project. After having defined the requirements and the matrix of dependencies of such requirements, working packages will be defined, which will ensure an organized development using tasks.
 \section{Working packages}
@@ -670,7 +680,6 @@ The \emph{testing} branch contains the working package that is related with the 
 \captionof{table}{Package eleven's table - E2e testing}
 \subsection{Development}
 \label{working-packages-development}
-% TODO: Add methodology reference
 The \emph{development} branch is probably the most extensive, as it is the most important part of the project. The branch consists of 73 working packages in total. Nevertheless, most of the packages follow the same structure. For instance, as it is seen in the \nameref{working-packages-api}, each web service package follows the same structure: a working package to create an entity, another one to update it, a third one to delete it, and a final one to fetch the entity. The structure is the same for each web service, which easily increases the number of working packages.
 \subsubsection{Development env}
 The first group that is in the \emph{development} branch is the \emph{development env} (or \emph{development environment}). This part is as important as any other application, since it will define the structure of the project. Furthermore, the continuous integration has to be set up. Using the Nx build system, such feature becomes extremely simple and scalable. One of the options it offers is to run a command to as many projects as wanted. Not only so, that you can run the commands to the affected projects. Such feature reduces even more the CI execution time.
@@ -755,7 +764,7 @@ The \emph{api} group is composed of the following working packages:
 	\rowcolor{rowColor}
 	{\semibf Package name}   & {\semibf WP15}: Database configuration.                       \\
 	\hline
-	{\semibf Description}    & Configure the application so that is connected the database.  \\
+	{\semibf Description}    & Configure the application, so that is connected the database.  \\
 	\hline
 	\rowcolor{rowColor}
 	{\semibf Estimated time} & 1h                                                            \\
@@ -2334,7 +2343,7 @@ The roadmap contains an estimation of how the development of the application sho
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.45\textwidth]{assets/roadmap.png}
-	\caption{Gym zone dialog (edit-loading state)}
+	\caption{Expected application development roadmap.}
 \end{figure}
 \chapter{Studies and decisions}
 \section{Introduction}
@@ -2371,7 +2380,6 @@ Using such tool, managing the applications becomes extremely easy to manage both
 \end{enumerate}
 More specifically, it has great support with \emph{NextJS}, which is the front-end framework used for the web apps. Being able to easily scale, maintain and test the front-end applications is a crucial requisite in this system. Such tool and its excellent documentation have simplified all aspects for setting up the different apps.
 \\[8pt]
-% TODO: Keep updated
 After using Nx, the application folder structure is as follows:
 \begin{verbatim}
 hubbl
@@ -2383,20 +2391,22 @@ hubbl
 │   ├── core-e2e
 │   ├── landing
 │   └── landing-e2e
-└── libs
-    ├── data-access
-    │    ├── api
-    │    └── contexts
-    ├── shared
-    │    ├── models
-    │    └── types
-    ├── ui
-    │    └── components
-    └── utils
+├── libs
+│   ├── data-access
+│   │   ├── api
+│   │   └── contexts
+│   ├── shared
+│   │   ├── models
+│   │   └── types
+│   ├── ui
+│   │   └── components
+│   └── utils
+│       └── src
+└── tools
+    └── generators
+        └── component
 \end{verbatim}
-There are other files in the root folder of the repository, yet they have been excluded as the main folders are \texttt{apps} and \texttt{libs}. On the one hand, the \texttt{apps} folder contains the source code and additional files to build and compile each one of them. The client apps have two folders: the source code folders (\texttt{core}, \texttt{landing} and \texttt{client}) and their respective e2e test folders (\texttt{core-e2e}, \texttt{landing-e2e} and \texttt{client-e2e}). On the other hand, the folder \texttt{libs} contains all the libraries which do not belong to an application, but rather used in many of them. As the Nx documentation states, the \texttt{libs} folder should contain: \emph{Libs contain services, components, utilities, etc. They have well-defined public API.} The front-end applications have been generated using the \texttt{@nrwl/next} utility, while the back end has been generated with \texttt{@nrwl/express}. The libraries have been created with the \texttt{@nx/workspace} which provides a lot of utils for the overall workspace.
-% TODO: Reference Nx documentation
-% https://nx.dev/l/r/guides/monorepo-nx-enterprise#apps-and-libs - 12/12/2021
+There are other files in the root folder of the repository, yet they have been excluded as the main folders are \texttt{apps} and \texttt{libs}. On the one hand, the \texttt{apps} folder contains the source code and additional files to build and compile each one of them. The client apps have two folders: the source code folders (\texttt{core}, \texttt{landing} and \texttt{client}) and their respective e2e test folders (\texttt{core-e2e}, \texttt{landing-e2e} and \texttt{client-e2e}). On the other hand, the folder \texttt{libs} contains all the libraries which do not belong to an application, but rather used in many of them. As the Nx documentation states, the \texttt{libs} folder should contain: \emph{Libs contain services, components, utilities, etc. They have well-defined public API.} The front-end applications have been generated using the \texttt{@nrwl/next} utility, while the back end has been generated with \texttt{@nrwl/express}. The libraries have been created with the \texttt{@nx/workspace} which provides a lot of utils for the overall workspace \cite{nx}. Finally, Nx provides an utilities' library that can help the team with common tasks. Such tools are kept in the \texttt{tools} folder. In this case, there is only one tool, \texttt{component}, whih is a generator that when run generates the basic component structured used in \texttt{libs/ui/components}.
 \section{Technology stack}
 This section will cover the different technologies that are specifically used to develop the different applications.
 \subsection{TypeScript}
@@ -2409,16 +2419,48 @@ These days JavaScript is the most used language around the world for many reason
 \end{figure}
 By using TypeScript we provide a highly productive environment when developing the different apps. Not only reduces the amount of painful bugs due to type errors, but also provides all the benefits of the ECMA script.
 \subsection{Front end - Web applications}
-Nowadays, there are many JavaScript front-end frameworks all with their benefits and disadvantages. Angular, React, Vue and Svelte are the most known and used frameworks. Since I am most experienced with React and NextJS is built upon React, it has been the chosen option. Furthermore, on October 21st of 2021 released its 12th version which included a Rust compiler that makes rebuilds and fast refreshes extremely faster.
+Nowadays, there are many JavaScript front-end frameworks all with their benefits and disadvantages. Angular, React, Vue and Svelte are the most known and used frameworks. Since I am most experienced with React and NextJS is built upon React, it has been the chosen option. Furthermore, on October 21st of 2021, the NextJS team released its 12th version which included a Rust compiler that makes rebuilds and fast refreshes\footnote{The fast refresh is an utility provided by JavaScript bundlers which checks for the changes that have been made with the current bundle, and rebundles only the changed code, allowing the developer to instantly see the changes in the development environment.} extremely faster.
 \subsubsection{NextJS}
-As stated before, NextJS has been chosen as the front-end framework to build the applications with. This framework (or even meta-framework) is built on top of Node.js which enables React based web application functionalities such as server-side rendering (SSR) and static websites. In the NextJS home page, they provide the following description: \emph{Next.js gives you the best developer experience with all the features you need for production: hybrid static \& server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed}.
+As stated before, NextJS has been chosen as the front-end framework to build the applications with. This framework is built on top of Node.js which enables React based web application functionalities such as server-side rendering (SSR) and static websites. In the NextJS home page, they provide the following description: \emph{Next.js gives you the best developer experience with all the features you need for production: hybrid static \& server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed} \cite{nextjs}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/next-logo.png}
 	\caption{NextJS logo}
 \end{figure}
+A NextJS project has to follow a certain structure. The NextJS bundler will create a new page for the application for each file that is created inside the \texttt{pages} folder. For example, in the \texttt{core} application, there are the following pages\footnote{Not all the folders have been included, as there are pages nested within other pages; it is a reduced folder structure.}:
+\begin{verbatim}
+apps/core/pages
+├── pages
+│   └── index.tsx
+├── 404
+├── _app.tsx
+├── auth
+│   ├── signup
+│   │   └── index.tsx
+│   └── login
+│       └── index.tsx
+├── clients
+│   └── index.tsx
+├── dashboard
+│   └── index.tsx
+├── _document.tsx
+├── events
+│   └── index.tsx
+├── index.tsx
+├── settings
+│   └── index.tsx
+├── trainers
+│   └── index.tsx
+├── virtual-gyms
+│   └── index.tsx
+└── workers
+    └── index.tsx
+\end{verbatim}
+In this case, instead of defining files, I opted for the \texttt{<folder-name>/index.tsx} structure. NextJS will check for each folder and when it finds a file with the \texttt{index.tsx}\footnote{The files can end with \texttt{jsx} (JavaScript React file), \texttt{js} (JavaScript file) or \texttt{tsx} (TypeScript React file).}, generates the logic required to display the page in the URL of \texttt{<folder-name>}. If a folder is nested within another folder, as it is the case of the \texttt{auth} folder, the URL would be the same, but nested> \texttt{auth/signup} and \texttt{auth/login}. Aside from folders, there are special files which are specially treated by the NextJS compiler. For example, the \texttt{\_app.tsx} is the entry point of the application and the content of it will be the parent of each page\footnote{This is very useful for SEO purposes, as an example.}.
+\\[8pt]
+One of the other important features NextJS provides is \texttt{code-splitting} \cite{code-splitting}. Code splitting consists in splitting the content provided by the server to the chrome in different bundles. Therfore, when the user loads the website, instead of providing all HTML, CSS and JS files, it only recieves what is required. In React applications this is extremely handy, since the React content is provided as a single gigantic JavaScript file. 
 \subsubsection{Mui}
-Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library. The library is open-source and maintained by \texttt{mui-org}.
+Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library. The library is open-source and maintained by \texttt{mui-org} \cite{mui}.
 \\[8pt]
 This library is based on the Google Material design system. However, it has an extremely powerful API to define your own design system, without the need of starting from 0. The developer has the possibility to inject the customised theme to all the components of the API included in the library. Furthermore, it includes an icon pack, which are the same as in the Google Material.
 \begin{figure}[H]
@@ -2429,7 +2471,7 @@ This library is based on the Google Material design system. However, it has an e
 \subsection{Back end - Server application}
 For the backend application, many languages can be used. However, since NodeJS provides a runtime environment for JavaScript, which allows building applications outside the browser. So, with the help on Nx, the backend is also written in TypeScript.
 \subsubsection{Database}
-The application has many relationships, which would be harder to maintain in a NoSQL database. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been PostgreSQL.
+The application has many relationships, which would be harder to maintain in a NoSQL database. Therefore, using a relational database is a better solution. At the first glance, I opted for the MySQL database since it is one of the most used SQL databases, nowadays. However, I have more experience with PostgreSQL and I had no issues with it. In the end, the chosen database has been PostgreSQL \cite{postgresql}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/postgres-logo.png}
@@ -2437,29 +2479,26 @@ The application has many relationships, which would be harder to maintain in a N
 \end{figure}
 As explained before the database is run in a docker container. Viewing the data in the terminal is not an issue, yet pgAdmin is a graphic user interface which simplifies such visualisation. It is the equivalent of MySQL Workbench for PostgreSQL. With such tool, schemas in general can be simply viewed and edited. Additionally, the JetBrains DataGrip application has been also used, which has allowed to generate the ERD once the database was defined.
 \subsubsection{ExpressJS}
-ExpressJS is one of the many back-end frameworks that exist in the JavaScript world, nowadays. It is a minimal and flexible framework which provides a fast methodology to develop APIs. It is considered the most popular back-end framework of JavaScript, up to a point that other back-end meta-frameworks are ExpressJS based (an example is NestJS). As stated in their landing page, ExpressJs is a: \emph{Fast, unopinionated, minimalist web framework for Node.js}.
-% TODO: Add bibitem expressjs.com - 13/12/2021
+ExpressJS is one of the many back-end frameworks that exist in the JavaScript world, nowadays. It is a minimal and flexible framework which provides a fast methodology to develop APIs. It is considered the most popular back-end framework of JavaScript, up to a point that other back-end meta-frameworks are ExpressJS based (an example is NestJS). As stated in their landing page, ExpressJs is a: \emph{Fast, unopinionated, minimalist web framework for Node.js} \cite{expressjs}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.2\textwidth]{assets/express-logo.png}
 	\caption{ExpressJS's logo}
 \end{figure}
 \subsubsection{TypeORM}
-Finally, the TypeORM library is used to provide a bidirectional connection from the server to the database. TypeORM is a TypeScript ORM (\emph{object relational mapper}) whose goal is to provide an agnostic model-database mapping. By using TypeScript decorators and defining a connection, TypeORM will generate the entities or documents specified, depending on the database to which is connected. Such agnosticism allows to re-use the models with different databases.
+Finally, the TypeORM library is used to provide a bidirectional connection from the server to the database. TypeORM is a TypeScript ORM (\emph{object relational mapper}) whose goal is to provide an agnostic model-database mapping. By using TypeScript decorators and defining a connection, TypeORM will generate the entities or documents specified, depending on the database to which is connected. Such agnosticism allows to re-use the models with different databases \cite{typeorm}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{assets/typeorm-logo.png}
 	\caption{TypeORM's logo}
 \end{figure}
-In conjunction with Nx, the models that are used to generate the entities and their relations, can be used in the front-end applications. Therefore, such models can be shared and easily maintained. By default, TypeORM does not provide an entity validation,
+In conjunction with Nx, the models that are used to generate the entities and their relations, can be used in the front-end applications. Therefore, such models can be shared and easily maintained.
 \subsection{Tests}
 Last but not least, the test stack also had to be defined. In this case, the provided frameworks for testing by Nx were kept, since they are some of the most common testing libraries nowadays.
 \subsubsection{Unit testing - Jest}
-Both \texttt{@nrwl/express} and \texttt{@nrwl/next} generators set up the application with Jest. Jest is an open-source unit and mock testing framework developed and maintained by Facebook. It is one of the most popular libraries nowadays, since it is extremely powerful and simple. It offers a powerful CLI tool to control the tests which has an interactive mode that allows the developer only to run \emph{affected} tests\footnote{Nx also takes care of running only affected tests.}. Other benefits of Jest are that require zero configuration and ensures isolation between tests. Isolation is extremely important when running tests, to ensure that each test does not influence other's results. As stated in their home page: \emph{Jest is a delightful JavaScript Testing Framework with a focus in simplicity}
-% TODO: Add bibitem jest.io - 13/12/2021
+Both \texttt{@nrwl/express} and \texttt{@nrwl/next} generators set up the application with Jest. Jest is an open-source unit and mock testing framework developed and maintained by Facebook. It is one of the most popular libraries nowadays, since it is extremely powerful and simple. It offers a powerful CLI tool to control the tests which has an interactive mode that allows the developer only to run \emph{affected} tests\footnote{Nx also takes care of running only affected tests.}. Other benefits of Jest are that require zero configuration and ensures isolation between tests. Isolation is extremely important when running tests, to ensure that each test does not influence other's results. As stated in their home page: \emph{Jest is a delightful JavaScript Testing Framework with a focus in simplicity} \cite{jest}.
 \begin{figure}[H]
 	\centering
-	% TODO: Add jest logo
 	\includegraphics[width=0.3\textwidth]{assets/jest-logo.png}
 	\caption{Jest's logo}
 \end{figure}
@@ -2472,7 +2511,7 @@ Aside from unit testing API functions and so on, it is important to also test th
 	\caption{Testing library's logo}
 \end{figure}
 \subsubsection{Client e2e testing - Cypress}
-Cypress is more than a tool for testing. It provides a graphical user interface to see what is being tested, where it fails and other features. It is an extremely powerful tool for UI testing, which has always been a difficult subject. As stated in their website, cypress enables you to: \emph{write faster, easier and more reliable tests}.
+Cypress is more than a tool for testing. It provides a graphical user interface to see what is being tested, where it fails and other features. It is an extremely powerful tool for UI testing, which has always been a difficult subject. As stated in their website, cypress enables you to: \emph{write faster, easier and more reliable tests} \cite{cypress}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=0.3\textwidth]{assets/cypress-logo.png}
@@ -2483,7 +2522,6 @@ In order to use cypress, the project needs a specific folder structure which can
 Finally, the libraries that are installed to develop end-to-end test for express, in \texttt{@nrwl/express} are: Jest and Supertest. The Jest library has already been covered. The Supertest is an HTTP assertions library that allows the developer to create Node.js HTTP tests. It uses the SuperAgent library, which is an HTTP client for Node.js. Using Supertest is one of the most common methods to develop such tests.
 \chapter{Analysis and system design}
 \section{Use case diagram}
-\section{Use case tables}
 \section{Database diagram}
 \subsection{Introduction}
 In a previous section, it has been explained that the DataGrip application has been used to create the database diagram. The process to create such diagram has been:
@@ -2501,7 +2539,6 @@ The resulting diagram is:
 	\caption{Database diagram}
 \end{figure}
 \subsubsection{Introduction}
-%! INFO: LAST UPDATED -> 17/12/2021
 In the following sections each table will be explained and a brief description of their fields will be given. Each field will be represented using the following schema:
 \begin{enumerate}[label = -]
 	\item \textbf{<field name>} (\texttt{<field type>}) [\texttt{<field constraints>}] \texttt{->} <field description>
@@ -2956,9 +2993,82 @@ With these requirements, there are views modals that contain 4 images, each one 
 \end{figure}
 % #endregion Images
 \chapter{Implementation and trials}
+\section{Introduction}
+The goal of this chapter is to explain the development process, from the thinking of the application and its structure, to the actual development of it. It will also include and explanation of how the application has been constantly tested\footnote{Most testing involves unit and integration testing. In the API application, end-to-end testing has been implemented. For the UI applications, do not have end-to-end testing implemented due to a lack of time}.
+\section{Organizing the idea}
+When I came up with the idea for the application, I ended up with a mix of thoughts that had to be organized and connected. Therefore, the first step was to write an extensive explanation of the application, the goal of the application, what it would do and what it would not do, trying to cover as many details as I could. After revising and rethinking the idea, I ended up with a potential project that \emph{made sense} and could provide value to future clients.
+\\[8pt]
+Once the application had been described, defining the functionalities of such were easier. However, I needed to define a possible structure for such application. It was then when I decided to develop three applications: the landing page, the core application and the client application. I found interesting to distinguish between the client and the core application in order to simplify the development process. Mostly, when an application is expected to cover the most amount of possibilities and users, it ends which an enourmous amounts of checks and even repeated code. Knowing so, I decided to split it in two applications, while at the same time reducing the amount of boilerplate code. Knowing the existence of Nx, I had the logistic problem of maintaining a monorepo with the applications and libraries solved by such tool.
+\\[8pt]
+Even though it would probably change in structure, the initial idea of the architecture was there, and from it, I could start specifying the functional and non-functional requirements. It was probably the most time demanding task of the project, alongside structuring the working packages. Now that such parts were defined, I was able to visualise a roadmap for the development of the system.
+\section{Application development}
+I started developing the API application as it helped to define the database. It ended up being the most repetitive project to develop as there are many endpoints which are quite similar, however others were such a challenge, as involved complex queries. Once the server had been ``finished''\footnote{It is hard to consider a project finished, as product applications need constant improvements and changes in order to keep up with the market.}, I started designing the user interface. knowing available endpoints of the server helped with the thingking of the UI, yet at the same time it helped me realise what was lacking in the server. Therefore, after having finished the design, I got back to the API, adding what was mssing and cleaning up the code\footnote{Such thing was also expected in the roadmap, as it was my intention to revise the server after designing the UI.}.
+\\[8pt]
+The next step was to start developing the UI applications. The core application had the most amount of logic and difficulty, which is the reason why I started with such project. I knew I would have to add a lot of components and views which would later be reused in the client application. This is the reason why the working packages for the core application have more estimated time than the client application. With Nx has been extremely easy and simple to abstract common code and keep it in the shared libraries, which can be easily used and referenced in any application. If in the future it is needed to add another application, the development process would be extremely simple, since most components could be reused.
+\\[8pt]
+Since then, I have been developing most of the core application. When most of it had been finished, I started developing the client application. With it, I had to start abstracting some of the code that was in the core application, so that it can be reused.
+\subsection{Continuous integration}
+One of the things that I explained in previous sections was the importance of having continuous integration, which would help to know if the code developed would cause errors or not. Also, with integration tests, it would be easier to verify if the component or controller work as expected. It was also one of the reasons why I chose Nx as a build tool, as it allows you to test for a specific project.
+\\[8pt]
+Knowing so, I defined multiple workflows \cite{github-workflows} which would run if there were changes in the different project directiories\footnote{GitHub worflows allow you to trigger worflows on changes made in a given folder path.}. The worflows would be run in two conditions:
+\begin{enumerate}
+	\item If there is a push in the \texttt{develop} branch.
+	\item If a pull request if opened.
+\end{enumerate}
+The development process would be:
+\begin{enumerate}
+	\item Creating a branch with the name of the Jira issue. Using such naming convention, when accessing an issue in Jira, it was easier to find the issue branches.
+	\item Adding as many changes as wanted, while also adding tests. If the changes were added in the API application, it should include unit, integration and e2e tests. If the changes where added in any library of any UI application, it should include unit and integration tests.
+ \item Once the task has been finished, a PR should be created which would trigger the workflows.
+ \item If all checks pass, the PR can be merged into the wanted branch.
+\end{enumerate}
+Using the PRs, it becomes really easy to identify issues, and it ensures that not a single line of coded is merged without knowing it does not pass its tests. As an addition to the checks, I also integrated CodeCov, which is a freemium tool that helps to visualise the coverage of the project\footnote{The CodeCov configuration file can be found in the \texttt{codecov.yaml} in the root folder of the repository.}. The CodeCov integration adds a comment to the pull request summarizing the changes made and how such changes modify the coverage of the project.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/codecov-example.png}
+	\caption{Example of the comment generated by the CodeCov command}
+\end{figure}
+As explained before, the API server runs an e2e test. Such test requires a fake database and also takes more time to initialise, run and finish. Therefore, the end-to-end tests are not run on every merge to develop or every PR, but when the code is merged to the \texttt{main} branch. The end-to-end test starts a docker container in the GitHub action that will contain the database which will be used by the tests.
+\section{Trials}
+Aside from the implemented tests, the UI application has been manually tested in order to find bugs that may not have been covered by the automated tests. In the case of the API, testing the endpoints has been a bit harder, yet the Postman software has been used in order to test the endpoints. In case of the UI applications, they have been tested by finding edge cases when running the appliation.
+\\[8pt]
+When a bug has been found, I firstly checked the tests to see why it was not being covered or if it was a bug in the test, as it is something that can happen. If the bug was found in the tests, I updated the tests and later fixed the actual code. If not, I would search the bug in the code, to later cover it with the tests. 
 \chapter{Conclusions}
 \chapter{Future work}
 \appendix
-\chapter{Bibliography}
 \chapter{User manual or installation}
+The applications should be accessed from a public URL. However, due to lack of time and money, the application has not been deployed, meaning it can not be accessed from any device, other than the local machine. In order to run the application from the local machine, the installation manual can be found in the code repositiry, as well as in the documentation for each application, in the repository aswell.
+\begin{thebibliography}{9}
+	% Autor. Any de l’última actualització. Títol en cursiva. Dia mes any consulta. URL
+	\bibitem{salary-one}
+	Unspecified author. Unspecified last update. \emph{Salario medio para Diseñador Ui en España, 2022}. April 19th 2022. \url{https://es.talent.com/salary?job=dise%C3%B1ador+ui}.
+	\bibitem{salary-two}
+	Unspecified author. Unspecified last update. \emph{Salario medio para Programador Javascript en España, 2022}. April 19th 2022. \url{https://es.talent.com/salary?job=programador+javascript}.
+	\bibitem{jira}
+	Atlassian. Unspecified last update. \emph{Jira Software homepage}. March 20th 2022. \url{https://www.atlassian.com/software/jira}.
+	\bibitem{jira-smart-commits}
+	Unspecified author. Unspecified last update. \emph{Use smart commits}. March 20th 2022. \url{https://support.atlassian.com/bitbucket-cloud/docs/use-smart-commits/}.
+	\bibitem{nx}
+	Unspecified author. Unspecified last update. \emph{Using Nx at Enterprises}. December 12th 2021. \url{https://nx.dev/l/r/guides/monorepo-nx-enterprise#apps-and-libs}.
+	\bibitem{nextjs}
+	Vercel. Unspecified last update. \emph{The React Framework for Production}. December 12th 2021. \url{https://nextjs.org/}.
+	\bibitem{code-splitting}
+	MDN contributors. January 28th 2022. \emph{Code splitting}. December 12th 2021. \url{https://developer.mozilla.org/en-US/docs/Glossary/Code_splitting}.
+	\bibitem{mui}
+	Unspecified author. Unspecified last update. \emph{Move faster with intuitive React UI tools}. December 12th 2021. \url{https://mui.com/}.
+	\bibitem{postgresql}
+	Unspecified author. Unspecified last update. \emph{PostgresQL: The World's Most Advanced Open Source Relational Database}. December 12th 2021. \url{https://www.postgresql.org/}.
+	\bibitem{expressjs}
+	Unspecified author. Unspecified last update. \emph{4.x API}. December 13th 2021. \url{https://expressjs.com/en/api.html}.
+	\bibitem{typeorm}
+	\texttt{@pleerock}\footnote{GitHub's username.}. April 28th 2022. \emph{\texttt{typeorm/typeorm}}. December 13th 2021. \url{https://github.com/typeorm/typeorm}.
+	\bibitem{jest}
+	Facebook. Unspecified last update. \emph{Jest}. December 13th 2021. \url{https://expressjs.com/en/api.html}.
+	\bibitem{react-testing-library}
+	\texttt{@Nick McCurdy}\footnote{GitHub's username.}. September 21st 2021. \emph{React Testing Library}. December 13th 2021. \url{https://testing-library.com/docs/react-testing-library/intro}.
+	\bibitem{cypress}
+	Cypress.io. Unspecified last update. \emph{Javascript End to End testing framework}. December 13th 2021. \url{https://www.cypress.io/}
+	\bibitem{github-workflows}
+	Unspecified author. Unspecified last update. \emph{Using workflows}. May 22nd 2022. \url{https://docs.github.com/en/actions/using-workflows}
+\end{thebibliography}
 \end{document}
