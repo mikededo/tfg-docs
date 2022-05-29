@@ -113,14 +113,14 @@ In Spain, where the project is being developed, JavaScript developers earn aroun
 \\[8pt]
 \begin{tabularx}{\textwidth}{| l | X | X | X|}
 	\hline
-	{\semibf Process} & {\semibf Hours} & {\semibf Price} & {\semibf Total} \\
+	{\semibf Process} & {\semibf Hours} & {\semibf Price}               & {\semibf Total} \\
 	\hline
-	Design            & 96h             & 15.50€/hour \cite{salary-one}     & 1488€           \\
+	Design            & 96h             & 15.50€/hour \cite{salary-one} & 1488€           \\
 	\hline
-	Development       & 629h            & 13.97€/hour \cite{salary-two}     & 8806€           \\
+	Development       & 629h            & 13.97€/hour \cite{salary-two} & 8806€           \\
 	\hline
 	\rowcolor{rowColor}
-	Total             & 725h            & -               & 10294€          \\
+	Total             & 725h            & -                             & 10294€          \\
 	\hline
 \end{tabularx}
 \captionof{table}{Total costs table}
@@ -251,6 +251,7 @@ When the client has been able to connect to the platform, they will be able to v
 \\[8pt]
 After the appointment has been made, the client will be able to modify it and remove it, without the need of any explanation.
 \section{Functional requirements}
+\label{functiona-requirements}
 \subsection{Introduction}
 In this section, the above described requirements will be explained more in depth. The functional requirements are defined as the core functionalities of the system. All requirements exposed in the section are considered essentials and the system would be considered incomplete if it did not satisfy such requisites.
 \\[8pt]
@@ -321,9 +322,9 @@ When the user has created a class gym zone, that zone will have a schedule (or a
 \subsection{Core app - Events page}
 Even though this view is simple, it is important to separate the schedule view of a gym zone from the template events. The current view will only provide the necessary tools to create, edit, delete or archive the different event templates.
 \begin{enumerate}[label = -]
-	\item \textbf{FR-31 (3)}. The user has to be able to see the gym list of event types.
+	\item \textbf{FR-31 (3)}. The user has to be able to see the list of event types of the gym.
 	\item \textbf{FR-32 (3)}. There has to be an option in the menu which allows the user to create, update and delete event types.
-	\item \textbf{FR-33 (3)}. The user has to be able to see the gym list of template events.
+	\item \textbf{FR-33 (3)}. The user has to be able to see the list of template events of the gym.
 	\item \textbf{FR-34 (3)}. There has to be an option in the menu which allows the user to create, update and delete template events.
 	\item \textbf{FR-35 (2)}. The user has to be able to archive the event types.
 	\item \textbf{FR-36 (1)}. The user has to be able to archive template events.
@@ -764,7 +765,7 @@ The \emph{api} group is composed of the following working packages:
 	\rowcolor{rowColor}
 	{\semibf Package name}   & {\semibf WP15}: Database configuration.                       \\
 	\hline
-	{\semibf Description}    & Configure the application, so that is connected the database.  \\
+	{\semibf Description}    & Configure the application, so that is connected the database. \\
 	\hline
 	\rowcolor{rowColor}
 	{\semibf Estimated time} & 1h                                                            \\
@@ -2458,7 +2459,7 @@ apps/core/pages
 \end{verbatim}
 In this case, instead of defining files, I opted for the \texttt{<folder-name>/index.tsx} structure. NextJS will check for each folder and when it finds a file with the \texttt{index.tsx}\footnote{The files can end with \texttt{jsx} (JavaScript React file), \texttt{js} (JavaScript file) or \texttt{tsx} (TypeScript React file).}, generates the logic required to display the page in the URL of \texttt{<folder-name>}. If a folder is nested within another folder, as it is the case of the \texttt{auth} folder, the URL would be the same, but nested> \texttt{auth/signup} and \texttt{auth/login}. Aside from folders, there are special files which are specially treated by the NextJS compiler. For example, the \texttt{\_app.tsx} is the entry point of the application and the content of it will be the parent of each page\footnote{This is very useful for SEO purposes, as an example.}.
 \\[8pt]
-One of the other important features NextJS provides is \texttt{code-splitting} \cite{code-splitting}. Code splitting consists in splitting the content provided by the server to the chrome in different bundles. Therfore, when the user loads the website, instead of providing all HTML, CSS and JS files, it only recieves what is required. In React applications this is extremely handy, since the React content is provided as a single gigantic JavaScript file. 
+One of the other important features NextJS provides is \texttt{code-splitting} \cite{code-splitting}. Code splitting consists in splitting the content provided by the server to the chrome in different bundles. Therfore, when the user loads the website, instead of providing all HTML, CSS and JS files, it only recieves what is required. In React applications this is extremely handy, since the React content is provided as a single gigantic JavaScript file.
 \subsubsection{Mui}
 Once the web framework have been decided, the applications need to share a common user interface to provide the user experience of using the same product. Keeping such similarities can be difficult if the enterprise or company does not have a well-defined design system. Therefore, creating my own design system was out of scope, and a components' library, as they are called, was needed. Again, there are multiple libraries to be used, yet there is one that shines above all others, which is the \texttt{mui} library. The library is open-source and maintained by \texttt{mui-org} \cite{mui}.
 \\[8pt]
@@ -2522,6 +2523,15 @@ In order to use cypress, the project needs a specific folder structure which can
 Finally, the libraries that are installed to develop end-to-end test for express, in \texttt{@nrwl/express} are: Jest and Supertest. The Jest library has already been covered. The Supertest is an HTTP assertions library that allows the developer to create Node.js HTTP tests. It uses the SuperAgent library, which is an HTTP client for Node.js. Using Supertest is one of the most common methods to develop such tests.
 \chapter{Analysis and system design}
 \section{Use case diagram}
+% TODO: Explain that all relations are include
+% TODO: Explain why it is divided in 3 diagrams
+% TODO: Explain that worker permissions are not explained
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/use-case-diagrams/owner.png}
+	\caption{Owner's core application use case diagram}
+\end{figure}
+Owner's use case diagram
 \section{Database diagram}
 \subsection{Introduction}
 In a previous section, it has been explained that the DataGrip application has been used to create the database diagram. The process to create such diagram has been:
@@ -3023,8 +3033,8 @@ The development process would be:
 \begin{enumerate}
 	\item Creating a branch with the name of the Jira issue. Using such naming convention, when accessing an issue in Jira, it was easier to find the issue branches.
 	\item Adding as many changes as wanted, while also adding tests. If the changes were added in the API application, it should include unit, integration and e2e tests. If the changes where added in any library of any UI application, it should include unit and integration tests.
- \item Once the task has been finished, a PR should be created which would trigger the workflows.
- \item If all checks pass, the PR can be merged into the wanted branch.
+	\item Once the task has been finished, a PR should be created which would trigger the workflows.
+	\item If all checks pass, the PR can be merged into the wanted branch.
 \end{enumerate}
 Using the PRs, it becomes really easy to identify issues, and it ensures that not a single line of coded is merged without knowing it does not pass its tests. As an addition to the checks, I also integrated CodeCov, which is a freemium tool that helps to visualise the coverage of the project\footnote{The CodeCov configuration file can be found in the \texttt{codecov.yaml} in the root folder of the repository.}. The CodeCov integration adds a comment to the pull request summarizing the changes made and how such changes modify the coverage of the project.
 \begin{figure}[H]
@@ -3036,9 +3046,35 @@ As explained before, the API server runs an e2e test. Such test requires a fake 
 \section{Trials}
 Aside from the implemented tests, the UI application has been manually tested in order to find bugs that may not have been covered by the automated tests. In the case of the API, testing the endpoints has been a bit harder, yet the Postman software has been used in order to test the endpoints. In case of the UI applications, they have been tested by finding edge cases when running the appliation.
 \\[8pt]
-When a bug has been found, I firstly checked the tests to see why it was not being covered or if it was a bug in the test, as it is something that can happen. If the bug was found in the tests, I updated the tests and later fixed the actual code. If not, I would search the bug in the code, to later cover it with the tests. 
+When a bug has been found, I firstly checked the tests to see why it was not being covered or if it was a bug in the test, as it is something that can happen. If the bug was found in the tests, I updated the tests and later fixed the actual code. If not, I would search the bug in the code, to later cover it with the tests.
 \chapter{Conclusions}
+The goal of the project was to provide a tool that helped both gym owners to manage the appointments their clients made, durign the COVID restrictions. This objective has been accomplished with the Hubbl web application, which allows users to manage appointments in a gym environment. Nevertheless, it is hard to define an app as completely finished, as there may exist a bug that the developers have not seen, or the clients will require new features which will have to be implemented.
+\\[8pt]
+It is important to note that one of the objectives of the application was to provide an elegant and sofisticated user experience, at least better than my experience as a user of a similar software. Therefore, the Hubbl application not only provides value with its functionality, but also with the interface and use experience it ships with.
+\\[8pt]
+Furthermore, the Hubbl application tries to cover as many aspects as possible, while simplifying the usage of the application. As explained in the \emph{\nameref{future-work}} section, there are many other things to improve and to add as new features. Nonetheless, the version that is provided has more than what the app is expected to do. Due to the lack of time, inexpertise in some fields or tools used, and the fact that I have only been developing the application, it has not been possible to develop all that was expected for the wanted deadlines.
+\\[8pt]
+The project has required me to use pieces of knowledge acquired in the degree. At the same time, I have been pushed outside my comfort zone, dedicating time to reading documentation pages and similar.
+\\[8pt]
+To sum up, the project has provided a sense of how difficult and complex can it be from brainstorming the idea of the application, to finding the proper architecture to later develop it.
 \chapter{Future work}
+\label{future-work}
+It is barely ever true that a software application can be considered as \emph{finished}. Few are the cases in which the software does not need further development. The Hubbl application it will require of improvements and the addition of new features, so that the clients see more value in the organisation and application. Such thing is extremely common in product-bases software. Therefore, in general terms, the \emph{maintenance} and \emph{improvement} of the software will be the future work itself.
+\\[8pt]
+Aside from the general points, due to the lack of time and handwork (being me the only developer) it has not been possible to fulfill all the functional requirements. The following list contains what is left to be done:
+\begin{enumerate}[label = -]
+	\item \emph{Appointments}. Currently, it is not possible to view the list of appointments for an event or a gym zone. Therefore, the gym owner or any worker, are not able to see who is attending the gym zone\footnote{In the case of the events, it is possible to see how many clients have made an appoitment, yet it is not possible to know who.}. It is the same for the clients, they are not able to see their past and future appointments.
+	      \newline
+	      In the left navigation bar, a new tab will be added in both applications (core and client) which will allow the user to see the appointments made. In the case of the core application, it will display all the appointments made, while allowing the user to filter (by name, gym zone, event, event type and so on). Such view will require an enourmous amount of time for a singe developer to develop.
+	\item \emph{Archival}. Archiving gym zones, events, clients and any item that can be deleted would allow the user to soft-delete items, meaning that such items could be recovered in the future. Currently, the server only supports hard-deletion, the opposite, as it requires less logic in the backed. However, the goal would be to provide the user with both utilities, being able to permanently remove or temporarily remove items.
+	\item \emph{Update gym zones and virtual gyms}. It is currently not possible to edit the characteristics (name, description, open and close time, and so on) of a virtual gym nor a gym zone. I have not found the best place, in terms of user expercience, to locate such edition. Therefore, I have kept \emph{procastinating} the task, yet it would have a high priority in comparison to other tasks.
+	\item \emph{Filtering}. The woker, trainer and client views will contain a lot of data which can be hard to visualise sometimes. That is the reason why providing filters for such views will add enourmous value to such features.
+	\item \emph{Analytics}. Alongside the archiving feature, having analytics of the gym would provide tremendous value to the gym owner and their coworkers, but it requires a vast amount of time to be developed. Therefore, as I have stated in the \nameref{functional-requirements} section, it was already something that I knew I wouldn't have time to develop, and it would be a \emph{nice-to-have} for the user. Such feature whould be added as another tab in the lateral menu, and it would only be accessible to the gym owner and to the workers with permissions to view them.
+	\item \emph{Light/Dark theme}. It is currently possible in the server to change the theme from light to dark and vice-versa. However, since I did not have enought time to define a dark system design, I opted not to add it in the client. Nonetheless, it should be an easy to add feature, as the \emph{mui} library provides an easy tool for such feature.
+	\item \emph{Client e2e}. Again, due to the lack of time and handwork, I have not been able to develop end-to-end tests for the client applications. I have little experience with developing such tests, and I would have required a vast amount of time to code consistent and valuable end-to-end tests.
+	\item \emph{Deployment}. Finally, I would have wanted to deploy the applications to a web server so that they would be accessible to anyone. Such thing will not be possible until the application includes most of the above points, excluding analytics and archival.
+\end{enumerate}
+To sum up, even though the list may seem large, the application is fully functional and provides the basic utilities for the owners, workers and clients to properly organise themselves.
 \appendix
 \chapter{User manual or installation}
 The applications should be accessed from a public URL. However, due to lack of time and money, the application has not been deployed, meaning it can not be accessed from any device, other than the local machine. In order to run the application from the local machine, the installation manual can be found in the code repositiry, as well as in the documentation for each application, in the repository aswell.
