@@ -107,7 +107,7 @@ The study of the viability of the project will take into account from the techni
 \section{Techical resources}
 Since the application is a web-based application, it only requires a computer. Such computer should have installed all the required software, which is covered in further sections, so that the development of the project can be done without running into any issue.
 \section{Echonomical costs}
-The echonomical costs of the projects will only take into account the amount of hours the developer and designer have needed to develop the application, since the hardware requirements are already owned by the developer. However, an application can never be considered as finished, since there will always be bugs, new features and client requests that will keep improving the software. Therefore, in order to evaluate the total cost of the project, the estimated hours required both to design and develop the application will be multiplied by a fixed €/hr quantity\footnote{A more specific description of the tasks with their time can be found in the \nameref{working-packages} section}.
+The echonomical costs of the projects will only take into account the amount of hours the developer and designer have needed to develop the application, since the hardware requirements are already owned by the developer. However, an application can never be considered as finished, since there will always be bugs, new features and client requests that will keep improving the software. Therefore, in order to evaluate the total cost of the project, the estimated hours required both to design and develop the application will be multiplied by a fixed €/hr quantity\footnote{A more specific description of the tasks with their time can be found in the \emph{\nameref{working-packages}} section}.
 \\[8pt]
 In Spain, where the project is being developed, JavaScript developers earn around 13.97€/hour ($\approx$ 14.00€/hour). For the ui designers, the average is around 15.38€/hour ($\approx$ 15.50€/hour). Therefore, the total costs of the project can be described in the following table
 \\[8pt]
@@ -141,7 +141,7 @@ The procedure is based in five process groups, which are:
 	\item \textbf{Closing}: the closing processes are those which are performed in order to finalize all activities across the above process groups so the project or phase can be closed.
 \end{enumerate}
 \section{Development methodology}
-To structure and organise the project, working packages\footnote{See \nameref{working-packages} for more information.} have been used in order to ensure a temporised and structured development. Following such structure has been extremely useful to simplify how are tasks managed and temporized. In order to organise the tasks, an \emph{AGILE} approach has been used, even though the project has been done all by myself. Each subgroup of the \emph{development} branch has been considered as an \emph{epic} and each working package as a \emph{story}, which has as many tasks as required. This approach has been used for each project and has made the development of the project easier to manage.
+To structure and organise the project, working packages\footnote{See \emph{\nameref{working-packages}} for more information.} have been used in order to ensure a temporised and structured development. Following such structure has been extremely useful to simplify how are tasks managed and temporized. In order to organise the tasks, an \emph{AGILE} approach has been used, even though the project has been done all by myself. Each subgroup of the \emph{development} branch has been considered as an \emph{epic} and each working package as a \emph{story}, which has as many tasks as required. This approach has been used for each project and has made the development of the project easier to manage.
 \\[8pt]
 In order to simplify the process of \emph{epic}, \emph{story} and \emph{task} creation, the Jira software from Atlassian has been used. Jira is a project management software developed by Atlassian which helps from teams to single users to easily manage their projects. Even though it is oriented to AGILE methodologies, it can be used by any type of project \cite{jira}. It has been extremely useful as it can be integrated with many tools, one being GitHub, where the code is hosted. The GitHub integration provides a lot of utilities, yet one of the most important is the fact that it tracks your branches, commits and pull requests. Using the three elements, I have been able to automate the process of starting and completing tasks, alongside of the Jira automation. The following diagram, describes the workflow of the tasks inside Jira:
 \begin{figure}[H]
@@ -251,7 +251,7 @@ When the client has been able to connect to the platform, they will be able to v
 \\[8pt]
 After the appointment has been made, the client will be able to modify it and remove it, without the need of any explanation.
 \section{Functional requirements}
-\label{functiona-requirements}
+\label{functional-requirements}
 \subsection{Introduction}
 In this section, the above described requirements will be explained more in depth. The functional requirements are defined as the core functionalities of the system. All requirements exposed in the section are considered essentials and the system would be considered incomplete if it did not satisfy such requisites.
 \\[8pt]
@@ -681,7 +681,7 @@ The \emph{testing} branch contains the working package that is related with the 
 \captionof{table}{Package eleven's table - E2e testing}
 \subsection{Development}
 \label{working-packages-development}
-The \emph{development} branch is probably the most extensive, as it is the most important part of the project. The branch consists of 73 working packages in total. Nevertheless, most of the packages follow the same structure. For instance, as it is seen in the \nameref{working-packages-api}, each web service package follows the same structure: a working package to create an entity, another one to update it, a third one to delete it, and a final one to fetch the entity. The structure is the same for each web service, which easily increases the number of working packages.
+The \emph{development} branch is probably the most extensive, as it is the most important part of the project. The branch consists of 73 working packages in total. Nevertheless, most of the packages follow the same structure. For instance, as it is seen in the \emph{\nameref{working-packages-api}}, each web service package follows the same structure: a working package to create an entity, another one to update it, a third one to delete it, and a final one to fetch the entity. The structure is the same for each web service, which easily increases the number of working packages.
 \subsubsection{Development env}
 The first group that is in the \emph{development} branch is the \emph{development env} (or \emph{development environment}). This part is as important as any other application, since it will define the structure of the project. Furthermore, the continuous integration has to be set up. Using the Nx build system, such feature becomes extremely simple and scalable. One of the options it offers is to run a command to as many projects as wanted. Not only so, that you can run the commands to the affected projects. Such feature reduces even more the CI execution time.
 \begin{figure}[H]
@@ -1484,7 +1484,7 @@ The \emph{api} group is composed of the following working packages:
 \end{tabularx}
 \captionof{table}{Package fifty's table - Fetch appointments}
 \subsubsection{Core application}
-The \emph{core} group of working packages follows a similar approach as the one described in \nameref{working-packages-development}.
+The \emph{core} group of working packages follows a similar approach as the one described in \emph{\nameref{working-packages-development}}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/working-packages/Core.png}
@@ -2029,7 +2029,7 @@ The \emph{core} group is composed of the following working packages:
 \captionof{table}{Package seventy-nine's table - Configure user settings (Settings)}
 \vspace*{16pt}
 \subsubsection{Client application}
-The \emph{landing} group of working packages follows a similar approach as the one described in \nameref{working-packages-development}.
+The \emph{landing} group of working packages follows a similar approach as the one described in \emph{\nameref{working-packages-development}}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/working-packages/Client.png}
@@ -2531,7 +2531,9 @@ Finally, the libraries that are installed to develop end-to-end test for express
 	\includegraphics[width=\textwidth]{assets/use-case-diagrams/owner.png}
 	\caption{Owner's core application use case diagram}
 \end{figure}
-Owner's use case diagram
+The owner's use case diagram is the above one. It goes from left to right, and all relations are of type \emph{include}, meaning that you cannot move right without being in the left position before. It is also important to note, that it is also possible to move from right to left, for example, after creating a worker, the user is moved back to the \emph{view workers} state. The owner has access to all the possible states, as it is like a super user of the application (it is another reason on why all relations are \emph{include} type).
+\\[8pt]
+Another important point to notice is the \emph{CRUD} notation. I have opted for this notation in order to make the diagram smaller and also help with the interaction of the user. \emph{CRUD} stands for \emph{Create}, \emph{Read}, \emph{Update} and \emph{Delete}. For example, the \emph{CRUD Workers} state would be the possibility of \emph{creating}, \emph{reading}, \emph{updating} and \emph{deleting} workers. 
 \section{Database diagram}
 \subsection{Introduction}
 In a previous section, it has been explained that the DataGrip application has been used to create the database diagram. The process to create such diagram has been:
@@ -2768,238 +2770,63 @@ With these requirements, there are views modals that contain 4 images, each one 
 % #region Images
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/SignUpStepOne.png}
+	\includegraphics[width=\textwidth]{assets/ui/sign-up-step-one.png}
 	\caption{First step of the sign up page}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/SignUpStepOne.png}
+	\includegraphics[width=\textwidth]{assets/ui/sign-up-step-two.png}
 	\caption{Second step of the sign up page}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/LogIn.png}
+	\includegraphics[width=\textwidth]{assets/ui/log-in.png}
 	\caption{View of the login page}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/Dashboard.png}
+	\includegraphics[width=\textwidth]{assets/ui/dashboard.png}
 	\caption{Dashboard page, displaying a summary of the gym's information}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/VirtualGyms.png}
+	\includegraphics[width=\textwidth]{assets/ui/virtual-gyms.png}
 	\caption{Virtual gym's page, which is accessed using the left navigation bar}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/CreateVirtualGym.png}
-	\caption{Virtual gym dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingVirtualGym.png}
-	\caption{Virtual gym dialog (create-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EditVirtualGym.png}
-	\caption{Virtual gym dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EditLoadingVirtualGym.png}
-	\caption{Virtual gym dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/VirtualGym.png}
+	\includegraphics[width=\textwidth]{assets/ui/virtual-gym.png}
 	\caption{Single virtual gym view, accessed by clicking on a virtual gym}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/CreateGymZone.png}
-	\caption{Gym zone dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingGymZone.png}
-	\caption{Gym zone dialog (create-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EditGymZone.png}
-	\caption{Gym zone dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EditLoadingGymZone.png}
-	\caption{Gym zone dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/CreateEvent.png}
-	\caption{Event dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/CreateLoadingEvent.png}
-	\caption{Event dialog (create-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EditEvent.png}
-	\caption{Event dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EditLoadingEvent.png}
-	\caption{Event dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/ClassGymZone.png}
+	\includegraphics[width=\textwidth]{assets/ui/class-gym-zone.png}
 	\caption{Class gym zone page, accessed by clicking on any class-type gym zone}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/Events.png}
+	\includegraphics[width=\textwidth]{assets/ui/events.png}
 	\caption{Event's page, which is accessed using the left navigation bar}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTypeCreate.png}
-	\caption{Event type dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTypeCreateLoading.png}
-	\caption{Event type dialog (create-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTypeEdit.png}
-	\caption{Event type dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTypeEditLoading.png}
-	\caption{Event type dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTemplateCreate.png}
-	\caption{Event template dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTemplateCreateLoading.png}
-	\caption{Event template dialog (create-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTemplateEdit.png}
-	\caption{Event template dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/EventTemplateEditLoading.png}
-	\caption{Event template dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/Trainers.png}
+	\includegraphics[width=\textwidth]{assets/ui/trainers.png}
 	\caption{Trainer's page, which is accessed using the left navigation bar}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/TrainerCreate.png}
-	\caption{Trainer dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/TrainerCreateLoading.png}
-	\caption{Trainer dialog (create-edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/TrainerEdit.png}
-	\caption{Trainer dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/TrainerEditLoading.png}
-	\caption{Trainer dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/WorkersSelected.png}
+	\includegraphics[width=\textwidth]{assets/ui/workers.png}
 	\caption{Worker's page, which is accessed using the left navigation bar}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/WorkersUnselected.png}
-	\caption{Same as previous, with a selected worker}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/WorkersCreate.png}
-	\caption{Worker dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/WorkersCreateLoading.png}
-	\caption{Worker dialog (create-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/WorkersEdit.png}
-	\caption{Worker dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/WorkersEditLoading.png}
-	\caption{Worker dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/Clients.png}
+	\includegraphics[width=\textwidth]{assets/ui/clients.png}
 	\caption{Client's page, which is accessed using the left navigation bar}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{assets/ui/ClientsCreate.png}
-	\caption{Client dialog (create state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/ClientsCreateLoading.png}
-	\caption{Client dialog (create-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/ClientsEdit.png}
-	\caption{Client dialog (edit state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/ClientsEditLoading.png}
-	\caption{Client dialog (edit-loading state)}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/Owner.png}
-	\caption{Settings page, from the owner's view}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/Worker.png}
-	\caption{Settings page, from the worker's view}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{assets/ui/Client.png}
-	\caption{Settings page, from the client's view}
+	\includegraphics[width=\textwidth]{assets/ui/settings-owner.png}
+	\caption{Settings page}
 \end{figure}
 % #endregion Images
 \chapter{Implementation and trials}
@@ -3047,6 +2874,17 @@ As explained before, the API server runs an e2e test. Such test requires a fake 
 Aside from the implemented tests, the UI application has been manually tested in order to find bugs that may not have been covered by the automated tests. In the case of the API, testing the endpoints has been a bit harder, yet the Postman software has been used in order to test the endpoints. In case of the UI applications, they have been tested by finding edge cases when running the appliation.
 \\[8pt]
 When a bug has been found, I firstly checked the tests to see why it was not being covered or if it was a bug in the test, as it is something that can happen. If the bug was found in the tests, I updated the tests and later fixed the actual code. If not, I would search the bug in the code, to later cover it with the tests.
+\chapter{Deployment and results}
+\section{Deployment}
+The deployment of the application would be the latest step once the 3 applications have been fineshed. Once again, due to the lack of time, I have not been able to finish all the features I had in mind before the application is deployed. Nevertheless, the current product is enough to be shown to potential clients, meaning that if I found any gym or company interested in such product, with what has been developed, I ensure it would be enough to attract them to the app.
+\\[8pt]
+Aside from that, a mind map of how the applications would work for the public, would be by accessing them from a public URL. The applications would be running in a cloud service, AWS to name one, and most likely deployed as docker images, which would fasten the deployment and it would be easier to automate. However, due to lack of time and money, the application has not been deployed, meaning it can not be accessed from any device, other than the local machine. In order to run the application from the local machine, the installation manual can be found in the code repositiry, as well as in the documentation for each application, in the repository aswell.
+\section{Results}
+Since the initial design\footnote{The memory will include a copy of the Figma design, which will include all the assets that have been used in order to design the applicatio and to add images in the application.} had been really defined, the results of the application look nearly identic. However, when developing the application, due to the lack of time and other incovenients, some of the views may look a bit different.
+\subsection{Core application results}
+The following images are from the core application.
+\subsection{Client application results}
+The following images are from the client application.
 \chapter{Conclusions}
 The goal of the project was to provide a tool that helped both gym owners to manage the appointments their clients made, durign the COVID restrictions. This objective has been accomplished with the Hubbl web application, which allows users to manage appointments in a gym environment. Nevertheless, it is hard to define an app as completely finished, as there may exist a bug that the developers have not seen, or the clients will require new features which will have to be implemented.
 \\[8pt]
@@ -3069,15 +2907,12 @@ Aside from the general points, due to the lack of time and handwork (being me th
 	\item \emph{Archival}. Archiving gym zones, events, clients and any item that can be deleted would allow the user to soft-delete items, meaning that such items could be recovered in the future. Currently, the server only supports hard-deletion, the opposite, as it requires less logic in the backed. However, the goal would be to provide the user with both utilities, being able to permanently remove or temporarily remove items.
 	\item \emph{Update gym zones and virtual gyms}. It is currently not possible to edit the characteristics (name, description, open and close time, and so on) of a virtual gym nor a gym zone. I have not found the best place, in terms of user expercience, to locate such edition. Therefore, I have kept \emph{procastinating} the task, yet it would have a high priority in comparison to other tasks.
 	\item \emph{Filtering}. The woker, trainer and client views will contain a lot of data which can be hard to visualise sometimes. That is the reason why providing filters for such views will add enourmous value to such features.
-	\item \emph{Analytics}. Alongside the archiving feature, having analytics of the gym would provide tremendous value to the gym owner and their coworkers, but it requires a vast amount of time to be developed. Therefore, as I have stated in the \nameref{functional-requirements} section, it was already something that I knew I wouldn't have time to develop, and it would be a \emph{nice-to-have} for the user. Such feature whould be added as another tab in the lateral menu, and it would only be accessible to the gym owner and to the workers with permissions to view them.
+	\item \emph{Analytics}. Alongside the archiving feature, having analytics of the gym would provide tremendous value to the gym owner and their coworkers, but it requires a vast amount of time to be developed. Therefore, as I have stated in the \emph{\nameref{functional-requirements}} section, it was already something that I knew I wouldn't have time to develop, and it would be a \emph{nice-to-have} for the user. Such feature whould be added as another tab in the lateral menu, and it would only be accessible to the gym owner and to the workers with permissions to view them.
 	\item \emph{Light/Dark theme}. It is currently possible in the server to change the theme from light to dark and vice-versa. However, since I did not have enought time to define a dark system design, I opted not to add it in the client. Nonetheless, it should be an easy to add feature, as the \emph{mui} library provides an easy tool for such feature.
 	\item \emph{Client e2e}. Again, due to the lack of time and handwork, I have not been able to develop end-to-end tests for the client applications. I have little experience with developing such tests, and I would have required a vast amount of time to code consistent and valuable end-to-end tests.
 	\item \emph{Deployment}. Finally, I would have wanted to deploy the applications to a web server so that they would be accessible to anyone. Such thing will not be possible until the application includes most of the above points, excluding analytics and archival.
 \end{enumerate}
 To sum up, even though the list may seem large, the application is fully functional and provides the basic utilities for the owners, workers and clients to properly organise themselves.
-\appendix
-\chapter{User manual or installation}
-The applications should be accessed from a public URL. However, due to lack of time and money, the application has not been deployed, meaning it can not be accessed from any device, other than the local machine. In order to run the application from the local machine, the installation manual can be found in the code repositiry, as well as in the documentation for each application, in the repository aswell.
 \begin{thebibliography}{9}
 	% Autor. Any de l’última actualització. Títol en cursiva. Dia mes any consulta. URL
 	\bibitem{salary-one}
