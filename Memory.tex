@@ -146,7 +146,7 @@ The procedure is based in five process groups, which are:
 	\item \textbf{Closing}: the closing processes are those which are performed in order to finalize all activities across the above process groups so the project or phase can be closed.
 \end{enumerate}
 \section{Development methodology}
-To structure and organise the project, working packages\footnote{See \emph{\nameref{working-packages}} for more information.} have been used in order to ensure a temporised and structured development. Following such structure has been extremely useful to simplify how are tasks managed and temporized. In order to organise the tasks, an \emph{AGILE} approach has been used, even though the project has been done all by myself. Each subgroup of the \emph{development} branch has been considered as an \emph{epic} and each working package as a \emph{story}, which has as many tasks as required. This approach has been used for each project and has made the development of the project easier to manage.
+To structure and organise the project, working packages\footnote{See \emph{\nameref{working-packages}} for more information.} have been used in order to ensure a temporised and structured development. Following such structure has been extremely useful to simplify how are tasks managed and temporised. In order to organise the tasks, an \emph{AGILE} approach has been used, even though the project has been done all by myself. Each subgroup of the \emph{development} branch has been considered as an \emph{epic} and each working package as a \emph{story}, which has as many tasks as required. This approach has been used for each project and has made the development of the project easier to manage.
 \\[8pt]
 In order to simplify the process of \emph{epic}, \emph{story} and \emph{task} creation, the Jira software from Atlassian has been used. Jira is a project management software developed by Atlassian which helps from teams to single users to easily manage their projects. Even though it is oriented to AGILE methodologies, it can be used by any type of project \cite{jira}. It has been extremely useful as it can be integrated with many tools, one being GitHub, where the code is hosted. The GitHub integration provides a lot of utilities, yet one of the most important is the fact that it tracks your branches, commits and pull requests. Using the three elements, I have been able to automate the process of starting and completing tasks, alongside of the Jira automation. The following diagram, describes the workflow of the tasks inside Jira:
 \begin{figure}[H]
@@ -169,7 +169,7 @@ In order to stick to the process as much as possible, tasks moved to \emph{done}
 \section{Introduction}
 This chapter will cover the knowledge that is required in order to properly develop a booking application. In short terms, it is required to know how\footnote{It is obvious that the may be different implementations, for different gyms. However, the implementation that has been chosen is the one that I thought was most accurate, based on my experience in different gyms.} gyms work, regarding class and room (or non-class) appointments. Furthermore, it is important to have some knowledge on software artchitecture and development, in order to provide value with the application.
 \section{Gym overview}
-There are few issues to address regarding the appointment system of a gym. In general, there are two types of appointments to be made. The first is the most simple and basic, which is an appointment made to a class or event organized by the gym. Such appointment will have a maximum capacity, for example, the gym may have a fixed number of spinning machines, and it would be nonsense to allow more appointments that spinning bikes are in a spinning class. The second appointment would be an appointment that is made to access the gym for an interval of time. Most gyms have zones in which their clients can access anytime, and exercise themselves using the mahcines or equipment they feel like using. Therefore, the gym has to provide their clients the possibility of accessing their infrastructures within the interval the client wants to work out.
+There are few issues to address regarding the appointment system of a gym. In general, there are two types of appointments to be made. The first is the most simple and basic, which is an appointment made to a class or event organised by the gym. Such appointment will have a maximum capacity, for example, the gym may have a fixed number of spinning machines, and it would be nonsense to allow more appointments that spinning bikes are in a spinning class. The second appointment would be an appointment that is made to access the gym for an interval of time. Most gyms have zones in which their clients can access anytime, and exercise themselves using the mahcines or equipment they feel like using. Therefore, the gym has to provide their clients the possibility of accessing their infrastructures within the interval the client wants to work out.
 \section{Development overview}
 The application will be a web-based application, meaning that it is expected to be used within a browser, accessing a specific URL. Using a web environment completely avoids the native app implementation. One of the most common issues developers face is the fact that, in order to develop an app for different OS, they can rarely use a common code base. Each OS may require a different language or a different implementation, difficulting the addition of new elements or even maintaining the app itself.
 \\[8pt]
@@ -382,7 +382,7 @@ The goal of this view is to provide some metrics to \emph{what is happening at t
 	\item \textbf{FR-64 (1)}. After having selected a virtual gym, the view has to provide a filter to check what gym zones are more crowded at the current date.
 \end{enumerate}
 \subsection{Client app}
-The client application will reuse most of the content from the Core application. However, as it is a client, all the functionalities of modifying and deleting will no appear, as the client does not have access to such views.
+The client application will reuse most of the content from the Core application. However, as it is a client, all the functionalities of modifying and deleting will not appear, as the client does not have access to such views.
 \begin{enumerate}[label = -]
 	\item \textbf{FR-65 (3)}. The client has to provide personal information and a gym code in order to register.
 	\item \textbf{FR-66 (3)}. The client has to provide an email and password to access the application (log in).
@@ -438,7 +438,7 @@ Each dependency will use the following format: \textbf{[FR-1, FR-2, FR-3] \textt
 \\[8pt]
 \textbf{[FR-66, FR-67, FR-68, FR-69, FR-70, FR-71, FR-72] \texttt{->} [FR-65]}. In order to interact with the application, the client must have had registered previously.
 \chapter{Planning}
-This chapter will cover the planning of the project. After having defined the requirements and the matrix of dependencies of such requirements, working packages will be defined, which will ensure an organized development using tasks.
+This chapter will cover the planning of the project. After having defined the requirements and the matrix of dependencies of such requirements, working packages will be defined, which will ensure an organised development using tasks.
 \section{Working packages}
 \label{working-packages}
 Each's table corresponds to one of the working packages. Since the \emph{Development} branch of the working packages tree the most extensive, its tables are explained after the \emph{Testing} branch, and so are the package numbers.
@@ -447,7 +447,7 @@ Each's table corresponds to one of the working packages. Since the \emph{Develop
 	\includegraphics[width=\textwidth]{assets/working-packages/All.png}
 	\caption{Structure of the working packages at the root level}
 \end{figure}
-The image above shows how the working packages have been organized. Each column represents a module, which are:
+The image above shows how the working packages have been organised. Each column represents a module, which are:
 \begin{enumerate}[label = -]
 	\item Project management.
 	\item Requirements.
@@ -707,7 +707,7 @@ The \emph{development environment} group is composed of the following working pa
 	\rowcolor{rowColor}
 	{\semibf Estimated time} & 4h                                                                \\
 	\hline
-	{\semibf Tasks}          & {\semibf T1}: Generate an \texttt{nx-workspace} ready to develop. \\
+	{\semibf Tasks}          & {\semibf T1}: Generate a \texttt{nx-workspace} ready to develop. \\
 	\hline
 	\rowcolor{rowColor}
 	{\semibf Results}        & Initial structure of the monorepo.                                \\
@@ -739,7 +739,7 @@ The \emph{development environment} group is composed of the following working pa
 	\rowcolor{rowColor}
 	{\semibf Package name}   & {\semibf WP14}: Continuous integration.                 \\
 	\hline
-	{\semibf Description}    & Set up Github Actions for CI.                           \\
+	{\semibf Description}    & Set up GitHub Actions for CI.                           \\
 	\hline
 	\rowcolor{rowColor}
 	{\semibf Estimated time} & 8h                                                      \\
@@ -2528,17 +2528,26 @@ In order to use cypress, the project needs a specific folder structure which can
 Finally, the libraries that are installed to develop end-to-end test for express, in \texttt{@nrwl/express} are: Jest and Supertest. The Jest library has already been covered. The Supertest is an HTTP assertions library that allows the developer to create Node.js HTTP tests. It uses the SuperAgent library, which is an HTTP client for Node.js. Using Supertest is one of the most common methods to develop such tests.
 \chapter{Analysis and system design}
 \section{Use case diagram}
-% TODO: Explain that all relations are include
-% TODO: Explain why it is divided in 3 diagrams
-% TODO: Explain that worker permissions are not explained
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{assets/use-case-diagrams/owner.png}
 	\caption{Owner's core application use case diagram}
 \end{figure}
-The owner's use case diagram is the above one. It goes from left to right, and all relations are of type \emph{include}, meaning that you cannot move right without being in the left position before. It is also important to note, that it is also possible to move from right to left, for example, after creating a worker, the user is moved back to the \emph{view workers} state. The owner has access to all the possible states, as it is like a super user of the application (it is another reason on why all relations are \emph{include} type).
+The owner's use case diagram is the above one. It goes from left to right\footnote{The first arrows are divided in two colors in order to make it easier to distinguish between the two processes. If the color black had been used, as in the other relations, it would have been harder to understand.}, and all relations are of type \emph{include}, meaning that you cannot move right without being in the left position before. It is also important to note, that it is also possible to move from right to left, for example, after creating a worker, the user is moved back to the \emph{view workers} state. The owner has access to all the possible states, as it is like a superuser of the application (it is another reason on why all relations are of \emph{include} type).
 \\[8pt]
-Another important point to notice is the \emph{CRUD} notation. I have opted for this notation in order to make the diagram smaller and also help with the interaction of the user. \emph{CRUD} stands for \emph{Create}, \emph{Read}, \emph{Update} and \emph{Delete}. For example, the \emph{CRUD Workers} state would be the possibility of \emph{creating}, \emph{reading}, \emph{updating} and \emph{deleting} workers. 
+Another important point to notice is the \emph{CRUD} notation. I have opted for this notation in order to make the diagram smaller and also help with the interaction of the user. \emph{CRUD} stands for \emph{Create}, \emph{Read}, \emph{Update} and \emph{Delete}. For example, the \emph{CRUD Workers} state would be the possibility of \emph{creating}, \emph{reading}, \emph{updating} and \emph{deleting} workers.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/use-case-diagrams/owner.png}
+	\caption{Workers's core application use case diagram}
+\end{figure}
+The worker's diagram is nearly the same as the owner's one, with some exceptions. The owner is allowed to read, create, update and delete everything without being required any permissions. The worker, however, will have a subset of permissions that will allow it to perform certain tasks. Aside from their limitations, the workers do not have access to the gym settings, meaining they can only modify their settings. Furthermore, the only allowed person to access the worker's page is, once again, the owner. That is why the above diagram does not show the worker's page path, nor the gym's settings modifications that can be seen in the owner's diagram. Just as in the owner's diagram, all relations are considered of \emph{include} type.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/use-case-diagrams/client.png}
+	\caption{Client's client application use case diagram}
+\end{figure}
+Finally, the client's diagram is extensively simpler than the two other diagrams, as the client application has fewer interactivity. The client will access the application through the dashboard, and it will have access to the virtual gym's page, to later access the gym zones view. There, they will be able to interact with their appointments. Finally, they will have access to their settings, in order to modify or update them as required.
 \section{Database diagram}
 \subsection{Introduction}
 In a previous section, it has been explained that the DataGrip application has been used to create the database diagram. The process to create such diagram has been:
@@ -2838,7 +2847,7 @@ With these requirements, there are views modals that contain 4 images, each one 
 \section{Introduction}
 The goal of this chapter is to explain the development process, from the thinking of the application and its structure, to the actual development of it. It will also include and explanation of how the application has been constantly tested\footnote{Most testing involves unit and integration testing. In the API application, end-to-end testing has been implemented. For the UI applications, do not have end-to-end testing implemented due to a lack of time}.
 \section{Organizing the idea}
-When I came up with the idea for the application, I ended up with a mix of thoughts that had to be organized and connected. Therefore, the first step was to write an extensive explanation of the application, the goal of the application, what it would do and what it would not do, trying to cover as many details as I could. After revising and rethinking the idea, I ended up with a potential project that \emph{made sense} and could provide value to future clients.
+When I came up with the idea for the application, I ended up with a mix of thoughts that had to be organised and connected. Therefore, the first step was to write an extensive explanation of the application, the goal of the application, what it would do and what it would not do, trying to cover as many details as I could. After revising and rethinking the idea, I ended up with a potential project that \emph{made sense} and could provide value to future clients.
 \\[8pt]
 Once the application had been described, defining the functionalities of such were easier. However, I needed to define a possible structure for such application. It was then when I decided to develop three applications: the landing page, the core application and the client application. I found interesting to distinguish between the client and the core application in order to simplify the development process. Mostly, when an application is expected to cover the most amount of possibilities and users, it ends which an enourmous amounts of checks and even repeated code. Knowing so, I decided to split it in two applications, while at the same time reducing the amount of boilerplate code. Knowing the existence of Nx, I had the logistic problem of maintaining a monorepo with the applications and libraries solved by such tool.
 \\[8pt]
@@ -2883,7 +2892,7 @@ When a bug has been found, I firstly checked the tests to see why it was not bei
 \section{Deployment}
 The deployment of the application would be the latest step once the 3 applications have been fineshed. Once again, due to the lack of time, I have not been able to finish all the features I had in mind before the application is deployed. Nevertheless, the current product is enough to be shown to potential clients, meaning that if I found any gym or company interested in such product, with what has been developed, I ensure it would be enough to attract them to the app.
 \\[8pt]
-Aside from that, a mind map of how the applications would work for the public, would be by accessing them from a public URL. The applications would be running in a cloud service, AWS to name one, and most likely deployed as docker images, which would fasten the deployment and it would be easier to automate. However, due to lack of time and money, the application has not been deployed, meaning it can not be accessed from any device, other than the local machine. In order to run the application from the local machine, the installation manual can be found in the code repositiry, as well as in the documentation for each application, in the repository aswell.
+Aside from that, a mind map of how the applications would work for the public, would be by accessing them from a public URL. The applications would be running in a cloud service, AWS to name one, and most likely deployed as docker images, which would fasten the deployment, and it would be easier to automate. However, due to lack of time and money, the application has not been deployed, meaning it can not be accessed from any device, other than the local machine. In order to run the application from the local machine, the installation manual can be found in the code repositiry, as well as in the documentation for each application, in the repository aswell.
 \section{Results}
 There are some views that did not fit in the screen, therefore two images have been made. Furthermore, most of the create and update actions are performed inside a modal or a dialog. Instead of adding two screenshots with the same content, only with small text changed, only the create dialog has been attached. Furthermore, the zoom applied is of 90\%, allowing more content to be displayed in the screenshot.
 \subsection{Core application}
@@ -3137,7 +3146,7 @@ To sum up, even though the list may seem large, the application is fully functio
 	\bibitem{react-testing-library}
 	\texttt{@Nick McCurdy}\footnote{GitHub's username.}. September 21st 2021. \emph{React Testing Library}. December 13th 2021. \url{https://testing-library.com/docs/react-testing-library/intro}.
 	\bibitem{cypress}
-	Cypress.io. Unspecified last update. \emph{Javascript End to End testing framework}. December 13th 2021. \url{https://www.cypress.io/}
+	Cypress.io. Unspecified last update. \emph{Javascript End-to-End testing framework}. December 13th 2021. \url{https://www.cypress.io/}
 	\bibitem{github-workflows}
 	Unspecified author. Unspecified last update. \emph{Using workflows}. May 22nd 2022. \url{https://docs.github.com/en/actions/using-workflows}
 \end{thebibliography}
