@@ -23,6 +23,8 @@
 
 \usepackage[table]{xcolor}
 
+\date{}
+
 \title{
 	\includegraphics[width=0.75\textwidth]{assets/logo.png}
 	\\
@@ -74,7 +76,7 @@
 \newpage\null\thispagestyle{empty}\newpage
 \thispagestyle{empty}
 \begin{flushright}
-	\emph{Some dedications to the people I care for.}
+	\emph{To my family, who have given me inconditional support. To Joana, for helping me and being part of the application aswell.}
 \end{flushright}
 \newpage
 \thispagestyle{empty}
@@ -198,63 +200,6 @@ There are some definitions to be explained before moving to the next section:
 	\item \emph{Archiving} vs \emph{Deleting}. The purpose of archiving anything in the database means it will be stored but not visible. In order to edit it again, the archived element has to be \emph{recovered}. On the other hand, a deleted element will permanently be deleted from the database.
 \end{enumerate}
 \section{Overall description}
-\subsection{Introduction}
-This section provides a general explanation about the application, how it is intended to work, the different \emph{personas} to whom it is focused and a brief introduction to the software's functionalities.
-\subsection{Product description}
-The product will provide a rich interface for the gym owners and their coworkers in order to manage their gym. Managers will create virtual gyms, each of one with different constrains, which will be forwarded to their gym zones. Each gym zone will be of a certain type, for example, a cardio zone, a free-weight zone or even a powerlifting zone. Such and more characteristics will be determined by the workers or who is responsible for the creation of the zones. Once determined the capabilities of each zone, the clients will have the possibility to make their reservations.
-\\[8pt]
-This software is going to be interesting since it is mainly focused on the managing of appointments. There exist multiple manager systems, some are gym-focused yet there are few that provide an exclusive focus to managing the appointments. It is interesting to have an application that is that specific because most of the companies already have their client management system and other tools. The COVID has changed many things extremely fast and some gymnasiums have not been able to adapt fast enough. That is because using other management tools would mean to change the entire managing software of the company, in order words, starting from zero again. In the future, however, it would be nice to provide a client management system aswell, including subscriptions and so on.
-\subsection{User needs}
-After having briefly defined the application, two \emph{personas} can be identified: the owner or worker of the gym, and the client.
-\\[8pt]
-In the following sections, a brief explanation will be given about the functional requirements, yet such requirements will be explained more in depth in later sections.
-\subsubsection{Owner or worker}
-Such persona needs entire access to the management system, and it is the main user of it. For this persona, the following needs can be defined:
-\begin{enumerate}[label = -]
-	\item \emph{Ability to create virtual gyms and gym zones}. It is the main purpose of the application. It has to provide all the tools that are required to have an above average managing system.
-	\item \emph{Modify virtual gyms and gym zones}. Constraints may change during time. Overall capacity may increase, more cardio machines may be added, and, with these changes, the gym zones will have to adapt to such real life modifications. There has to exist an interface that provides an easy and simple tool to control it.
-	\item \emph{Ability to manage clients}. The income of the gym is based on the amount of clients they have, and such clients have to be subscribed into the system. However, the application is not a client management system. It purely focuses on the fact of appointments, yet the client still has to be registered in the application.
-	\item \emph{Ability to manage appointments}. The workers have to be able to create, modify or delete the appointments at any time. This process has to be fast and simple, since it is more than usual to have cancellations, clients without reservation, and many more.
-	\item \emph{Ability to manage guided events}. Some gym zones will be marked as a guided class zone. Therefore, a schedule will have to be set up for such zone in order to let the user know that.
-\end{enumerate}
-Furthermore, two user profiles have to be differentiated: the \emph{owner} and the \emph{worker}. The owner needs more control than the worker and some additional needs are\footnote{Some workers may also have access to such capabilities, depending on the permission they have recieved by the owner.}:
-\begin{enumerate}[label = -]
-	\item \emph{Ability to manage workers}. The owner has to be able to add, remove or update their workers. There must exist an interface that allows such control.
-	\item \emph{Ability to manage the privileges of the workers}. In large gymnasium franchises, there may exist different types of workers, each with different tasks. For instance, some may only be able to manage guided sessions, others will manage the client subscriptions and so on. Therefore, a privilege system is required to define a hierarchy in the company.
-	\item \emph{Ability to manage gym trainers}. It is important to know what trainers will be responsible for each guided class. For instance, some clients may prefer some trainers than others, when choosing a guided class.
-\end{enumerate}
-\subsubsection{Client}
-The client has little interaction with the system. However, a management application for clients would be pointless if clients could not book their sessions. That is why it will exist another platform to provide access to the client. Such client, will have the following needs:
-\begin{enumerate}[label = -]
-	\item \emph{Ability to create, modify and delete appointments}. The clients will make the most use of the reservation system. There has to exist a simple and intuitive interface that allows the clients to interact with the system.
-	\item \emph{Ability to visualise guided events}. In case the client prefers booking a place for a guided class, it should be able to visualise all the possible events for a day or week, for a zone.
-\end{enumerate}
-\section{Product functionalities}
-The goal of this section is to explain how would the basic flow of the application be. From the owner arranging virtual gyms, the events and assigning the trainers; to the client being able to manage their appointments. By exemplifying the application behavior, it will be easier to determine the functional requirements of the software.
-\subsection{Gym}
-When registering, the owner will be required to enter the gym information and will be able to customise other information such as the gym contact data. Such settings will be common to all clients and workers, as they will be part of such gym.
-\subsection{Virtual gym and gym zones}
-The interface has to be intuitive both for the user and the client, while at the same time providing as much utility as possible. Before being able to create appointments, the client needs a place to create such appointments. Therefore, the first mission of the owner is to define each zone. A gym company may have one or more virtual gyms. As stated before, a virtual gym is the representation of the gym infrastructure in the system. Each virtual gym will have different characteristics and information as: the gym location, the total capacity, the opening and closing hours and much more. This virtual gyms can be modified as they may change time to time. If ever needed, the fact of deleting the different virtual gyms will also be possible.
-\\[8pt]
-Once the virtual gym has been set up, it can have gym zones. Each gym zone will also have its characteristics, most of them similar to the virtual gym ones. However, there is a characteristic that is important to mention: the \emph{type} of the gym zone. Each zone is required a type since some zones may be suitable for events and some not. Such types will be predefined, however the user will have the ability to create their own types. Nonetheless, there will still be the need of distinction between class zones and non-class zones.
-\subsection{Events, trainers and workers}
-After having defined the structure of the gym, the owner or the workers of the gym can create and schedule events for the different gym zones. Events can not be overlapped in the same zone, yet some events can be scheduled at the same time in different zones. Furthermore, the same class can be done in multiples zones, with different trainers.
-\\[8pt]
-In order to keep such consistency, the gym owners will create \emph{template events}, which will have specific characteristics. Each template class will be unique, and it will be used to create \emph{events}. In short, the client will create an appointment to a class, which will be a scheduled template class. Nonetheless, appointments will also be required for non-class gym zones, as it is needed to know how many users will access such zone in a certain time. With the explained relation, owners and workers will not have the need to create a class with all the details every single time, rather simply scheduling already created template events.
-\\[8pt]
-Additionally, a trainer manager system is required. However, a trainer it is a worker as well, only it does not interact with the application. Hence, in the same management view, the owner, and if any worker is allowed to, will be able to create trainers and workers.
-\subsection{Clients}
-Before continuing, the system still lacks of the main income of the gymnasium: the client. As detailed before, the goal of this application is not to provide a client management system, though it could be a functionality to be implemented in the future. Therefore, the client will also be related to the gym entity.
-\\[8pt]
-There has to be, definitely, a small client management. However, this management does not need to know about all the information it is kept about the user in the gym. It will only need:
-\begin{enumerate}[label = -]
-	\item Personal information such as the name, last name and so on. It should include an email to log in to the software.
-\end{enumerate}
-That is it. From there, the client will have access to another view of the application in which they will be able to make the reservations.
-\subsection{Creating appointments}
-When the client has been able to connect to the platform, they will be able to visualise the virtual gyms of the gym they belong to. There, the client will see the availability of the different gym zones, the events offered in that zone and other relevant information. From there, they will create their appointments which will be persisted in the system.
-\\[8pt]
-After the appointment has been made, the client will be able to modify it and remove it, without the need of any explanation.
 \section{Functional requirements}
 \label{functional-requirements}
 \subsection{Introduction}
