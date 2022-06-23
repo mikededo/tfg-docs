@@ -19,6 +19,7 @@
 \usepackage{tabularx}
 \usepackage{colortbl}
 \usepackage{float}
+\usepackage[titles]{tocloft}
 
 \usepackage[table]{xcolor}
 
@@ -62,6 +63,10 @@
 
 \titleformat{\chapter}[hang]{\normalfont\huge\bfseries}{\thechapter. }{4pt}{\Huge}
 \titlespacing{\chapter}{0pt}{-32pt}{12pt}
+
+% Fix space in list of figures
+\cftsetindents{figure}{0em}{3.5em}
+\cftsetindents{table}{0em}{3.5em}
 
 \begin{document}
 \frontmatter
@@ -2880,11 +2885,201 @@ The deployment of the application would be the latest step once the 3 applicatio
 \\[8pt]
 Aside from that, a mind map of how the applications would work for the public, would be by accessing them from a public URL. The applications would be running in a cloud service, AWS to name one, and most likely deployed as docker images, which would fasten the deployment and it would be easier to automate. However, due to lack of time and money, the application has not been deployed, meaning it can not be accessed from any device, other than the local machine. In order to run the application from the local machine, the installation manual can be found in the code repositiry, as well as in the documentation for each application, in the repository aswell.
 \section{Results}
-Since the initial design\footnote{The memory will include a copy of the Figma design, which will include all the assets that have been used in order to design the applicatio and to add images in the application.} had been really defined, the results of the application look nearly identic. However, when developing the application, due to the lack of time and other incovenients, some of the views may look a bit different.
-\subsection{Core application results}
-The following images are from the core application.
-\subsection{Client application results}
-The following images are from the client application.
+There are some views that did not fit in the screen, therefore two images have been made. Furthermore, most of the create and update actions are performed inside a modal or a dialog. Instead of adding two screenshots with the same content, only with small text changed, only the create dialog has been attached. Furthermore, the zoom applied is of 90\%, allowing more content to be displayed in the screenshot.
+\subsection{Core application}
+In order to reduce the amount of screenshots that are added, the screenshots have been made when a user is logged as an owner. A worker's is nearly as the worker's one, just with some actions not allowed, depending on their permissions.
+\subsubsection{Authentication}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/sign-up-one.png}
+	\caption{Step one of the sign up process}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/sign-up-two.png}
+	\caption{Step two of the sign up process}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/log-in.png}
+	\caption{Log in page}
+\end{figure}
+\subsubsection{Dashboard page}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/dashboard-one.png}
+	\caption{First screenshot of the dashboard page}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/dashboard-two.png}
+	\caption{Second screenshot of the dashboard page}
+\end{figure}
+\subsubsection{Virtual gyms}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/virtual-gyms.png}
+	\caption{Virtual gyms page}
+\end{figure}
+Whenever a virtual gym has been clicked (by clicking at its name), the user is redirected to the above page, which displays all the gym zones of the chosen virtual gym.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/virtual-gym.png}
+	\caption{Virtual gym page}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-virtual-gym.png}
+	\caption{Creation of a virtual gym}
+\end{figure}
+\subsubsection{Gym zone}
+This view is only limited to the class type gym zones. That is becasue the non-class type do not have an events calendar.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/gym-zone-one.png}
+	\caption{View of a calendar with events of the same event type}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/gym-zone-two.png}
+	\caption{View of a calendar with events of different event type}
+\end{figure}
+Gym zones can be created from different views, which are the dashboard, the virtual gyms list page and the single virtual gym's page.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-gym-zone.png}
+	\caption{Virtual gym page}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-event.png}
+	\caption{Creation of an event for a calendar}
+\end{figure}
+\subsubsection{Events}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/events.png}
+	\caption{Events page with event types and event templates}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-event-type.png}
+	\caption{Creation of an event type}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-event-template.png}
+	\caption{Creation of an event template}
+\end{figure}
+\subsubsection{Workers}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/workers.png}
+	\caption{Workers view without a worker selected}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/workers-selected.png}
+	\caption{Workers view with a worker selected}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-worker.png}
+	\caption{Creation of a worker}
+\end{figure}
+\subsubsection{Trainers}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/trainers.png}
+	\caption{Trainers page}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-trainer.png}
+	\caption{Creation of a trainer}
+\end{figure}
+\subsubsection{Clients}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/clients.png}
+	\caption{Clients page}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/create-client.png}
+	\caption{Creation of a client}
+\end{figure}
+\subsubsection{Settings}
+The settings page for a worker would look the same, without having the gym properties available.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/core-screenshots/settings.png}
+	\caption{Settings page}
+\end{figure}
+\subsection{Client application}
+\subsubsection{Authentication}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/sign-up.png}
+	\caption{Sign up page}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/log-in.png}
+	\caption{Log in page}
+\end{figure}
+\subsubsection{Dashboard page}
+In comparison to the core application, the dasboard page contains fewer actions, and it is more simple.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/dashboard.png}
+	\caption{Dashboard page}
+\end{figure}
+\subsubsection{Virtual gyms}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/virtual-gyms.png}
+	\caption{Virtual gyms page}
+\end{figure}
+Whenever a virtual gym has been clicked (by clicking at its name), the user is redirected to the above page, which displays all the gym zones of the chosen virtual gym.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/virtual-gym.png}
+	\caption{Virtual gym page}
+\end{figure}
+\subsubsection{Gym zone}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/gym-zone.png}
+	\caption{View of a gym zone}
+\end{figure}
+\subsubsection{Appointments}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/create-event-appointment.png}
+	\caption{Creation of an appointment to an event}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/event-appointment-created.png}
+	\caption{Confirmation of an event appointment}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/create-calendar-appointment.png}
+	\caption{Creation of an appointment to a calendar}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/calendar-appointment-created.png}
+	\caption{Confirmation of a calendar appointment}
+\end{figure}
+\subsubsection{Settings}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{assets/client-screenshots/settings.png}
+	\caption{Settings page}
+\end{figure}
 \chapter{Conclusions}
 The goal of the project was to provide a tool that helped both gym owners to manage the appointments their clients made, durign the COVID restrictions. This objective has been accomplished with the Hubbl web application, which allows users to manage appointments in a gym environment. Nevertheless, it is hard to define an app as completely finished, as there may exist a bug that the developers have not seen, or the clients will require new features which will have to be implemented.
 \\[8pt]
